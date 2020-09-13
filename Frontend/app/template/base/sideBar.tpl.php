@@ -68,7 +68,7 @@
     <!-- Page Body Start-->
     <div class="page-body-wrapper sidebar-icon">
         <nav-menus></nav-menus>
-        <header class="main-nav">
+        <header class="main-nav close_icon">
             <nav>
                 <div class="main-navbar">
                     <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
