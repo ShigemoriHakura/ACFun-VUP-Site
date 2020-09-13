@@ -81,6 +81,7 @@ CREATE TABLE `vup_up_list` (
   `uperid` int(11) NOT NULL,
   `registerTime` text NOT NULL,
   `name` text NOT NULL,
+  `nowName` text,
   `add_date` date NOT NULL,
   `last_date` text NOT NULL,
   `enabled` tinyint(1) NOT NULL

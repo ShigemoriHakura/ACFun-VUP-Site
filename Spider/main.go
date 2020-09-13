@@ -103,14 +103,19 @@ func checkUpers(counter int){
 func makeMysqlUpdateQueue(updateMap map[string]map[string]string){
 	var dataString = "INSERT INTO vup_up_data VALUES"
 	if(len(updateMap) > 0){
+        var uperids = ""
 		var updatedTime  = ""
 		var registerTime = ""
+		var nowName      = ""
 		for k, v := range updateMap{
 			dataString += fmt.Sprintf("(%v, %v, '%v', %v, %v, '%v', '%v', %v, '%v'),", v["uperid"], time.Now().Unix(), v["rawdata"], v["followers"], v["following"], v["name"], v["signature"], v["contentCount"], v["headUrl"])
+			uperids = uperids + k + ","
 			updatedTime  += "WHEN " + k + " THEN " + strconv.Itoa(int(time.Now().Unix())) + "\n"
 			registerTime += "WHEN " + k + " THEN " + v["registerTime"] + "\n"
+			nowName      += "WHEN " + k + " THEN '" + v["name"] + "'\n"
 		}
 		dataString = strings.TrimRight(dataString, ",")
+		uperids    = strings.TrimRight(uperids, ",")
 		//log.Println(dataString)
 		rows, err := Database_Mysql.Exec(dataString)
         if err != nil {
@@ -123,7 +128,7 @@ func makeMysqlUpdateQueue(updateMap map[string]map[string]string){
 		}
 		log.Println("[MysqlUpdate]", "更新成功，影响行数：", int(rowCount))
 
-		var dataUpdated = "UPDATE vup_up_list SET last_date = CASE id\n" + updatedTime + "END,\n registerTime = CASE id\n" + registerTime + "END"
+		var dataUpdated = "UPDATE vup_up_list SET last_date = CASE id\n" + updatedTime + "END,\n registerTime = CASE id\n" + registerTime + "END,\n nowName = CASE id\n" + nowName + "END\n WHERE id IN(" + uperids + ")"
 		//log.Println(dataUpdated)
 		rows, err = Database_Mysql.Exec(dataUpdated)
         if err != nil {
