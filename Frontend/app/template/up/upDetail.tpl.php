@@ -16,6 +16,9 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <div class="user-profile">

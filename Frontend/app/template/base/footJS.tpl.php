@@ -25,5 +25,11 @@
 <script src="<?=$webRoot?>/assets/js/script.js"></script>
 <!-- login js-->
 <!-- Plugin used-->
+<script>
+    $nav = $('.main-nav');
+    $header = $('.page-main-header');
+    $nav.addClass('close_icon');
+    $header.addClass('close_icon');
+</script>
 </body>
 </html>
