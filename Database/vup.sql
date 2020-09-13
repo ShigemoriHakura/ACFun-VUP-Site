@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2020-09-13 08:33:40
+-- 生成日期： 2020-09-13 19:05:26
 -- 服务器版本： 5.6.49-log
 -- PHP 版本： 7.4.9
 
@@ -34,7 +34,7 @@ CREATE TABLE `vup_site_admin` (
   `email` text NOT NULL,
   `password` text NOT NULL,
   `reg_date` date NOT NULL,
-  `last_login_date` date NOT NULL,
+  `last_login_date` text NOT NULL,
   `enabled` tinyint(1) NOT NULL,
   `level` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -60,7 +60,7 @@ CREATE TABLE `vup_site_log` (
 
 CREATE TABLE `vup_up_data` (
   `uperid` int(11) NOT NULL,
-  `up_date` date NOT NULL,
+  `up_date` text NOT NULL,
   `rawdata` text NOT NULL,
   `followers` int(11) NOT NULL,
   `following` int(11) NOT NULL,
@@ -109,13 +109,27 @@ CREATE TABLE `vup_up_log` (
 -- 表的索引 `vup_site_admin`
 --
 ALTER TABLE `vup_site_admin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- 表的索引 `vup_up_list`
 --
 ALTER TABLE `vup_up_list`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uperid` (`uperid`),
+  ADD KEY `id` (`id`),
+  ADD KEY `id_2` (`id`);
+
+--
+-- 在导出的表使用AUTO_INCREMENT
+--
+
+--
+-- 使用表AUTO_INCREMENT `vup_up_list`
+--
+ALTER TABLE `vup_up_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

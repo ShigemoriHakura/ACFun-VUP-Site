@@ -1,3 +1,7 @@
 
 Spider/acSpider.exe
 Spider/config.json
+Frontend/web/assets
+Frontend/app/config/dns_dev.php
+Frontend/app/config/dns_pub.php
+Frontend/logs/
