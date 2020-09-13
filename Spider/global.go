@@ -4,7 +4,7 @@ import (
     "database/sql"
 )
 
-var Version = "0.0.1"
+var Version = "0.0.2"
 var Database_Host string
 var Database_Port string
 var Database_DB   string
