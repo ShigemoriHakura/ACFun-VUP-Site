@@ -5,10 +5,17 @@ return array(
     '' => '',
 
 
-    'Index_Index' => '首页',
-    'Index_Title' => 'ACFun VUP 榜单',
-    'Index_Desc' => '数据每十分钟刷新一次，未记录的用户请私信添加。',
+    'Index_Index'  => '首页',
+    'Index_Title'  => 'ACFun VUP 榜单',
+    'Index_Desc'   => '数据每十分钟刷新一次，未记录的用户请私信添加。',
     'Index_Detail' => '详细信息',
+    'Index_User'   => 'UP',
+    'Index_Followers'   => '关注数',
+    'Index_Action'   => '操作',
+
+    'Upstream_Title'  => 'ACFun VUP 急上升日榜单',
+    'Upstream_Desc'   => '数据每十分钟刷新一次，未记录的用户请私信添加。每天都会重新计算。',
+    'Upstream_FollowersAdded' => '变更',
 
     'Login_Desc1' => '需要提交数据？',
     'Login_Desc2' => '请联系管理员',
@@ -22,6 +29,7 @@ return array(
     'Sidebar_Logout'  => '登出',
     'Sidebar_Submit' => '提交',
     'Sidebar_User'   => '路人',
+    'Sidebar_Upstream' => '急上升',
 
     'Up_UnListed' => '该UP在数据库中不存在，可能还未收录入库。',
     'Up_404' => '该UP在数据库中不存在，可能还未收录入库。',

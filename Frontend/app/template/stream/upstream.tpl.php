@@ -24,7 +24,7 @@
             <div class="col-xl-12">
                 <div class="card card-with-border overall-rating">
                     <div class="card-header resolve-complain card-no-border">
-                        <h5 class="d-inline-block"><?=_L('Index_Title')?></h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
+                        <h5 class="d-inline-block"><?=_L('Upstream_Title')?></h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
                         <p class="f-12 mb-0"><?=_L('Index_Desc')?></p>
                     </div>
                     <div class="card-body p-0">
@@ -36,6 +36,9 @@
                                             <div class="d-inline-block align-middle">
                                                 <div class="d-inline-block"><span class="f-12 f-w-600"><?=_L('Index_User')?></span></span></div>
                                             </div>
+                                        </td>
+                                        <td>
+                                            <p class="f-w-600"><?=_L('Upstream_FollowersAdded')?></p>
                                         </td>
                                         <td>
                                             <p class="f-w-600"><?=_L('Index_Followers')?></p>
@@ -50,6 +53,9 @@
                                                 <div class="d-inline-block align-middle"><img class="img-radius img-40 align-top m-r-15 rounded-circle" src="<?=$v['rawData']['headUrl']?>" alt="">
                                                     <div class="d-inline-block"><span class="f-12 f-w-600"><?=$v['rawData']['name']?></span><span class="d-block"><?=$v['name']?></span></div>
                                                 </div>
+                                            </td>
+                                            <td>
+                                                <p class="f-w-600"><?=$v['followersAdded']?></p>
                                             </td>
                                             <td>
                                                 <p class="f-w-600"><?=$v['rawData']['followers']?></p>

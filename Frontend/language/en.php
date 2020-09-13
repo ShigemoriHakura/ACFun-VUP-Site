@@ -7,8 +7,15 @@ return array(
     'Index_Title' => 'ACFun VUP List',
     'Index_Desc' => 'Data track rate: 10 min',
     'Index_Detail' => 'Detail',
+    'Index_User'   => 'UP',
+    'Index_Followers'   => 'Followers',
+    'Index_Action'   => 'Action',
 
-    'Login_Desc1' => 'Need to add uper account?',
+    'Upstream_Title'  => 'ACFun VUP Up daily list',
+    'Upstream_Desc' => 'Data track rate: 10 min, Will update every day',
+    'Upstream_FollowersAdded' => 'Added',
+
+    'Login_Desc1' => 'Need to add up account?',
     'Login_Desc2' => 'Plz contact Admin',
     'Login_Title' => 'Login',
     'Login_Username' => 'Username',
@@ -20,6 +27,7 @@ return array(
     'Sidebar_Logout'  => 'Log out',
     'Sidebar_Submit' => 'Submit',
     'Sidebar_User'   => 'User',
+    'Sidebar_Upstream'   => 'Growing',
 
     'Up_UnListed' => 'This UP is not in database, plz contact admin.',
     'Up_404' => 'This UP is in database but has no detail data, plz wait for the spider',

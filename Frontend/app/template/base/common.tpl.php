@@ -7,8 +7,8 @@
     <meta name="description" content="<?=$this->encode($this->descript) ?: "ACFun的VUP榜单网站！"?>">
     <meta name="keywords" content="<?=$this->encode($this->keywords) ?: "ACFun, VUP"?>">
     <meta name="author" content="Hakura">
-    <link rel="icon" href="<?=$webRoot?>/assets/images/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="<?=$webRoot?>/assets/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="<?=$webRoot?>/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?=$webRoot?>/favicon.ico" type="image/x-icon">
     <title><?=$this->encode($this->title) ?: "VUP"?></title>
     <!-- Font Awesome-->
     <link rel="stylesheet" type="text/css" href="<?=$webRoot?>/assets/css/fontawesome.css">

@@ -80,6 +80,7 @@
                             <li class="dropdown"><a class="nav-link menu-title" href="#"><i data-feather="home"></i><span><?=_L('Sidebar_Index') ?></span></a>
                                 <ul class="nav-submenu menu-content">
                                     <li><a href="<?=$webRoot?>/"><?=_L('Sidebar_Index') ?></a></li>
+                                    <li><a href="<?=$webRoot?>/upstream"><?=_L('Sidebar_Upstream') ?></a></li>
                                     <? if ($PRM('adminData')) {?>
                                         <li><a href="<?=$webRoot?>/submit"><?=_L('Sidebar_Submit') ?></a></li>
                                         <li><a href="<?=$webRoot?>/submit"><?=_L('Sidebar_Logout') ?></a></li>
