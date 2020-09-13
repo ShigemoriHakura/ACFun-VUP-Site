@@ -63,6 +63,7 @@ func checkUpers(counter int){
 			acUser := make(map[string]string)
 			acUser["uperid"] = v["uperid"]
 			acUser["rawdata"] = string(jsonData)
+			acUser["registerTime"] = any.Get("profile", "registerTime").ToString()
 			acUser["followers"] = any.Get("profile", "followed").ToString()
 			acUser["following"] = any.Get("profile", "following").ToString()
 			acUser["name"] = any.Get("profile", "name").ToString()
@@ -83,10 +84,12 @@ func checkUpers(counter int){
 func makeMysqlUpdateQueue(updateMap map[string]map[string]string){
 	var dataString = "INSERT INTO vup_up_data VALUES"
 	if(len(updateMap) > 0){
-		var updatedTime = ""
+		var updatedTime  = ""
+		var registerTime = ""
 		for k, v := range updateMap{
 			dataString += fmt.Sprintf("(%v, %v, '%v', %v, %v, '%v', '%v', %v, '%v'),", v["uperid"], time.Now().Unix(), v["rawdata"], v["followers"], v["following"], v["name"], v["signature"], v["contentCount"], v["headUrl"])
-			updatedTime += "WHEN " + k + " THEN " + strconv.Itoa(int(time.Now().Unix())) + "\n"
+			updatedTime  += "WHEN " + k + " THEN " + strconv.Itoa(int(time.Now().Unix())) + "\n"
+			registerTime += "WHEN " + k + " THEN " + v["registerTime"] + "\n"
 		}
 		dataString = strings.TrimRight(dataString, ",")
 		//log.Println(dataString)
@@ -101,7 +104,7 @@ func makeMysqlUpdateQueue(updateMap map[string]map[string]string){
 		}
 		log.Println("[MysqlUpdate]", "更新成功，影响行数：", int(rowCount))
 
-		var dataUpdated = "UPDATE vup_up_list SET last_date = CASE id\n" + updatedTime + "END"
+		var dataUpdated = "UPDATE vup_up_list SET last_date = CASE id\n" + updatedTime + "END,\n registerTime = CASE id\n" + registerTime + "END"
 		//log.Println(dataUpdated)
 		rows, err = Database_Mysql.Exec(dataUpdated)
         if err != nil {
