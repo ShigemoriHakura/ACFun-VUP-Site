@@ -17,14 +17,21 @@ class searchAction extends baseAction
         }
         $lang = $this->request->get('lang');
         $lang && Language::setLanguage($lang, Constant::month);
+        if(App::$model->Admin->exist()){
+            $adminData = App::$model->Admin->values();
+        }
+
         $keyword = $this->request->get('keyword');
         if($keyword) {
             $uperResult = $this->searchKeyword($keyword);
             return $this->display('search/search', array(
-                'uperResult' => $uperResult
+                'uperResult' => $uperResult,
+                'adminData' => $adminData
             ));
         }
-        return $this->display('search/index');
+        return $this->display('search/index', array(
+            'adminData' => $adminData
+        ));
     }
 
     public function action_search($keyword)
@@ -34,10 +41,14 @@ class searchAction extends baseAction
         }
         $lang = $this->request->get('lang');
         $lang && Language::setLanguage($lang, Constant::month);
+        if(App::$model->Admin->exist()){
+            $adminData = App::$model->Admin->values();
+        }
         if($keyword) {
             $uperResult = $this->searchKeyword($keyword);
             return $this->display('search/search', array(
-                'uperResult' => $uperResult
+                'uperResult' => $uperResult,
+                'adminData' => $adminData
             ));
         }
     }
