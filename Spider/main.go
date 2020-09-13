@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"time"
+	"strconv"
 	"strings"
 
 	jsoniter "github.com/json-iterator/go"
@@ -68,7 +69,7 @@ func checkUpers(counter int){
 			acUser["signature"] = any.Get("profile", "signature").ToString()
 			acUser["contentCount"] = any.Get("profile", "contentCount").ToString()
 			acUser["headUrl"] = any.Get("profile", "headUrl").ToString()
-			updateMap[v["uperid"]] = acUser
+			updateMap[v["id"]] = acUser
 			log.Printf("[Avatar] %v (%v) 关注: %v, 关注者: %v, 用户名: %v", v["name"], v["uperid"], acUser["following"], acUser["followers"], acUser["name"])
 		}else{
 			log.Println("[Main]", "用户数据获取失败")
@@ -82,20 +83,35 @@ func checkUpers(counter int){
 func makeMysqlUpdateQueue(updateMap map[string]map[string]string){
 	var dataString = "INSERT INTO vup_up_data VALUES"
 	if(len(updateMap) > 0){
-		for _, v := range updateMap{
+		var updatedTime = ""
+		for k, v := range updateMap{
 			dataString += fmt.Sprintf("(%v, %v, '%v', %v, %v, '%v', '%v', %v, '%v'),", v["uperid"], time.Now().Unix(), v["rawdata"], v["followers"], v["following"], v["name"], v["signature"], v["contentCount"], v["headUrl"])
+			updatedTime += "WHEN " + k + " THEN " + strconv.Itoa(int(time.Now().Unix())) + "\n"
 		}
 		dataString = strings.TrimRight(dataString, ",")
 		//log.Println(dataString)
 		rows, err := Database_Mysql.Exec(dataString)
         if err != nil {
-            log.Println("[MysqlUpdate]", "更新失败：", err)
-        }else{
-            rowCount, err := rows.RowsAffected()
-            if err != nil{
-                log.Println("[MysqlUpdate]", "更新失败：", err)
-            }
-            log.Println("[MysqlUpdate]", "更新成功，影响行数：", int(rowCount))
+			log.Println("[MysqlUpdate]", "更新失败：", err)
+			return
         }
+		rowCount, err := rows.RowsAffected()
+		if err != nil{
+			log.Println("[MysqlUpdate]", "更新失败：", err)
+		}
+		log.Println("[MysqlUpdate]", "更新成功，影响行数：", int(rowCount))
+
+		var dataUpdated = "UPDATE vup_up_list SET last_date = CASE id\n" + updatedTime + "END"
+		//log.Println(dataUpdated)
+		rows, err = Database_Mysql.Exec(dataUpdated)
+        if err != nil {
+			log.Println("[MysqlUpdatedTime]", "更新失败：", err)
+			return
+        }
+		rowCount, err = rows.RowsAffected()
+		if err != nil{
+			log.Println("[MysqlUpdatedTime]", "更新失败：", err)
+		}
+		log.Println("[MysqlUpdatedTime]", "更新成功，影响行数：", int(rowCount))
 	}
 }
