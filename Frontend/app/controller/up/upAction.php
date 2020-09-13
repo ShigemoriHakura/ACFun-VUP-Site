@@ -26,7 +26,7 @@ class upAction extends baseAction
             $usec = $msectime;
             $sec = "000";
         }
-        $date = date("Y-m-d H:i:s.x", $usec);
+        $date = date("Y-m-d H:i:s", $usec);
         return $mescdate = str_replace('x', $sec, $date);
     }
 
@@ -50,7 +50,7 @@ class upAction extends baseAction
                         $chartData[] = array((int)$raw['up_date'] * 1000, $raw['followers']);
                     }
                     $registerDate = $this->getMsecToMescdate($upDetail['registerTime']);
-                    $updatedDate = date('Y-m-s h:i:s', $upRawData['up_date']);
+                    $updatedDate = date('Y-m-d H:i:s', $upRawData['up_date']);
                     $adminData = [];
                     if(App::$model->Admin->exist()){
                         $adminData = App::$model->Admin->values();
