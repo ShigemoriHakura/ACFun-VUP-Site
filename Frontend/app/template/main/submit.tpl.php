@@ -46,8 +46,8 @@
                             <hr>
                             <div class="form-row">
                                 <div class="col-md-12 mb-12">
-                                    <label for="validationCustom05"><?=_L('Submit_UID')?></label>
-                                    <input name="uperid" class="form-control" id="validationCustom05" type="text" placeholder="<?=_L('Submit_UID')?>" required="">
+                                    <label for="validationCustom05"><?=_L('Submit_Uperid')?></label>
+                                    <input name="uperid" class="form-control" id="validationCustom05" type="text" placeholder="<?=_L('Submit_Uperid')?>" required="">
                                     <div class="invalid-feedback"><?=_L('Submit_Uperid_NotInput')?></div>
                                 </div>
                             </div>
