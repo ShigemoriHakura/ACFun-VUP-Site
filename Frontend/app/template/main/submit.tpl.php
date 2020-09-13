@@ -13,7 +13,7 @@
                         <li class="breadcrumb-item">Dashboard</li>
                     </ol>
                     <h3>
-                        提交用户</h3>
+                        <?=_L('Submit_Index')?></h3>
                 </div>
             </div>
         </div>
@@ -24,12 +24,13 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>提交用户</h5><span>提交的数据 <code class="text-danger">不能删除和修改</code> </span>
-                        <span>上次提交的情况
+                        <h5><?=_L('Submit_Title')?></h5>
+                        <span><?=_L('Submit_Desc')?> <code class="text-danger"><?=_L('Submit_Desc2')?></code> </span>
+                        <span><?=_L('Submit_Desc3')?>
                             <? if (!$PRM['status']) {?>
-                                <code class="text-danger">失败</code> </span>
+                                <code class="text-danger"><?=_L('Submit_Failed')?></code> </span>
                             <?}else{ ?>
-                                <code class="text-success">成功</code> </span>
+                                <code class="text-success"><?=_L('Submit_Success')?></code> </span>
                             <?} ?>
                     </div>
                     <div class="card-body">
@@ -37,17 +38,17 @@
                             <div class="form-row">
                                 <input type="text" name="_csrf" hidden value="<?=$this->getCsrfToken()?>"/>
                                 <div class="col-md-12 mb-12">
-                                    <label for="validationCustom01">备注名</label>
-                                    <input name="name" class="form-control" id="validationCustom01" type="text" placeholder="备注名" required="">
-                                    <div class="valid-feedback">可以！</div>
+                                    <label for="validationCustom01"><?=_L('Submit_UpNote')?></label>
+                                    <input name="name" class="form-control" id="validationCustom01" type="text" placeholder="<?=_L('Submit_UpNote')?>" required="">
+                                    <div class="valid-feedback"><?=_L('Submit_CheckOK')?></div>
                                 </div>
                             </div>
                             <hr>
                             <div class="form-row">
                                 <div class="col-md-12 mb-12">
-                                    <label for="validationCustom05">UID</label>
-                                    <input name="uperid" class="form-control" id="validationCustom05" type="text" placeholder="UID" required="">
-                                    <div class="invalid-feedback">请输入UID</div>
+                                    <label for="validationCustom05"><?=_L('Submit_UID')?></label>
+                                    <input name="uperid" class="form-control" id="validationCustom05" type="text" placeholder="<?=_L('Submit_UID')?>" required="">
+                                    <div class="invalid-feedback"><?=_L('Submit_Uperid_NotInput')?></div>
                                 </div>
                             </div>
                             <hr>
@@ -55,12 +56,12 @@
                                 <div class="form-check">
                                     <div class="checkbox p-0">
                                         <input class="form-check-input" id="invalidCheck" type="checkbox" required="">
-                                        <label class="form-check-label" for="invalidCheck">确认无误！</label>
+                                        <label class="form-check-label" for="invalidCheck"><?=_L('Submit_CheckedOK')?></label>
                                     </div>
-                                    <div class="invalid-feedback">你必须确认先！</div>
+                                    <div class="invalid-feedback"><?=_L('Submit_NotCheckedOK')?></div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit">提交用户</button>
+                            <button class="btn btn-primary" type="submit"><?=_L('Search_Submitbtn')?></button>
                         </form>
                     </div>
                 </div>

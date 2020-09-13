@@ -21,8 +21,9 @@
             <div class="nav-right col pull-right right-menu">
                 <ul class="nav-menus">
                     <li class="px-0">
-                        <form class="form-inline search-form">
-                            <input class="form-control-plaintext" placeholder="Search....."><i class="close-search" data-feather="x"></i>
+                        <form class="form-inline search-form" action="<?=$webRoot?>/search">
+                            <input name="keyword" class="form-control-plaintext" placeholder="<?=_L('Sidebar_Search') ?>....."><i class="close-search" data-feather="x"></i>
+                            <input type="submit" style="display:none">
                         </form><span class="mobile-search"><i data-feather="search"></i></span>
                     </li>
                     <li class="onhover-dropdown"><i data-feather="message-circle"></i>
@@ -80,10 +81,11 @@
                             <li class="dropdown"><a class="nav-link menu-title" href="#"><i data-feather="home"></i><span><?=_L('Sidebar_Index') ?></span></a>
                                 <ul class="nav-submenu menu-content">
                                     <li><a href="<?=$webRoot?>/"><?=_L('Sidebar_Index') ?></a></li>
+                                    <li><a href="<?=$webRoot?>/search"><?=_L('Sidebar_Search') ?></a></li>
                                     <li><a href="<?=$webRoot?>/upstream"><?=_L('Sidebar_Upstream') ?></a></li>
                                     <? if ($PRM('adminData')) {?>
                                         <li><a href="<?=$webRoot?>/submit"><?=_L('Sidebar_Submit') ?></a></li>
-                                        <li><a href="<?=$webRoot?>/submit"><?=_L('Sidebar_Logout') ?></a></li>
+                                        <li><a href="<?=$webRoot?>/logout"><?=_L('Sidebar_Logout') ?></a></li>
                                     <? }else{ ?>
                                         <li><a href="<?=$webRoot?>/login"><?=_L('Sidebar_Login') ?></a></li>
                                     <? } ?>

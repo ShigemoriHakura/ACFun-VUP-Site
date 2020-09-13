@@ -9,7 +9,7 @@
 <script src="<?=$webRoot?>/assets/js/icons/feather-icon/feather-icon.js"></script>
 <!-- Sidebar jquery-->
 <script src="<?=$webRoot?>/assets/js/sidebar-menu.js"></script>
-<script src="<?=$webRoot?>/assets/js/config.js"></script>
+<script src="<?=$webRoot?>/assets/js/customConfig.js"></script>
 <!-- Plugins JS start-->
 <script src="<?=$webRoot?>/assets/js/form-validation-custom.js"></script>
 <script src="<?=$webRoot?>/assets/js/chart/apex-chart/apex-chart.js"></script>

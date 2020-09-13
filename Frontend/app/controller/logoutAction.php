@@ -7,7 +7,7 @@ use Constant;
 class logoutAction extends baseAction
 {
     /**
-     * 登录
+     * 登出
      */
     public function action_index()
     {

@@ -2,15 +2,13 @@
 
 return array(
     'Index' => '首页',
-    '' => '',
-
 
     'Index_Index'  => '首页',
     'Index_Title'  => 'ACFun VUP 榜单',
     'Index_Desc'   => '数据每十分钟刷新一次，未记录的用户请私信添加。',
     'Index_Detail' => '详细信息',
     'Index_User'   => 'UP',
-    'Index_Followers'   => '关注数',
+    'Index_Followers'   => '关注者',
     'Index_Action'   => '操作',
 
     'Upstream_Title'  => 'ACFun VUP 急上升日榜单',
@@ -29,7 +27,34 @@ return array(
     'Sidebar_Logout'  => '登出',
     'Sidebar_Submit' => '提交',
     'Sidebar_User'   => '路人',
+    'Sidebar_Search' => '搜索',
     'Sidebar_Upstream' => '急上升',
+
+    'Search_Index'  => '搜索',
+    'Search_Title' => '搜索',
+    'Search_Desc' => '搜索是否在库中存在',
+    'Search_Uperid' => 'UID',
+    'Search_UpNote' => '备注',
+    'Search_UpName' => '名字',
+    'Search_NoResult' => '没有结果',
+    'Search_Keyword'  => '关键词',
+    'Search_CheckOK' => '可以！',
+    'Search_Searchbtn'  => '搜索',
+
+    'Submit_Index'  => '提交',
+    'Submit_Title' => '提交用户',
+    'Submit_Desc' => '提交的数据',
+    'Submit_Desc2' => '不能删除和修改',
+    'Submit_Desc3' => '上次提交的情况',
+    'Submit_Success' => '成功',
+    'Submit_Failed' => '失败',
+    'Submit_Uperid' => 'UID',
+    'Submit_Uperid_NotInput' => '请输入UID',
+    'Submit_UpNote' => '备注名',
+    'Submit_CheckOK' => '可以！',
+    'Submit_CheckedOK' => '确认无误！',
+    'Submit_NotCheckedOK' => '你必须确认先！',
+    'Search_Submitbtn'  => '提交用户',
 
     'Up_UnListed' => '该UP在数据库中不存在，可能还未收录入库。',
     'Up_404' => '该UP在数据库中不存在，可能还未收录入库。',
