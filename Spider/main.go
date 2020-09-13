@@ -61,17 +61,36 @@ func checkUpers(counter int){
 			//log.Println("[Main]", "用户raw数据：", string(jsonData))
 			any := jsoniter.Get(jsonData)
 			acUser := make(map[string]string)
-			acUser["uperid"] = v["uperid"]
-			acUser["rawdata"] = string(jsonData)
-			acUser["registerTime"] = any.Get("profile", "registerTime").ToString()
-			acUser["followers"] = any.Get("profile", "followed").ToString()
-			acUser["following"] = any.Get("profile", "following").ToString()
-			acUser["name"] = any.Get("profile", "name").ToString()
-			acUser["signature"] = any.Get("profile", "signature").ToString()
-			acUser["contentCount"] = any.Get("profile", "contentCount").ToString()
-			acUser["headUrl"] = any.Get("profile", "headUrl").ToString()
-			updateMap[v["id"]] = acUser
-			log.Printf("[Avatar] %v (%v) 关注: %v, 关注者: %v, 用户名: %v", v["name"], v["uperid"], acUser["following"], acUser["followers"], acUser["name"])
+			getSuccess := false
+			var followers string
+			if(!strings.Contains(any.Get("profile", "followed").ToString(), "万")){
+				followers = any.Get("profile", "followed").ToString()
+				getSuccess = true
+			}else{
+				follower, err := getACUserFollowers(v["uperid"])
+				if(err != nil){
+					log.Println("[Main]", "用户数据正则获取失败：" , err)
+					getSuccess = false
+				}else{
+					followers = follower
+					getSuccess = true
+				}
+			}
+			if(getSuccess){
+				acUser["followers"] = followers
+				acUser["uperid"] = v["uperid"]
+				acUser["rawdata"] = string(jsonData)
+				acUser["registerTime"] = any.Get("profile", "registerTime").ToString()
+				acUser["following"] = any.Get("profile", "following").ToString()
+				acUser["name"] = any.Get("profile", "name").ToString()
+				acUser["signature"] = any.Get("profile", "signature").ToString()
+				acUser["contentCount"] = any.Get("profile", "contentCount").ToString()
+				acUser["headUrl"] = any.Get("profile", "headUrl").ToString()
+				updateMap[v["id"]] = acUser
+				log.Printf("[Avatar] %v (%v) 关注: %v, 关注者: %v, 用户名: %v", v["name"], v["uperid"], acUser["following"], followers, acUser["name"])
+			}else{
+				log.Println("[Main]", "用户数据正则失败")
+			}
 		}else{
 			log.Println("[Main]", "用户数据获取失败")
 		}
