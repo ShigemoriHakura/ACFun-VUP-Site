@@ -32,7 +32,7 @@ class submitAction extends baseAction
             $sets = array(
                 'uperid'    => $uperid,
                 'name'      => $name,
-                'add_date'  => date('Y-m-s', time()),
+                'add_date'  => time(),
                 'last_date' => 0,
                 'enabled'   => 1
             );

@@ -35,19 +35,30 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="ttl-info text-left">
-                                                <h6><i class="fa fa-calendar"></i>   <?=_L('Up_RegisterDate')?></h6><span><?=$PRM['registerDate']?></span>
+                                                <h6><i class="fa fa-bookmark-o"></i>   <?=_L('Up_Note')?></h6><span><?=$PRM['upDetail']['name']?></span>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="ttl-info text-left">
+                                                <h6><i class="fa fa-cloud"></i>   <?=_L('Up_RegisterDate')?></h6><span><?=$PRM['registerDate']?></span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-lg-4 order-sm-0 order-xl-1">
                                     <div class="user-designation">
-                                        <div class="title"><a target="_blank" href=""><?=$PRM['upRawData']['name']?></a></div>
-                                        <div class="desc mt-2"><?=$PRM['upDetail']['name']?></div>
+                                        <div class="title"><a target="_blank" href="https://www.acfun.cn/u/<?=$PRM['upDetail']['uperid']?>"><?=$PRM['upRawData']['name']?></a></div>
+                                        <div class="desc mt-2"><?=$PRM['upRawData']['signature']?></div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-lg-4 order-sm-2 order-xl-2">
                                     <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="ttl-info text-left">
+                                                <h6><i class="fa fa-calendar"></i>   <?=_L('Up_ACRegisterDate')?></h6><span><?=$PRM['acRegisterDate']?></span>
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="ttl-info text-left">
                                                 <h6><i class="fa fa-location-arrow"></i>   <?=_L('Up_LastUpdatedDate')?></h6><span><?=$PRM['updatedDate']?></span>

@@ -8,6 +8,8 @@ return array(
         //静态化配置
         'routeRule' => array(
             'up/<upid:\d+>' => 'up/detail',
+            'search/<keyword:[\s\S]*>' => 'search/search',
+            'daily' => 'dailystream',
 //            '<method:\w+>/<id:\d+>.html' => 'demo/<method>',
 //            'rest/<rid:[\d]+>/<method:\w+>/<mid:\d+>' => 'rest/<method>',
         ),

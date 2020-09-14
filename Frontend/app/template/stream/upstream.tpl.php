@@ -26,6 +26,7 @@
                     <div class="card-header resolve-complain card-no-border">
                         <h5 class="d-inline-block"><?=_L('Upstream_Title')?></h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
                         <p class="f-12 mb-0"><?=_L('Index_Desc')?></p>
+                        <p class="f-12 mb-0"><?=_L('Index_Desc_Scroll')?></p>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive agent-performance-table">
@@ -51,7 +52,12 @@
                                         <tr>
                                             <td>
                                                 <div class="d-inline-block align-middle"><img class="img-radius img-40 align-top m-r-15 rounded-circle" src="<?=$v['rawData']['headUrl']?>" alt="">
-                                                    <div class="d-inline-block"><span class="f-12 f-w-600"><?=$v['rawData']['name']?></span><span class="d-block"><?=$v['name']?></span></div>
+                                                    <div class="d-inline-block">
+                                                        <a href="https://www.acfun.cn/u/<?=$v['uperid']?>">
+                                                            <span class="f-12 f-w-600"><?=$v['rawData']['name']?></span>
+                                                            <span class="d-block"><?=mb_substr($v['rawData']['signature'],0,20)?>...</span>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td>

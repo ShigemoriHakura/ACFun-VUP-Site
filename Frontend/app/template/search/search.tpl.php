@@ -19,13 +19,17 @@
         </div>
     </div>
     <!-- Container-fluid starts-->
-    <div class="container-fluid">
+    <div class="container-fluid search-page">
         <div class="row">
             <div class="col-xl-12">
                 <div class="card card-with-border overall-rating">
                     <div class="card-header resolve-complain card-no-border">
-                        <h5 class="d-inline-block"><?=_L('Search_Title')?></h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
-                        <p class="f-12 mb-0"><?=_L('Search_Desc')?></p>
+                        <form class="search-form" action="<?=$webRoot?>/search" method="get">
+                            <div class="form-group m-0">
+                                <label class="sr-only"><?=_L('Search_Keyword')?></label>
+                                <input class="form-control-plaintext" name="keyword" value="<?=$PRM['keyword']?>" type="search" placeholder="balabala" >
+                            </div>
+                        </form>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive agent-performance-table">

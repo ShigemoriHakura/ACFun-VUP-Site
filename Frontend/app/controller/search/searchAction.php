@@ -26,6 +26,7 @@ class searchAction extends baseAction
             $uperResult = $this->searchKeyword($keyword);
             return $this->display('search/search', array(
                 'uperResult' => $uperResult,
+                'keyword' => $keyword,
                 'adminData' => $adminData
             ));
         }
@@ -48,6 +49,7 @@ class searchAction extends baseAction
             $uperResult = $this->searchKeyword($keyword);
             return $this->display('search/search', array(
                 'uperResult' => $uperResult,
+                'keyword' => $keyword,
                 'adminData' => $adminData
             ));
         }

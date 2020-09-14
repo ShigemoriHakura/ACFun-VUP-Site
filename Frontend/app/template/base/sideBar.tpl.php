@@ -26,7 +26,7 @@
                             <input type="submit" style="display:none">
                         </form><span class="mobile-search"><i data-feather="search"></i></span>
                     </li>
-                    <li class="onhover-dropdown"><i data-feather="message-circle"></i>
+                    <li class="onhover-dropdown"><i data-feather="globe"></i>
                         <ul class="chat-dropdown onhover-show-div p-t-20 p-b-20">
                             <li>
                                 <div class="media">
@@ -82,7 +82,16 @@
                                 <ul class="nav-submenu menu-content">
                                     <li><a href="<?=$webRoot?>/"><?=_L('Sidebar_Index') ?></a></li>
                                     <li><a href="<?=$webRoot?>/search"><?=_L('Sidebar_Search') ?></a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a class="nav-link menu-title" href="#"><i data-feather="bar-chart-2"></i><span><?=_L('Sidebar_List') ?></span></a>
+                                <ul class="nav-submenu menu-content">
                                     <li><a href="<?=$webRoot?>/upstream"><?=_L('Sidebar_Upstream') ?></a></li>
+                                    <li><a href="<?=$webRoot?>/daily"><?=_L('Sidebar_Dailystream') ?></a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a class="nav-link menu-title" href="#"><i data-feather="settings"></i><span><?=_L('Sidebar_Admin') ?></span></a>
+                                <ul class="nav-submenu menu-content">
                                     <? if ($PRM('adminData')) {?>
                                         <li><a href="<?=$webRoot?>/submit"><?=_L('Sidebar_Submit') ?></a></li>
                                         <li><a href="<?=$webRoot?>/logout"><?=_L('Sidebar_Logout') ?></a></li>

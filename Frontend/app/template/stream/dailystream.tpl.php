@@ -24,7 +24,7 @@
             <div class="col-xl-12">
                 <div class="card card-with-border overall-rating">
                     <div class="card-header resolve-complain card-no-border">
-                        <h5 class="d-inline-block"><?=_L('Index_Title')?></h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
+                        <h5 class="d-inline-block"><?=_L('Dailystream_Title')?></h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
                         <p class="f-12 mb-0"><?=_L('Index_Desc')?></p>
                         <p class="f-12 mb-0"><?=_L('Index_Desc_Scroll')?></p>
                     </div>
@@ -39,13 +39,20 @@
                                             </div>
                                         </td>
                                         <td>
+                                            <p class="f-w-600"><?=_L('Index_Rank')?></p>
+                                        </td>
+                                        <td>
                                             <p class="f-w-600"><?=_L('Index_Followers')?></p>
+                                        </td>
+                                        <td>
+                                            <p class="f-w-600"><?=_L('Upstream_FollowersAdded')?></p>
                                         </td>
                                         <td>
                                             <p class="f-w-600"><?=_L('Index_Action')?></p>
                                         </td>
                                     </tr>
-                                <? foreach ($PRM['upListData'] as $v){?>
+                                    <? $rankI = 0?>
+                                <? foreach ($PRM['upListData'] as $k => $v){?>
                                         <tr>
                                             <td>
                                                 <div class="d-inline-block align-middle"><img class="img-radius img-40 align-top m-r-15 rounded-circle" src="<?=$v['rawData']['headUrl']?>" alt="">
@@ -58,7 +65,21 @@
                                                 </div>
                                             </td>
                                             <td>
+                                                <p class="f-w-600"><?
+                                                    if($k > 0 && $PRM['upListData'][$k - 1]['rawData']['followers'] == $v['rawData']['followers']){
+                                                        echo($rankI);
+                                                    }else{
+                                                        echo($k + 1);
+                                                        $rankI = $k + 1;
+                                                    }
+                                                    ?>
+                                                </p>
+                                            </td>
+                                            <td>
                                                 <p class="f-w-600"><?=$v['rawData']['followers']?></p>
+                                            </td>
+                                            <td>
+                                                <p class="f-w-600"><?=$v['followersAdded']?></p>
                                             </td>
                                             <td>
                                                 <a href="/up/<?=$v['uperid']?>"><button class="btn btn-primary btn-square digits"><?=_L('Index_Detail')?></button></a>

@@ -49,7 +49,8 @@ class upAction extends baseAction
                     foreach ($upRawDatas as $raw){
                         $chartData[] = array((int)$raw['up_date'] * 1000, $raw['followers']);
                     }
-                    $registerDate = $this->getMsecToMescdate($upDetail['registerTime']);
+                    $registerDate = date('Y-m-d H:i:s', $upDetail['add_date']);
+                    $acRegisterDate = $this->getMsecToMescdate($upDetail['registerTime']);
                     $updatedDate = date('Y-m-d H:i:s', $upRawData['up_date']);
                     $adminData = [];
                     if(App::$model->Admin->exist()){
@@ -60,6 +61,7 @@ class upAction extends baseAction
                         'upDetail'     => $upDetail,
                         'upRawData'    => $upRawData,
                         'registerDate' => $registerDate,
+                        'acRegisterDate' => $acRegisterDate,
                         'updatedDate'  => $updatedDate,
                         'chartData'    => $chartData,
                         'upID'         => $upid,

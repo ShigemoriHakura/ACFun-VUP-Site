@@ -61,7 +61,7 @@
                                     <div class="invalid-feedback"><?=_L('Submit_NotCheckedOK')?></div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary" type="submit"><?=_L('Search_Submitbtn')?></button>
+                            <button class="btn btn-primary" type="submit"><?=_L('Submit_Submitbtn')?></button>
                         </form>
                     </div>
                 </div>
