@@ -15,7 +15,7 @@ return array(
 
     'Upstream_Title'  => 'ACFun VUP up stream list',
     'Upstream_Desc' => 'Data track rate: 10 min, Will update every day',
-    'Upstream_FollowersAdded' => 'Added',
+    'Upstream_FollowersAdded' => 'Followers changed',
 
     'Dailystream_Title'  => 'ACFun VUP daily rank',
 

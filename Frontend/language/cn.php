@@ -15,7 +15,7 @@ return array(
 
     'Upstream_Title'  => 'ACFun VUP 急上升日榜单',
     'Upstream_Desc'   => '数据每十分钟刷新一次，未记录的用户请私信添加。每天都会重新计算。',
-    'Upstream_FollowersAdded' => '变更',
+    'Upstream_FollowersAdded' => '关注者变更',
 
     'Dailystream_Title'  => 'ACFun VUP 日排行榜单',
 

@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	jsoniter "github.com/json-iterator/go"
+	//jsoniter "github.com/json-iterator/go"
 )
 
 func main(){
@@ -19,6 +19,7 @@ func main(){
 	databaseLink := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&tls=%v", Database_Name, Database_Pass, Database_Host, Database_Port, Database_DB, Database_TLS)
 	initMysql(databaseLink)
 	log.Println("[Main]", "数据库载入完成，爬虫进程启动")
+	go runLiveSpiderProcess()
 	runMainProcess()
 }
 
@@ -29,31 +30,52 @@ func runMainProcess(){
         os.Exit(3)
 	}
     ch := make(chan string, 1)
-	log.Println("[Main]", "爬虫刷新间隔：", RefreshRate)
+	log.Println("[Main]", "数据库刷新间隔：", RefreshRate)
     for {
-        timeSleep(RefreshRate)
-		log.Println("[Main]", "爬虫开始爬取，累计次数：", CronCounter)
+		log.Println("[Main]", "数据库开始刷新，累计次数：", CronCounter)
         go func() {
             checkUpers(CronCounter)
             ch <- "done"
         }()
         select {
         case <-ch:
-			log.Println("[Main]", "爬虫爬取完成，累计次数：", CronCounter)
+			log.Println("[Main]", "数据库刷新完成，累计次数：", CronCounter)
         case <-time.After(time.Duration(RefreshRate - 1) * time.Second):
-			log.Println("[Main]", "爬虫爬取超时", CronCounter)
+			log.Println("[Main]", "数据库刷新超时", CronCounter)
         }
         CronCounter += 1
+        timeSleep(RefreshRate)
+    }
+}
+
+func runLiveSpiderProcess()  {
+	ch := make(chan string, 1)
+	log.Println("[Spider]", "爬虫刷新间隔：", SpiderRate)
+	for {
+		log.Println("[Spider]", "爬虫开始抓取，累计次数：", CronCounter)
+        go func() {
+            runLiveSpider(CronCounter)
+            ch <- "done"
+        }()
+        select {
+        case <-ch:
+			log.Println("[Spider]", "爬虫抓取完成，累计次数：", CronCounter)
+        case <-time.After(time.Duration(SpiderRate - 1) * time.Second):
+			log.Println("[Spider]", "爬虫抓取超时", CronCounter)
+        }
+        CronCounter += 1
+        timeSleep(SpiderRate)
     }
 }
 
 func checkUpers(counter int){
 	upersMap, err := selectUpersInDB()
 	if(err != nil){
-		log.Println("[Main]", "跳过本次爬取")
+		log.Println("[Main]", "跳过本次刷新")
 		return
 	}
-	var updateMap = make(map[string]map[string]string)
+	UperMapCache = upersMap
+	/*var updateMap = make(map[string]map[string]string)
 	for _, v := range upersMap{
 		log.Println("[Main]", "处理用户：", v["name"])
 		jsonData := getACUserInfo(v["uperid"])
@@ -97,7 +119,25 @@ func checkUpers(counter int){
 		timeSleep(SpiderWait / 1000)
 		
 	}
-	makeMysqlUpdateQueue(updateMap)
+	makeMysqlUpdateQueue(updateMap)*/
+}
+
+func runLiveSpider(counter int)  {
+	if(len(UperMapCache) <= 0){
+		log.Println("[Spider]", "没有用户，跳过本次刷新")
+		return
+	}
+	for _, v := range UperMapCache{
+		log.Println("[Main]", "处理用户：", v["name"])
+		jsonData := getACUserLiveInfo(v["uperid"])
+		if(jsonData != nil){
+			log.Println("[Main]", "用户raw数据：", string(jsonData))
+		}else{
+			log.Println("[Main]", "用户数据获取失败")
+		}
+		timeSleep(SpiderWait / 1000)
+		
+	}
 }
 
 func makeMysqlUpdateQueue(updateMap map[string]map[string]string){

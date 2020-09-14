@@ -1,8 +1,8 @@
 
-Spider/acSpider.exe
-Spider/config.json
+*.exe
 Frontend/web/assets
 Frontend/app/config/dns_dev.php
 Frontend/app/config/dns_pub.php
 Frontend/logs/
-Spider/acSpider
+Spider/UPDetails/config.json
+Spider/LiveInfo/config.json

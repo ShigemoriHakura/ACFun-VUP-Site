@@ -13,7 +13,7 @@ import (
 
 func getACUserInfo(id string) []byte {
 	client := &http.Client{Timeout: 2 * time.Second}
-	var url = "https://live.acfun.cn/rest/pc-direct/user/userInfo?userId=" + id
+	var url = ACFunLiveAPI + id
 	req, err := http.NewRequest("GET", url, nil)
 
 	if err != nil {
@@ -40,7 +40,7 @@ func getACUserInfo(id string) []byte {
 
 func getACUserFollowers(id string) (string, error) {
 	client := &http.Client{Timeout: 2 * time.Second}
-    var url = "https://www.acfun.cn/u/" + id
+    var url = ACFunUserAPI + id
     req, err := http.NewRequest("GET", url, nil)
 
     if err != nil {
