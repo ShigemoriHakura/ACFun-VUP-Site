@@ -51,7 +51,7 @@
                                             <p class="f-w-600"><?=_L('Index_Action')?></p>
                                         </td>
                                     </tr>
-                                    <? $rankI = 0?>
+                                <? $rankI = 0?>
                                 <? foreach ($PRM['upListData'] as $k => $v){?>
                                         <tr>
                                             <td>

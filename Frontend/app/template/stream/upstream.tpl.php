@@ -39,6 +39,9 @@
                                             </div>
                                         </td>
                                         <td>
+                                            <p class="f-w-600"><?=_L('Index_Rank')?></p>
+                                        </td>
+                                        <td>
                                             <p class="f-w-600"><?=_L('Upstream_FollowersAdded')?></p>
                                         </td>
                                         <td>
@@ -48,7 +51,8 @@
                                             <p class="f-w-600"><?=_L('Index_Action')?></p>
                                         </td>
                                     </tr>
-                                <? foreach ($PRM['upListData'] as $v){?>
+                                <? $rankI = 0?>
+                                <? foreach ($PRM['upListData'] as $k => $v){?>
                                         <tr>
                                             <td>
                                                 <div class="d-inline-block align-middle"><img class="img-radius img-40 align-top m-r-15 rounded-circle" src="<?=$v['rawData']['headUrl']?>" alt="">
@@ -67,6 +71,17 @@
                                                         </a>
                                                     </div>
                                                 </div>
+                                            </td>
+                                            <td>
+                                                <p class="f-w-600"><?
+                                                    if($k > 0 && $PRM['upListData'][$k - 1]['followersAdded'] == $v['followersAdded']){
+                                                        echo($rankI);
+                                                    }else{
+                                                        echo($k + 1);
+                                                        $rankI = $k + 1;
+                                                    }
+                                                    ?>
+                                                </p>
                                             </td>
                                             <td>
                                                 <p class="f-w-600"><?=$v['followersAdded']?></p>
