@@ -63,7 +63,7 @@ return array(
     'Submit_NotCheckedOK' => '你必须确认先！',
     'Submit_Submitbtn'  => '提交用户',
 
-    'Up_UnListed' => '该UP在数据库中不存在，可能还未收录入库。',
+    'Up_UnListed' => '该UP在数据库中存在，但是暂无数据。',
     'Up_404' => '该UP在数据库中不存在，可能还未收录入库。',
     'Up_ToIndex' => '返回首页',
     'Up_Details' => '详细信息',

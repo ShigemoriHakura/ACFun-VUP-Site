@@ -61,8 +61,8 @@ return array(
     'Submit_NotCheckedOK' => 'You must checked first',
     'Submit_Submitbtn'  => 'submit',
 
-    'Up_UnListed' => 'This UP is not in database, plz contact admin.',
-    'Up_404' => 'This UP is in database but has no detail data, plz wait for the spider',
+    'Up_UnListed' => 'This UP is in database but has no detail data, plz wait for the spider',
+    'Up_404' => 'This UP is not in database, plz contact admin.',
     'Up_ToIndex' => 'Home',
     'Up_Details' => 'Detail',
     'Up_Note' => 'Note',

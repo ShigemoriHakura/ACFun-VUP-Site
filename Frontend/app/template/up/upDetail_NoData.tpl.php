@@ -17,7 +17,7 @@
                 <div class="col-md-8 offset-md-2">
                     <p class="sub-content"><?=_L('Up_UnListed') ?></p>
                 </div>
-                <div><a class="btn btn-danger-gradien btn-lg" href="/"><?=_L('Up_Index') ?></a></div>
+                <div><a class="btn btn-danger-gradien btn-lg" href="/"><?=_L('Up_ToIndex') ?></a></div>
             </div>
         </div>
         <!-- error-404 end      -->
