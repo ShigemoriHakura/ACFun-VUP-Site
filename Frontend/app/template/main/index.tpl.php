@@ -50,7 +50,7 @@
                                             <td>
                                                 <div class="d-inline-block align-middle"><img class="img-radius img-40 align-top m-r-15 rounded-circle" src="<?=$v['rawData']['headUrl']?>" alt="">
                                                     <div class="d-inline-block">
-                                                        <a href="https://www.acfun.cn/u/<?=$v['uperid']?>">
+                                                        <a target="_blank" href="https://www.acfun.cn/u/<?=$v['uperid']?>">
                                                             <span class="f-12 f-w-600"><?=$v['rawData']['name']?></span>
                                                             <span class="d-block"><?=mb_substr($v['rawData']['signature'],0,20)?>...</span>
                                                         </a>

@@ -55,7 +55,9 @@
                                         <? foreach ($PRM['uperResult'] as $v){?>
                                                 <tr>
                                                     <td>
-                                                        <p class="f-w-600"><?=$v['uperid']?></p>
+                                                        <a target="_blank" href="https://www.acfun.cn/u/<?=$v['uperid']?>">
+                                                            <p class="f-w-600"><?=$v['uperid']?></p>
+                                                        </a>
                                                     </td>
                                                     <td>
                                                         <p class="f-w-600"><?=$v['name']?></p>
