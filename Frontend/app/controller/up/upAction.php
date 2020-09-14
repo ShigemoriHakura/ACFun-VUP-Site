@@ -46,8 +46,10 @@ class upAction extends baseAction
                         '>='=>array('up_date'=> time() - 60 * 60 * 24 * 5)
                     ])->query();
                     $chartData = [];
+                    $contentData = [];
                     foreach ($upRawDatas as $raw){
                         $chartData[] = array((int)$raw['up_date'] * 1000, $raw['followers']);
+                        $contentData[] = array((int)$raw['up_date'] * 1000, $raw['contentCount']);
                     }
                     $registerDate = date('Y-m-d H:i:s', $upDetail['add_date']);
                     $acRegisterDate = $this->getMsecToMescdate($upDetail['registerTime']);
@@ -64,6 +66,7 @@ class upAction extends baseAction
                         'acRegisterDate' => $acRegisterDate,
                         'updatedDate'  => $updatedDate,
                         'chartData'    => $chartData,
+                        'contentData'    => $contentData,
                         'upID'         => $upid,
                     ));
                 }

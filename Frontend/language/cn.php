@@ -74,4 +74,6 @@ return array(
     'Up_Followers' => '关注者',
     'Up_Following' => '关注中',
     'UP_Followers_Title' => '关注者变化情况',
+    'Up_Contents' => '投稿',
+    'UP_Contents_Title' => '投稿变化情况',
 );

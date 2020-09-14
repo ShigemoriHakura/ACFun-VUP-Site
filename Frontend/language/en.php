@@ -72,4 +72,6 @@ return array(
     'Up_Followers' => 'Followers',
     'Up_Following' => 'Following',
     'UP_Followers_Title' => 'Followers',
+    'Up_Contents' => 'Contents',
+    'UP_Contents_Title' => 'Contents',
 );

@@ -82,16 +82,31 @@
                     </div>
                 </div>
                 <!-- user profile first-style end-->
-                <div class="col-sm-12 col-xl-12 box-col-12">
+
+                <div class="col-sm-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h5><?=_L('UP_Followers_Title')?></h5>
-                        </div>
                         <div class="card-body">
-                            <div id="area-spaline-followers"></div>
+                            <ul class="nav nav-tabs border-tab" id="top-tab" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" id="followers" data-toggle="tab" href="#follower-tab" role="tab" aria-selected="true"><i class="icon-target"></i><?=_L('UP_Followers_Title')?></a>
+                                    <div class="material-border"></div>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" id="contents" data-toggle="tab" href="#content-tab" role="tab" aria-selected="false"><i class="icon-image"></i><?=_L('UP_Contents_Title')?></a>
+                                    <div class="material-border"></div>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="top-tabContent">
+                                <div class="tab-pane fade show active" id="follower-tab" role="tabpanel" aria-labelledby="followers">
+                                    <div id="area-spaline-followers"></div>
+                                </div>
+                                <div class="tab-pane fade" id="content-tab" role="tabpanel" aria-labelledby="contents">
+                                    <div id="area-spaline-contents"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -101,7 +116,7 @@
 <?php include App::$view_root . "/base/footer.tpl.php" ?>
 
 <script>
-    var options = {
+    var optionsFollowers = {
         series: [{
             name: '<?=_L('Up_Followers')?>',
             data: <?=$PRM['chartData']->json_encode()?>
@@ -146,7 +161,7 @@
                 },
             },
             title: {
-                text: '<?=$PRM['upRawData']['name']?>'
+                text: '<?=$PRM['upRawData']['name']?> - <?=_L('Up_Followers')?>'
             },
         },
         xaxis: {
@@ -171,10 +186,86 @@
         }
     };
 
-    var chart1 = new ApexCharts(
+    var optionsContents = {
+        series: [{
+            name: '<?=_L('Up_Contents')?>',
+            data: <?=$PRM['contentData']->json_encode()?>
+        }],
+        chart: {
+            type: 'area',
+            stacked: false,
+            height: 350,
+            zoom: {
+                type: 'x',
+                enabled: true,
+                autoScaleYaxis: true
+            },
+            toolbar: {
+                autoSelected: 'zoom'
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        markers: {
+            size: 0,
+        },
+        title: {
+            text: '',
+            align: 'left'
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                inverseColors: false,
+                opacityFrom: 0.5,
+                opacityTo: 0,
+                stops: [0, 90, 100]
+            },
+        },
+        yaxis: {
+            labels: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                },
+            },
+            title: {
+                text: '<?=$PRM['upRawData']['name']?> - <?=_L('Up_Contents')?>'
+            },
+        },
+        xaxis: {
+            type: 'datetime',
+            labels: {
+                datetimeUTC: false,
+                datetimeFormatter: {
+                    year: 'yyyy',
+                    month: "MMM 'yy",
+                    day: 'dd MMM',
+                    hour: 'HH:mm',
+                },
+            }
+        },
+        tooltip: {
+            shared: false,
+            y: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                }
+            }
+        }
+    };
+
+    var chartFollowers = new ApexCharts(
         document.querySelector("#area-spaline-followers"),
-        options
+        optionsFollowers
     );
 
-    chart1.render();
+    var chartContents = new ApexCharts(
+        document.querySelector("#area-spaline-contents"),
+        optionsContents
+    );
+
+    chartFollowers.render();
+    chartContents.render();
 </script>
