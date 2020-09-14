@@ -59,7 +59,15 @@
                                                     <div class="d-inline-block">
                                                         <a target="_blank" href="https://www.acfun.cn/u/<?=$v['uperid']?>">
                                                             <span class="f-12 f-w-600"><?=$v['rawData']['name']?></span>
-                                                            <span class="d-block"><?=mb_substr($v['rawData']['signature'],0,20)?>...</span>
+                                                            <span class="d-block">
+                                                                <? 
+                                                                if(mb_strlen($v['rawData']['signature']) > 10){
+                                                                    echo(mb_substr($v['rawData']['signature'],0,10) . "...");
+                                                                }else{
+                                                                    echo($v['rawData']['signature']);
+                                                                }
+                                                                ?>
+                                                            </span>
                                                         </a>
                                                     </div>
                                                 </div>
