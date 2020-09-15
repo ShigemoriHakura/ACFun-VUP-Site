@@ -45,11 +45,23 @@ class upAction extends baseAction
                         'uperid'=>$upid,
                         '>='=>array('up_date'=> time() - 60 * 60 * 24 * 5)
                     ])->query();
+                    $upRawLiveDatas = $this->upRawLiveDataDAO->filter([
+                        'uperid'=>$upid,
+                        '>='=>array('up_date'=> time() - 60 * 60 * 24 * 5)
+                    ])->query();
                     $chartData = [];
                     $contentData = [];
                     foreach ($upRawDatas as $raw){
                         $chartData[] = array((int)$raw['up_date'] * 1000, $raw['followers']);
                         $contentData[] = array((int)$raw['up_date'] * 1000, $raw['contentCount']);
+                    }
+                    $chartLiveData = [];
+                    $chartLiveLoveData = [];
+                    $chartLiveUserData = [];
+                    foreach ($upRawLiveDatas as $raw){
+                        $chartLiveData[] = array((int)$raw['up_date'] * 1000, $raw['isLive']);
+                        $chartLiveLoveData[] = array((int)$raw['up_date'] * 1000, $raw['likeCount']);
+                        $chartLiveUserData[] = array((int)$raw['up_date'] * 1000, $raw['onlineCount']);
                     }
                     $registerDate = date('Y-m-d H:i:s', $upDetail['add_date']);
                     $acRegisterDate = $this->getMsecToMescdate($upDetail['registerTime']);
@@ -64,10 +76,12 @@ class upAction extends baseAction
                         'upRawData'    => $upRawData,
                         'registerDate' => $registerDate,
                         'acRegisterDate' => $acRegisterDate,
-                        'lastLoginDate' => $lastLoginDate,
                         'updatedDate'  => $updatedDate,
                         'chartData'    => $chartData,
-                        'contentData'    => $contentData,
+                        'contentData'  => $contentData,
+                        'chartLiveData'     => $chartLiveData,
+                        'chartLiveLoveData' => $chartLiveLoveData,
+                        'chartLiveUserData' => $chartLiveUserData,
                         'upID'         => $upid,
                     ));
                 }

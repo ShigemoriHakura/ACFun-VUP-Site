@@ -56,6 +56,5 @@ func importConfig() {
 	Database_Pass = config.Get("Database_Pass").(string)
 	Database_TLS  = config.Get("Database_TLS").(bool)
 	RefreshRate = int(config.Get("RefreshRate").(float64))
-	SpiderRate = int(config.Get("SpiderRate").(float64))
 	SpiderWait  = int(config.Get("SpiderWait").(float64))
 }

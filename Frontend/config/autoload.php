@@ -57,6 +57,7 @@ return array (
     'logDAO' => 'app\\dao\\logDAO',
     'upDetailDAO' => 'app\\dao\\upDetailDAO',
     'upRawDataDAO' => 'app\\dao\\upRawDataDAO',
+    'upRawLiveDataDAO' => 'app\\dao\\upRawLiveDataDAO',
     'Admin' => 'app\\model\\Admin',
   ),
   'file' => 
@@ -116,6 +117,7 @@ return array (
     'app\\dao\\logDAO' => 'C:\\Users\\shior\\PhpstormProjects\\VUP\\app\\dao\\logDAO.php',
     'app\\dao\\upDetailDAO' => 'C:\\Users\\shior\\PhpstormProjects\\VUP\\app\\dao\\upDetailDAO.php',
     'app\\dao\\upRawDataDAO' => 'C:\\Users\\shior\\PhpstormProjects\\VUP\\app\\dao\\upRawDataDAO.php',
+    'app\\dao\\upRawLiveDataDAO' => 'C:\\Users\\shior\\PhpstormProjects\\VUP\\app\\dao\\upRawLiveDataDAO.php',
     'app\\model\\Admin' => 'C:\\Users\\shior\\PhpstormProjects\\VUP\\app\\model\\Admin.php',
   ),
 ); //END

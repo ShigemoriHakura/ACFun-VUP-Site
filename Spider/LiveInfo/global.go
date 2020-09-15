@@ -12,7 +12,6 @@ var Database_Name string
 var Database_Pass string
 var Database_TLS  bool
 var RefreshRate   = 300
-var SpiderRate    = 300
 var SpiderWait    = 300
 
 var Database_Mysql *sql.DB

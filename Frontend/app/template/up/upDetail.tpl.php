@@ -108,6 +108,36 @@
 
                 <div class="col-sm-12">
                     <div class="card">
+                        <div class="card-body">
+                            <ul class="nav nav-tabs border-tab" id="top-tab" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" id="liveInfo" data-toggle="tab" href="#liveInfo-tab" role="tab" aria-selected="true"><i class="icon-video-clapper"></i><?=_L('UP_LiveInfo_Title')?></a>
+                                    <div class="material-border"></div>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" id="liveLoveInfo" data-toggle="tab" href="#liveLoveInfo-tab" role="tab" aria-selected="false"><i class="icon-heart"></i><?=_L('UP_LiveLoveInfo_Title')?></a>
+                                    <div class="material-border"></div>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" id="liveUserInfo" data-toggle="tab" href="#liveUserInfo-tab" role="tab" aria-selected="false"><i class="icon-map-alt"></i><?=_L('UP_LiveUserInfo_Title')?></a>
+                                    <div class="material-border"></div>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="top-tabContent">
+                                <div class="tab-pane fade show active" id="liveInfo-tab" role="tabpanel" aria-labelledby="liveInfo">
+                                    <div id="area-spaline-liveInfo"></div>
+                                </div>
+                                <div class="tab-pane fade" id="liveLoveInfo-tab" role="tabpanel" aria-labelledby="liveLoveInfo">
+                                    <div id="area-spaline-liveLoveInfo"></div>
+                                </div>
+                                <div class="tab-pane fade" id="liveUserInfo-tab" role="tabpanel" aria-labelledby="liveUserInfo">
+                                    <div id="area-spaline-liveUserInfo"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <? if($PRM['upRawData']['spaceImage'] != "" || $PRM['upRawData']['verifiedText'] != "" ){?>
+                <div class="col-sm-12">
+                    <div class="card">
                         <div class="profile-img-style">
                             <p><?=$PRM['upRawData']['verifiedText']?></p>
                             <? if($PRM['upRawData']['spaceImage'] != ""){?>
@@ -122,7 +152,7 @@
                         </div>
                     </div>
                 </div>
-
+                <?}?>
 
             </div>
         </div>
@@ -273,6 +303,216 @@
         }
     };
 
+    var optionsLiveInfo = {
+        series: [{
+            name: '<?=_L('UP_LiveInfo_Title')?>',
+            data: <?=$PRM['chartLiveData']->json_encode()?>
+        }],
+        chart: {
+            type: 'area',
+            stacked: false,
+            height: 350,
+            zoom: {
+                type: 'x',
+                enabled: true,
+                autoScaleYaxis: true
+            },
+            toolbar: {
+                autoSelected: 'zoom'
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        markers: {
+            size: 0,
+        },
+        title: {
+            text: '',
+            align: 'left'
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                inverseColors: false,
+                opacityFrom: 0.5,
+                opacityTo: 0,
+                stops: [0, 90, 100]
+            },
+        },
+        yaxis: {
+            labels: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                },
+            },
+            title: {
+                text: '<?=$PRM['upRawData']['name']?> - <?=_L('UP_LiveInfo_Title')?>'
+            },
+        },
+        xaxis: {
+            type: 'datetime',
+            labels: {
+                datetimeUTC: false,
+                datetimeFormatter: {
+                    year: 'yyyy',
+                    month: "MMM 'yy",
+                    day: 'dd MMM',
+                    hour: 'HH:mm',
+                },
+            }
+        },
+        tooltip: {
+            shared: false,
+            y: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                }
+            }
+        }
+    };
+
+    var optionsLiveLoveInfo = {
+        series: [{
+            name: '<?=_L('UP_LiveLoveInfo_Title')?>',
+            data: <?=$PRM['chartLiveLoveData']->json_encode()?>
+        }],
+        chart: {
+            type: 'area',
+            stacked: false,
+            height: 350,
+            zoom: {
+                type: 'x',
+                enabled: true,
+                autoScaleYaxis: true
+            },
+            toolbar: {
+                autoSelected: 'zoom'
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        markers: {
+            size: 0,
+        },
+        title: {
+            text: '',
+            align: 'left'
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                inverseColors: false,
+                opacityFrom: 0.5,
+                opacityTo: 0,
+                stops: [0, 90, 100]
+            },
+        },
+        yaxis: {
+            labels: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                },
+            },
+            title: {
+                text: '<?=$PRM['upRawData']['name']?> - <?=_L('UP_LiveLoveInfo_Title')?>'
+            },
+        },
+        xaxis: {
+            type: 'datetime',
+            labels: {
+                datetimeUTC: false,
+                datetimeFormatter: {
+                    year: 'yyyy',
+                    month: "MMM 'yy",
+                    day: 'dd MMM',
+                    hour: 'HH:mm',
+                },
+            }
+        },
+        tooltip: {
+            shared: false,
+            y: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                }
+            }
+        }
+    };
+
+    var optionsLiveUserInfo = {
+        series: [{
+            name: '<?=_L('UP_LiveUserInfo_Title')?>',
+            data: <?=$PRM['chartLiveUserData']->json_encode()?>
+        }],
+        chart: {
+            type: 'area',
+            stacked: false,
+            height: 350,
+            zoom: {
+                type: 'x',
+                enabled: true,
+                autoScaleYaxis: true
+            },
+            toolbar: {
+                autoSelected: 'zoom'
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        markers: {
+            size: 0,
+        },
+        title: {
+            text: '',
+            align: 'left'
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                inverseColors: false,
+                opacityFrom: 0.5,
+                opacityTo: 0,
+                stops: [0, 90, 100]
+            },
+        },
+        yaxis: {
+            labels: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                },
+            },
+            title: {
+                text: '<?=$PRM['upRawData']['name']?> - <?=_L('UP_LiveUserInfo_Title')?>'
+            },
+        },
+        xaxis: {
+            type: 'datetime',
+            labels: {
+                datetimeUTC: false,
+                datetimeFormatter: {
+                    year: 'yyyy',
+                    month: "MMM 'yy",
+                    day: 'dd MMM',
+                    hour: 'HH:mm',
+                },
+            }
+        },
+        tooltip: {
+            shared: false,
+            y: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                }
+            }
+        }
+    };
+
     var chartFollowers = new ApexCharts(
         document.querySelector("#area-spaline-followers"),
         optionsFollowers
@@ -283,6 +523,24 @@
         optionsContents
     );
 
+    var chartLiveInfo = new ApexCharts(
+        document.querySelector("#area-spaline-liveInfo"),
+        optionsLiveInfo
+    );
+
+    var chartLiveLoveInfo = new ApexCharts(
+        document.querySelector("#area-spaline-liveLoveInfo"),
+        optionsLiveLoveInfo
+    );
+
+    var chartLiveUserInfo = new ApexCharts(
+        document.querySelector("#area-spaline-liveUserInfo"),
+        optionsLiveUserInfo
+    );
+
     chartFollowers.render();
     chartContents.render();
+    chartLiveInfo.render();
+    chartLiveLoveInfo.render();
+    chartLiveUserInfo.render();
 </script>

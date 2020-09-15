@@ -82,6 +82,10 @@ return array(
     'UP_Followers_Title' => '关注者变化情况',
     'Up_Contents' => '投稿',
     'UP_Contents_Title' => '投稿变化情况',
+    'UP_LiveInfo_Title' => '直播情况',
+    'UP_LiveLoveInfo_Title' => '点亮爱心',
+    'UP_LiveUserInfo_Title' => '观众数据',
+
 
     'Log_Index'  => '日志',
     'Log_Title' => '日志内容',

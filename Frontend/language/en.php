@@ -80,6 +80,9 @@ return array(
     'UP_Followers_Title' => 'Followers',
     'Up_Contents' => 'Contents',
     'UP_Contents_Title' => 'Contents',
+    'UP_LiveInfo_Title' => 'Live info',
+    'UP_LiveLoveInfo_Title' => 'Love info',
+    'UP_LiveUserInfo_Title' => 'User info',
 
     'Log_Index'  => 'Log',
     'Log_Title' => 'Log',
