@@ -10,6 +10,8 @@ return array(
             'up/<upid:\d+>' => 'up/detail',
             'search/<keyword:[\s\S]*>' => 'search/search',
             'daily' => 'dailystream',
+            'update_log' => 'log/update',
+            'log_submit' => 'submit/log',
 //            '<method:\w+>/<id:\d+>.html' => 'demo/<method>',
 //            'rest/<rid:[\d]+>/<method:\w+>/<mid:\d+>' => 'rest/<method>',
         ),

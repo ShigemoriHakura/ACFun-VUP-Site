@@ -6,3 +6,4 @@ Frontend/app/config/dns_pub.php
 Frontend/logs/
 Spider/UPDetails/config.json
 Spider/LiveInfo/config.json
+Spider/UPDetails/acSpider

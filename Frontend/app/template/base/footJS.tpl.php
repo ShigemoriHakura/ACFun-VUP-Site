@@ -8,7 +8,7 @@
 <script src="<?=$webRoot?>/assets/js/icons/feather-icon/feather.min.js"></script>
 <script src="<?=$webRoot?>/assets/js/icons/feather-icon/feather-icon.js"></script>
 <!-- Sidebar jquery-->
-<script src="<?=$webRoot?>/assets/js/sidebar-menu.js"></script>
+<script src="<?=$webRoot?>/assets/js/customSidebarMenu.js"></script>
 <script src="<?=$webRoot?>/assets/js/customConfig.js"></script>
 <!-- Plugins JS start-->
 <script src="<?=$webRoot?>/assets/js/form-validation-custom.js"></script>

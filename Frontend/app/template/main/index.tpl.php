@@ -21,60 +21,67 @@
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-12">
+            <div class="col-xl-12 xl-100 box-col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="project-overview">
+                            <div class="row">
+                                <div class="col-xl-3 col-sm-6 col-6" style="border-left:0px">
+                                    <h2 class="f-w-600 font-primary"><?=$PRM['upListCount']?></h2>
+                                    <p class="mb-0"><?=_L('Index_UPs')?></p>
+                                </div>
+                                <div class="col-xl-3 col-sm-6 col-6" style="border-left:0px">
+                                    <h2 class="f-w-600 font-secondary">6</h2>
+                                    <p class="mb-0">(´・ω・`)</p>
+                                </div>
+                                <div class="col-xl-3 col-sm-6 col-6" style="border-left:0px">
+                                    <h2 class="f-w-600 font-success">233</h2>
+                                    <p class="mb-0">(ノﾟ∀ﾟ)ノ</p>
+                                </div>
+                                <div class="col-xl-3 col-sm-6 col-6" style="border-left:0px">
+                                    <h2 class="f-w-600 font-info">100</h2>
+                                    <p class="mb-0">(|||ﾟДﾟ)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12 xl-100 box-col-12">
                 <div class="card card-with-border overall-rating">
                     <div class="card-header resolve-complain card-no-border">
-                        <h5 class="d-inline-block"><?=_L('Index_Title')?></h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
-                        <p class="f-12 mb-0"><?=_L('Index_Desc')?></p>
-                        <p class="f-12 mb-0"><?=_L('Index_Desc_Scroll')?></p>
+                        <h5 class="d-inline-block">入库规则</h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
+                        <p class="f-12 mb-0">项目开源，地址：<a href="https://github.com/ShigemoriHakura/ACFun-VUP-Site">Github</a></p>
                     </div>
-                    <div class="card-body p-0">
-                        <div class="table-responsive agent-performance-table">
-                            <table class="table table-bordernone">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-inline-block align-middle">
-                                                <div class="d-inline-block"><span class="f-12 f-w-600"><?=_L('Index_User')?></span></span></div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="f-w-600"><?=_L('Index_Followers')?></p>
-                                        </td>
-                                        <td>
-                                            <p class="f-w-600"><?=_L('Index_Action')?></p>
-                                        </td>
-                                    </tr>
-                                <? foreach ($PRM['upListData'] as $v){?>
-                                        <tr>
-                                            <td>
-                                                <div class="d-inline-block align-middle"><img class="img-radius img-40 align-top m-r-15 rounded-circle" src="<?=$v['rawData']['headUrl']?>" alt="">
-                                                    <div class="d-inline-block">
-                                                        <a target="_blank" href="https://www.acfun.cn/u/<?=$v['uperid']?>">
-                                                            <span class="f-12 f-w-600"><?=$v['rawData']['name']?></span>
-                                                            <span class="d-block">
-                                                                <? 
-                                                                if(mb_strlen($v['rawData']['signature']) > 10){
-                                                                    echo(mb_substr($v['rawData']['signature'],0,10) . "...");
-                                                                }else{
-                                                                    echo($v['rawData']['signature']);
-                                                                }
-                                                                ?>
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="f-w-600"><?=$v['rawData']['followers']?></p>
-                                            </td>
-                                            <td>
-                                                <a href="/up/<?=$v['uperid']?>"><button class="btn btn-primary btn-square digits"><?=_L('Index_Detail')?></button></a>
-                                            </td>
-                                        </tr>
-                                <? }?>
-                                </tbody>
-                            </table>
+                    <div class="card-body pt-0">
+                        <div class="timeline-recent">
+                            <div class="media">
+                                <div class="timeline-line"></div>
+                                <div class="timeline-dot-danger"></div>
+                                <div class="media-body"><span class="d-block f-w-600">1.xxx大使，xxx企业偶像，xx吧歌姬等类似的不予收录，我不认可。<span class="pull-right light-font f-w-400">2020/9/16</span></span>
+                                    <p> <span class="font-danger">白咲 </span>管理员</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="timeline-line"></div>
+                                <div class="timeline-dot-danger"></div>
+                                <div class="media-body"><span class="d-block f-w-600">2.利用动捕技术只做了一个形象然后天天上传舞蹈视频等的，不予收录，我不认可。<span class="pull-right light-font f-w-400">2020/9/16</span></span>
+                                    <p> <span class="font-danger">白咲 </span>管理员</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="timeline-dot-secondary"></div>
+                                <div class="media-body"><span class="d-block f-w-600">3.允许转生使用原账号等情况，但是只是说有虚拟形象但是根本不用的，不予收录，我不认可。<span class="pull-right light-font f-w-400">2020/9/16</span></span>
+                                    <p> <span class="font-secondary">白咲 </span>管理员</p>
+                                    <p class="f-12 mb-0">转生可以，但是你至少要做v吧？</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="timeline-dot-success"></div>
+                                <div class="media-body"><span class="d-block f-w-600">如未收录，请私信<a href="https://www.acfun.cn/u/35119946">茂森白咲</a>告知UID<span class="pull-right light-font f-w-400">2020/9/16</span></span>
+                                    <p> <span class="font-success">白咲 </span>管理员</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

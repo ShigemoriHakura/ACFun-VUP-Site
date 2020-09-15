@@ -24,31 +24,36 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5><?=_L('Submit_Title')?></h5>
-                        <span><?=_L('Submit_Desc')?> <code class="text-danger"><?=_L('Submit_Desc2')?></code> </span>
+                        <h5><?=_L('Submit_Log_Title')?></h5>
                         <span><?=_L('Submit_Desc3')?>
                             <? if (!$PRM['status']) {?>
                                 <code class="text-danger"><?=_L('Submit_Failed')?></code> </span>
                             <?}else{ ?>
                                 <code class="text-success"><?=_L('Submit_Success')?></code> </span>
                             <?} ?>
+                        <span><?=_L('Submit_Desc')?> <code class="text-danger"><?=_L('Submit_Desc2')?></code> </span>
                     </div>
                     <div class="card-body">
-                        <form class="needs-validation" novalidate="" action="<?=$webRoot?>/submit" method="post">
+                        <form class="needs-validation" novalidate="" action="<?=$webRoot?>/log_submit" method="post">
                             <div class="form-row">
                                 <input type="text" name="_csrf" hidden value="<?=$this->getCsrfToken()?>"/>
                                 <div class="col-md-12 mb-12">
-                                    <label for="validationCustom01"><?=_L('Submit_UpNote')?></label>
-                                    <input name="name" class="form-control" id="validationCustom01" type="text" placeholder="<?=_L('Submit_UpNote')?>" required="">
+                                    <label for="validationCustom01"><?=_L('Submit_Log_Content')?></label>
+                                    <input name="content" class="form-control" id="validationCustom01" type="text" placeholder="<?=_L('Submit_Log_Content')?>" required="" autocomplete="off">
                                     <div class="valid-feedback"><?=_L('Submit_CheckOK')?></div>
                                 </div>
                             </div>
                             <hr>
                             <div class="form-row">
                                 <div class="col-md-12 mb-12">
-                                    <label for="validationCustom05"><?=_L('Submit_Uperid')?></label>
-                                    <input name="uperid" class="form-control" id="validationCustom05" type="text" placeholder="<?=_L('Submit_Uperid')?>" required="">
-                                    <div class="invalid-feedback"><?=_L('Submit_Uperid_NotInput')?></div>
+                                    <label for="exampleFormControlSelect9"><?=_L('Submit_Log_Level')?></label>
+                                    <select name="level" class="form-control digits">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
                                 </div>
                             </div>
                             <hr>

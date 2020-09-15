@@ -31,7 +31,6 @@ func runMainProcess(){
     ch := make(chan string, 1)
 	log.Println("[Main]", "爬虫刷新间隔：", RefreshRate)
     for {
-        timeSleep(RefreshRate)
 		log.Println("[Main]", "爬虫开始爬取，累计次数：", CronCounter)
         go func() {
             checkUpers(CronCounter)
@@ -44,6 +43,7 @@ func runMainProcess(){
 			log.Println("[Main]", "爬虫爬取超时", CronCounter)
         }
         CronCounter += 1
+        timeSleep(RefreshRate)
     }
 }
 
@@ -81,11 +81,15 @@ func checkUpers(counter int){
 				acUser["followers"] = followers
 				acUser["uperid"] = v["uperid"]
 				acUser["rawdata"] = string(jsonData)
+				acUser["spaceImage"] = any.Get("profile", "spaceImage").ToString()
 				acUser["registerTime"] = any.Get("profile", "registerTime").ToString()
 				acUser["following"] = any.Get("profile", "following").ToString()
 				acUser["name"] = any.Get("profile", "name").ToString()
 				acUser["signature"] = any.Get("profile", "signature").ToString()
+				acUser["verifiedText"] = any.Get("profile", "verifiedText").ToString()
+				acUser["isContractUp"] = any.Get("profile", "isContractUp").ToString()
 				acUser["contentCount"] = any.Get("profile", "contentCount").ToString()
+				acUser["lastLoginTime"] = any.Get("profile", "lastLoginTime").ToString()
 				acUser["headUrl"] = any.Get("profile", "headUrl").ToString()
 				updateMap[v["id"]] = acUser
 				log.Printf("[Avatar] %v (%v) 关注: %v, 关注者: %v, 用户名: %v", v["name"], v["uperid"], acUser["following"], followers, acUser["name"])
@@ -109,7 +113,7 @@ func makeMysqlUpdateQueue(updateMap map[string]map[string]string){
 		var registerTime = ""
 		var nowName      = ""
 		for k, v := range updateMap{
-			dataString += fmt.Sprintf("(%v, %v, '%v', %v, %v, '%v', '%v', %v, '%v'),", v["uperid"], time.Now().Unix(), v["rawdata"], v["followers"], v["following"], v["name"], v["signature"], v["contentCount"], v["headUrl"])
+			dataString += fmt.Sprintf("(%v, %v, '%v', %v, %v, '%v', '%v', '%v', %v, '%v'),", v["uperid"], time.Now().Unix(), v["spaceImage"], v["followers"], v["following"], v["name"], v["signature"], v["verifiedText"], v["contentCount"], v["headUrl"])
 			uperids = uperids + k + ","
 			updatedTime  += "WHEN " + k + " THEN " + strconv.Itoa(int(time.Now().Unix())) + "\n"
 			registerTime += "WHEN " + k + " THEN " + v["registerTime"] + "\n"

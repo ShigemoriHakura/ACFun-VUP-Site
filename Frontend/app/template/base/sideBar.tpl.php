@@ -92,8 +92,10 @@
                             </li>
                             <li class="dropdown"><a class="nav-link menu-title" href="#"><i data-feather="settings"></i><span><?=_L('Sidebar_Admin') ?></span></a>
                                 <ul class="nav-submenu menu-content">
+                                    <li><a href="<?=$webRoot?>/update_log"><?=_L('Sidebar_Update_Log') ?></a></li>
                                     <? if ($PRM('adminData')) {?>
                                         <li><a href="<?=$webRoot?>/submit"><?=_L('Sidebar_Submit') ?></a></li>
+                                        <li><a href="<?=$webRoot?>/log_submit"><?=_L('Sidebar_Log_Submit') ?></a></li>
                                         <li><a href="<?=$webRoot?>/logout"><?=_L('Sidebar_Logout') ?></a></li>
                                     <? }else{ ?>
                                         <li><a href="<?=$webRoot?>/login"><?=_L('Sidebar_Login') ?></a></li>

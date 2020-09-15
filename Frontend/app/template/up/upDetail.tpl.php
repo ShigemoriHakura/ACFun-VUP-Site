@@ -71,10 +71,10 @@
                             <div class="follow">
                                 <div class="row">
                                     <div class="col-6 text-md-right border-right">
-                                        <div class="follow-num counter"><?=$PRM['upRawData']['followers']?></div><span><?=_L('Up_Followers')?></span>
+                                        <div class="follow-num"><?=$PRM['upRawData']['followers']?></div><span><?=_L('Up_Followers')?></span>
                                     </div>
                                     <div class="col-6 text-md-left">
-                                        <div class="follow-num counter"><?=$PRM['upRawData']['following']?></div><span><?=_L('Up_Following')?></span>
+                                        <div class="follow-num"><?=$PRM['upRawData']['following']?></div><span><?=_L('Up_Following')?></span>
                                     </div>
                                 </div>
                             </div>
@@ -102,6 +102,23 @@
                                     <div id="area-spaline-contents"></div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="profile-img-style">
+                            <p><?=$PRM['upRawData']['verifiedText']?></p>
+                            <? if($PRM['upRawData']['spaceImage'] != ""){?>
+                            <div class="img-container">
+                                <div class="my-gallery" id="aniimated-thumbnials" itemscope="">
+                                    <figure itemprop="associatedMedia" itemscope="">
+                                        <img class="img-fluid rounded" src="<?=$PRM['upRawData']['spaceImage']?>" itemprop="thumbnail" alt="gallery">
+                                    </figure>
+                                </div>
+                            </div>
+                            <?}?>
                         </div>
                     </div>
                 </div>

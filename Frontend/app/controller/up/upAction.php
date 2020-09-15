@@ -64,6 +64,7 @@ class upAction extends baseAction
                         'upRawData'    => $upRawData,
                         'registerDate' => $registerDate,
                         'acRegisterDate' => $acRegisterDate,
+                        'lastLoginDate' => $lastLoginDate,
                         'updatedDate'  => $updatedDate,
                         'chartData'    => $chartData,
                         'contentData'    => $contentData,
