@@ -7,3 +7,4 @@ Frontend/logs/
 Spider/UPDetails/config.json
 Spider/LiveInfo/config.json
 Spider/UPDetails/acSpider
+Spider/LiveInfo/acLiveSpider
