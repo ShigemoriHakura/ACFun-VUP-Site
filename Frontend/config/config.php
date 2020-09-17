@@ -13,6 +13,7 @@ return array(
             'daily' => 'dailystream',
             'update_log' => 'log/update',
             'log_submit' => 'submit/log',
+            'api/<upid:\d+>' => 'api/up_detail',
 //            '<method:\w+>/<id:\d+>.html' => 'demo/<method>',
 //            'rest/<rid:[\d]+>/<method:\w+>/<mid:\d+>' => 'rest/<method>',
         ),
