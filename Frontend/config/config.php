@@ -10,6 +10,7 @@ return array(
             'index.html' => 'index',
             'up/<upid:\d+>' => 'up/detail',
             'u/<upid:\d+>' => 'up/detail',
+            'd/<upid:\d+>' => 'up/feed',
             'search/<keyword:[\s\S]*>' => 'search/search',
             'daily' => 'dailystream',
             'update_log' => 'log/update',
