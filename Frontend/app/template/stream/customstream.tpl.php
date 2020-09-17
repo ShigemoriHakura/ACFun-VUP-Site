@@ -71,26 +71,17 @@
         series: <?=str_replace('"data"', "data", str_replace('"name"', "name", $PRM['upData']->json_encode()))?> ,
         chart: {
             type: 'area',
+            height: 650,
             stacked: false,
-            height: 350,
-            zoom: {
-                type: 'x',
-                enabled: true,
-                autoScaleYaxis: true
-            },
-            toolbar: {
-                autoSelected: 'zoom'
+            animations: {
+                enabled: false,
             }
         },
         dataLabels: {
             enabled: false
         },
-        markers: {
-            size: 0,
-        },
-        title: {
-            text: '',
-            align: 'left'
+        stroke: {
+            curve: 'smooth'
         },
         fill: {
             type: 'gradient',
@@ -102,38 +93,13 @@
                 stops: [0, 90, 100]
             },
         },
-        yaxis: [
-            {
-                labels: {
-                    formatter: function (val) {
-                        return val.toFixed(0);
-                    },
-                },
-                title: {
-                    text: '<?=_L('Up_Followers')?>'
-                },
-            }
-        ],
-        xaxis: {
-            type: 'datetime',
-            labels: {
-                datetimeUTC: false,
-                datetimeFormatter: {
-                    year: 'yyyy',
-                    month: "MMM 'yy",
-                    day: 'dd MMM',
-                    hour: 'HH:mm',
-                },
-            }
+        legend: {
+            position: 'top',
+            horizontalAlign: 'left'
         },
-        tooltip: {
-            shared: true,
-            y: {
-                formatter: function (val) {
-                    return val.toFixed(0);
-                }
-            }
-        }
+        xaxis: {
+            type: 'datetime'
+        },
     };
 
     var chartUpAll = new ApexCharts(
