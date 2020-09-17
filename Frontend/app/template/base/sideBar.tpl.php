@@ -89,6 +89,7 @@
                                     <li><a href="<?=$webRoot?>/newstream"><?=_L('Sidebar_Newstream') ?></a></li>
                                     <li><a href="<?=$webRoot?>/upstream"><?=_L('Sidebar_Upstream') ?></a></li>
                                     <li><a href="<?=$webRoot?>/daily"><?=_L('Sidebar_Dailystream') ?></a></li>
+                                    <li><a href="<?=$webRoot?>/custom"><?=_L('Sidebar_Customstream') ?></a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a class="nav-link menu-title" href="#"><i data-feather="settings"></i><span><?=_L('Sidebar_Admin') ?></span></a>

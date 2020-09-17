@@ -7,6 +7,7 @@ return array(
 
         //静态化配置
         'routeRule' => array(
+            'index.html' => 'index',
             'up/<upid:\d+>' => 'up/detail',
             'u/<upid:\d+>' => 'up/detail',
             'search/<keyword:[\s\S]*>' => 'search/search',
@@ -14,6 +15,7 @@ return array(
             'update_log' => 'log/update',
             'log_submit' => 'submit/log',
             'api/<upid:\d+>' => 'api/up_detail',
+            'custom' => 'customstream',
 //            '<method:\w+>/<id:\d+>.html' => 'demo/<method>',
 //            'rest/<rid:[\d]+>/<method:\w+>/<mid:\d+>' => 'rest/<method>',
         ),

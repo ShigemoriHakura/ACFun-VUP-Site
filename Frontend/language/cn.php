@@ -5,6 +5,7 @@ return array(
 
     'Index_Index'  => '首页',
     'Index_UPs' => '收录VUP',
+    'Index_UPs_Today' => '今日新收录',
     'Index_Rank'  => '排名',
     'Index_Title'  => 'ACFun VUP 榜单',
     'Index_Desc'   => '数据每十分钟刷新一次，未记录的用户请私信添加。',
@@ -21,6 +22,10 @@ return array(
     'Newstream_Title'  => 'ACFun VUP 新收录榜单',
 
     'Dailystream_Title'  => 'ACFun VUP 日排行榜单',
+
+    'Customstream_Title'  => 'ACFun VUP 自定义排行榜单',
+    'Customstream_Desc'  => '最多可选5个',
+    'Customstream_Submitbtn'  => '提交',
 
     'Login_Desc1' => '需要提交数据？',
     'Login_Desc2' => '请联系管理员',
@@ -40,6 +45,7 @@ return array(
     'Sidebar_Newstream' => '新收录',
     'Sidebar_Upstream' => '急上升',
     'Sidebar_Dailystream' => '日排序榜单',
+    'Sidebar_Customstream' => '自定义榜单',
     'Sidebar_Update_Log'   => '更新日志',
     'Sidebar_Log_Submit'   => '提交日志',
 

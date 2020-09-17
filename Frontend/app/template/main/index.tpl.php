@@ -31,15 +31,15 @@
                                     <p class="mb-0"><?=_L('Index_UPs')?></p>
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-6" style="border-left:0px">
-                                    <h2 class="f-w-600 font-secondary">6</h2>
-                                    <p class="mb-0">(´・ω・`)</p>
+                                    <h2 class="f-w-600 font-secondary"><?=$PRM['upListTodayCount']?></h2>
+                                    <p class="mb-0"><?=_L('Index_UPs_Today')?></p>
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-6" style="border-left:0px">
                                     <h2 class="f-w-600 font-success">233</h2>
                                     <p class="mb-0">(ノﾟ∀ﾟ)ノ</p>
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-6" style="border-left:0px">
-                                    <h2 class="f-w-600 font-info">100</h2>
+                                    <h2 class="f-w-600 font-info">666</h2>
                                     <p class="mb-0">(|||ﾟДﾟ)</p>
                                 </div>
                             </div>

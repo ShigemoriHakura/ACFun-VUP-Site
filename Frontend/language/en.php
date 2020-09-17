@@ -5,6 +5,7 @@ return array(
 
     'Index_Index' => 'Index',
     'Index_UPs' => 'UPs',
+    'Index_UPs_Today' => 'New',
     'Index_Rank'  => 'Rank',
     'Index_Title' => 'ACFun VUP List',
     'Index_Desc' => 'Data track rate: 10 min',
@@ -21,6 +22,10 @@ return array(
     'Newstream_Title'  => 'ACFun VUP new ups',
 
     'Dailystream_Title'  => 'ACFun VUP daily rank',
+
+    'Customstream_Title'  => 'ACFun VUP custom rank',
+    'Customstream_Desc'  => 'up to 5',
+    'Customstream_Submitbtn'  => 'Submit',
 
     'Login_Desc1' => 'Need to add up account?',
     'Login_Desc2' => 'Plz contact Admin',
@@ -40,6 +45,7 @@ return array(
     'Sidebar_Newstream' => 'New',
     'Sidebar_Upstream'   => 'Growing',
     'Sidebar_Dailystream' => 'Daily',
+    'Sidebar_Customstream' => 'Custom',
     'Sidebar_Update_Log'   => 'Update Log',
     'Sidebar_Log_Submit'   => 'Submit Log',
 
