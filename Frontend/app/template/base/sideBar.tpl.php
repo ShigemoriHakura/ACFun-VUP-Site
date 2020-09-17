@@ -86,6 +86,7 @@
                             </li>
                             <li class="dropdown"><a class="nav-link menu-title" href="#"><i data-feather="bar-chart-2"></i><span><?=_L('Sidebar_List') ?></span></a>
                                 <ul class="nav-submenu menu-content">
+                                    <li><a href="<?=$webRoot?>/newstream"><?=_L('Sidebar_Newstream') ?></a></li>
                                     <li><a href="<?=$webRoot?>/upstream"><?=_L('Sidebar_Upstream') ?></a></li>
                                     <li><a href="<?=$webRoot?>/daily"><?=_L('Sidebar_Dailystream') ?></a></li>
                                 </ul>

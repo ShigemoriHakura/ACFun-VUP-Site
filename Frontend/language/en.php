@@ -18,6 +18,8 @@ return array(
     'Upstream_Desc' => 'Data track rate: 10 min, Will update every day',
     'Upstream_FollowersAdded' => 'Followers changed',
 
+    'Newstream_Title'  => 'ACFun VUP new ups',
+
     'Dailystream_Title'  => 'ACFun VUP daily rank',
 
     'Login_Desc1' => 'Need to add up account?',
@@ -35,6 +37,7 @@ return array(
     'Sidebar_User'   => 'User',
     'Sidebar_Admin'   => 'Admin',
     'Sidebar_Search' => 'Search',
+    'Sidebar_Newstream' => 'New',
     'Sidebar_Upstream'   => 'Growing',
     'Sidebar_Dailystream' => 'Daily',
     'Sidebar_Update_Log'   => 'Update Log',
@@ -83,6 +86,7 @@ return array(
     'UP_LiveInfo_Title' => 'Live info',
     'UP_LiveLoveInfo_Title' => 'Love info',
     'UP_LiveUserInfo_Title' => 'User info',
+    'UP_All_Title' => 'All',
 
     'Log_Index'  => 'Log',
     'Log_Title' => 'Log',

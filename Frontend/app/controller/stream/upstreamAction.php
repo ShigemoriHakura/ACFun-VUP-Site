@@ -8,7 +8,7 @@ use Constant;
 class upstreamAction extends baseAction
 {
     /**
-     * 首页
+     * 急上升
      */
     public function action_index()
     {
@@ -17,13 +17,14 @@ class upstreamAction extends baseAction
         }
         $lang = $this->get('lang');
         $lang && Language::setLanguage($lang, Constant::month);
-        $upListDataset = $this->upDetailDAO->query();
+
+        $todayTimestamp = strtotime(date('Y-m-d'));
+        $upListDataset = $this->upDetailDAO->filter([
+            '<'=>array('add_date'=> $todayTimestamp)
+        ])->query();
         $upListDatasets = [];
         $upListDatasetColumn = [];
         $i = 0;
-
-        $todayTimestamp = strtotime(date('Y-m-d'));
-
         foreach ($upListDataset as $k => $upData){
             $rawLatestData = $this->upRawDataDAO->filter([
                 'uperid'=>$upData['uperid'],

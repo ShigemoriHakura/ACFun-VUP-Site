@@ -47,11 +47,59 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-xl-12">
+                <div class="card card-with-border overall-rating">
+                    <div class="card-header">
+                        <h5 class="d-inline-block"><?=_L('Search_Title')?></h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
+                        <p class="f-12 mb-0"><?=_L('Search_Desc')?></p>
+                    </div>
+                    <div class="card-body">
+                        <form class="needs-validation" novalidate="" action="<?=$webRoot?>/search" method="get">
+                            <div class="form-row">
+                                <div class="col-md-12 mb-12">
+                                    <label for="validationCustom01"><?=_L('Search_Keyword')?></label>
+                                    <input name="keyword" class="form-control" id="validationCustom01" type="text" placeholder="balabala" required="">
+                                    <div class="valid-feedback"><?=_L('Search_CheckOK')?></div>
+                                </div>
+                            </div>
+                            <hr>
+                            <button class="btn btn-primary" type="submit"><?=_L('Search_Searchbtn')?></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-12 xl-100 box-col-12">
+                <div class="card card-with-border overall-rating">
+                    <div class="card-header resolve-complain card-no-border">
+                        <h5 class="d-inline-block">使用须知</h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
+                        <p class="f-12 mb-0">项目开源，地址：<a href="https://github.com/ShigemoriHakura/ACFun-VUP-Site">Github</a></p>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="timeline-recent">
+                            <div class="media">
+                                <div class="timeline-line"></div>
+                                <div class="timeline-dot-danger"></div>
+                                <div class="media-body"><span class="d-block f-w-600">新收录的VUP不参与当日的榜单排序，因为数据不足。<span class="pull-right light-font f-w-400">2020/9/16</span></span>
+                                    <p> <span class="font-danger">白咲 </span>管理员</p>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <div class="timeline-dot-success"></div>
+                                <div class="media-body"><span class="d-block f-w-600">未收录的请参照下方入库规则联系入库。<span class="pull-right light-font f-w-400">2020/9/16</span></span>
+                                    <p> <span class="font-success">白咲 </span>管理员</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-xl-12 xl-100 box-col-12">
                 <div class="card card-with-border overall-rating">
                     <div class="card-header resolve-complain card-no-border">
                         <h5 class="d-inline-block">入库规则</h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
-                        <p class="f-12 mb-0">项目开源，地址：<a href="https://github.com/ShigemoriHakura/ACFun-VUP-Site">Github</a></p>
                     </div>
                     <div class="card-body pt-0">
                         <div class="timeline-recent">
@@ -71,7 +119,7 @@
                             </div>
                             <div class="media">
                                 <div class="timeline-dot-secondary"></div>
-                                <div class="media-body"><span class="d-block f-w-600">3.允许转生使用原账号等情况，但是只是说有虚拟形象但是根本不用的，不予收录，我不认可。<span class="pull-right light-font f-w-400">2020/9/16</span></span>
+                                <div class="media-body"><span class="d-block f-w-600">3.允许转生使用原账号等情况，但是只是说有虚拟形象却根本不用的，不予收录，我不认可。<span class="pull-right light-font f-w-400">2020/9/16</span></span>
                                     <p> <span class="font-secondary">白咲 </span>管理员</p>
                                     <p class="f-12 mb-0">转生可以，但是你至少要做v吧？</p>
                                 </div>

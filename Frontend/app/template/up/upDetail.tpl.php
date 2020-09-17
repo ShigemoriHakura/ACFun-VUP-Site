@@ -87,7 +87,10 @@
                     <div class="card">
                         <div class="card-body">
                             <ul class="nav nav-tabs border-tab" id="top-tab" role="tablist">
-                                <li class="nav-item"><a class="nav-link active" id="followers" data-toggle="tab" href="#follower-tab" role="tab" aria-selected="true"><i class="icon-target"></i><?=_L('UP_Followers_Title')?></a>
+                                <li class="nav-item"><a class="nav-link active" id="all-up" data-toggle="tab" href="#all-up-tab" role="tab" aria-selected="true"><i class="icon-settings"></i><?=_L('UP_All_Title')?></a>
+                                    <div class="material-border"></div>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" id="followers" data-toggle="tab" href="#follower-tab" role="tab" aria-selected="false"><i class="icon-target"></i><?=_L('UP_Followers_Title')?></a>
                                     <div class="material-border"></div>
                                 </li>
                                 <li class="nav-item"><a class="nav-link" id="contents" data-toggle="tab" href="#content-tab" role="tab" aria-selected="false"><i class="icon-image"></i><?=_L('UP_Contents_Title')?></a>
@@ -95,7 +98,10 @@
                                 </li>
                             </ul>
                             <div class="tab-content" id="top-tabContent">
-                                <div class="tab-pane fade show active" id="follower-tab" role="tabpanel" aria-labelledby="followers">
+                                <div class="tab-pane fade show active" id="all-up-tab" role="tabpanel" aria-labelledby="all-up">
+                                    <div id="area-spaline-up-all"></div>
+                                </div>
+                                <div class="tab-pane fade" id="follower-tab" role="tabpanel" aria-labelledby="followers">
                                     <div id="area-spaline-followers"></div>
                                 </div>
                                 <div class="tab-pane fade" id="content-tab" role="tabpanel" aria-labelledby="contents">
@@ -110,7 +116,10 @@
                     <div class="card">
                         <div class="card-body">
                             <ul class="nav nav-tabs border-tab" id="top-tab" role="tablist">
-                                <li class="nav-item"><a class="nav-link active" id="liveInfo" data-toggle="tab" href="#liveInfo-tab" role="tab" aria-selected="true"><i class="icon-video-clapper"></i><?=_L('UP_LiveInfo_Title')?></a>
+                                <li class="nav-item"><a class="nav-link active" id="all-up-live" data-toggle="tab" href="#all-up-live-tab" role="tab" aria-selected="true"><i class="icon-settings"></i><?=_L('UP_All_Title')?></a>
+                                    <div class="material-border"></div>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" id="liveInfo" data-toggle="tab" href="#liveInfo-tab" role="tab" aria-selected="false"><i class="icon-video-clapper"></i><?=_L('UP_LiveInfo_Title')?></a>
                                     <div class="material-border"></div>
                                 </li>
                                 <li class="nav-item"><a class="nav-link" id="liveLoveInfo" data-toggle="tab" href="#liveLoveInfo-tab" role="tab" aria-selected="false"><i class="icon-heart"></i><?=_L('UP_LiveLoveInfo_Title')?></a>
@@ -121,7 +130,10 @@
                                 </li>
                             </ul>
                             <div class="tab-content" id="top-tabContent">
-                                <div class="tab-pane fade show active" id="liveInfo-tab" role="tabpanel" aria-labelledby="liveInfo">
+                                <div class="tab-pane fade show active" id="all-up-live-tab" role="tabpanel" aria-labelledby="all-up-live">
+                                    <div id="area-spaline-liveInfo-all"></div>
+                                </div>
+                                <div class="tab-pane fade" id="liveInfo-tab" role="tabpanel" aria-labelledby="liveInfo">
                                     <div id="area-spaline-liveInfo"></div>
                                 </div>
                                 <div class="tab-pane fade" id="liveLoveInfo-tab" role="tabpanel" aria-labelledby="liveLoveInfo">
@@ -163,6 +175,95 @@
 <?php include App::$view_root . "/base/footer.tpl.php" ?>
 
 <script>
+    var optionsUpAll = {
+        series: [
+            {
+                name: '<?=_L('Up_Followers')?>',
+                //type: 'line',
+                data: <?=$PRM['chartData']->json_encode()?>
+            },{
+                name: '<?=_L('Up_Contents')?>',
+                //type: 'column',
+                data: <?=$PRM['contentData']->json_encode()?>
+            }
+        ],
+        chart: {
+            type: 'area',
+            stacked: false,
+            height: 350,
+            zoom: {
+                type: 'x',
+                enabled: true,
+                autoScaleYaxis: true
+            },
+            toolbar: {
+                autoSelected: 'zoom'
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        markers: {
+            size: 0,
+        },
+        title: {
+            text: '',
+            align: 'left'
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                inverseColors: false,
+                opacityFrom: 0.5,
+                opacityTo: 0,
+                stops: [0, 90, 100]
+            },
+        },
+        yaxis: [
+            {
+                labels: {
+                    formatter: function (val) {
+                        return val.toFixed(0);
+                    },
+                },
+                title: {
+                    text: '<?=$PRM['upRawData']['name']?> - <?=_L('Up_Followers')?>'
+                },
+            },{
+                opposite: true,
+                labels: {
+                    formatter: function (val) {
+                        return val.toFixed(0);
+                    },
+                },
+                title: {
+                    text: '<?=$PRM['upRawData']['name']?> - <?=_L('Up_Contents')?>'
+                },
+            }
+        ],
+        xaxis: {
+            type: 'datetime',
+            labels: {
+                datetimeUTC: false,
+                datetimeFormatter: {
+                    year: 'yyyy',
+                    month: "MMM 'yy",
+                    day: 'dd MMM',
+                    hour: 'HH:mm',
+                },
+            }
+        },
+        tooltip: {
+            shared: true,
+            y: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                }
+            }
+        }
+    };
+
     var optionsFollowers = {
         series: [{
             name: '<?=_L('Up_Followers')?>',
@@ -281,6 +382,93 @@
                 text: '<?=$PRM['upRawData']['name']?> - <?=_L('Up_Contents')?>'
             },
         },
+        xaxis: {
+            type: 'datetime',
+            labels: {
+                datetimeUTC: false,
+                datetimeFormatter: {
+                    year: 'yyyy',
+                    month: "MMM 'yy",
+                    day: 'dd MMM',
+                    hour: 'HH:mm',
+                },
+            }
+        },
+        tooltip: {
+            shared: false,
+            y: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                }
+            }
+        }
+    };
+
+    var optionsLiveInfoAll = {
+        series: [
+            {
+                name: '<?=_L('UP_LiveInfo_Title')?>',
+                data: <?=$PRM['chartLiveData']->json_encode()?>
+            },{
+                name: '<?=_L('UP_LiveUserInfo_Title')?>',
+                data: <?=$PRM['chartLiveUserData']->json_encode()?>
+            }
+        ],
+        chart: {
+            type: 'area',
+            stacked: false,
+            height: 350,
+            zoom: {
+                type: 'x',
+                enabled: true,
+                autoScaleYaxis: true
+            },
+            toolbar: {
+                autoSelected: 'zoom'
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        markers: {
+            size: 0,
+        },
+        title: {
+            text: '',
+            align: 'left'
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                inverseColors: false,
+                opacityFrom: 0.5,
+                opacityTo: 0,
+                stops: [0, 90, 100]
+            },
+        },
+        yaxis: [
+            {
+                labels: {
+                    formatter: function (val) {
+                        return val.toFixed(0);
+                    },
+                },
+                title: {
+                    text: '<?=$PRM['upRawData']['name']?> - <?=_L('UP_LiveInfo_Title')?>'
+                },
+            },{
+                opposite:true,
+                labels: {
+                    formatter: function (val) {
+                        return val.toFixed(0);
+                    },
+                },
+                title: {
+                    text: '<?=$PRM['upRawData']['name']?> - <?=_L('UP_LiveUserInfo_Title')?>'
+                },
+            }
+        ],
         xaxis: {
             type: 'datetime',
             labels: {
@@ -513,6 +701,11 @@
         }
     };
 
+    var chartUpAll = new ApexCharts(
+        document.querySelector("#area-spaline-up-all"),
+        optionsUpAll
+    );
+
     var chartFollowers = new ApexCharts(
         document.querySelector("#area-spaline-followers"),
         optionsFollowers
@@ -521,6 +714,11 @@
     var chartContents = new ApexCharts(
         document.querySelector("#area-spaline-contents"),
         optionsContents
+    );
+
+    var chartUpLiveAll = new ApexCharts(
+        document.querySelector("#area-spaline-liveInfo-all"),
+        optionsLiveInfoAll
     );
 
     var chartLiveInfo = new ApexCharts(
@@ -538,8 +736,10 @@
         optionsLiveUserInfo
     );
 
+    chartUpAll.render();
     chartFollowers.render();
     chartContents.render();
+    chartUpLiveAll.render();
     chartLiveInfo.render();
     chartLiveLoveInfo.render();
     chartLiveUserInfo.render();

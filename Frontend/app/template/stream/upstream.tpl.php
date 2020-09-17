@@ -90,7 +90,7 @@
                                                 <p class="f-w-600"><?=$v['rawData']['followers']?></p>
                                             </td>
                                             <td>
-                                                <a href="/up/<?=$v['uperid']?>"><button class="btn btn-primary btn-square digits"><?=_L('Index_Detail')?></button></a>
+                                                <a href="/u/<?=$v['uperid']?>"><button class="btn btn-primary btn-square digits"><?=_L('Index_Detail')?></button></a>
                                             </td>
                                         </tr>
                                 <? }?>

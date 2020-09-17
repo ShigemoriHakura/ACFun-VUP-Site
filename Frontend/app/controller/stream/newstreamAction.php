@@ -5,10 +5,10 @@ use App;
 use biny\lib\Language;
 use Constant;
 
-class dailystreamAction extends baseAction
+class newstreamAction extends baseAction
 {
     /**
-     * 每日
+     * 新收录
      */
     public function action_index()
     {
@@ -20,7 +20,7 @@ class dailystreamAction extends baseAction
 
         $todayTimestamp = strtotime(date('Y-m-d'));
         $upListDataset = $this->upDetailDAO->filter([
-            '<'=>array('add_date'=> $todayTimestamp)
+            '>'=>array('add_date'=> $todayTimestamp)
         ])->query();
 
         $upListDatasets = [];
@@ -50,7 +50,7 @@ class dailystreamAction extends baseAction
         if(App::$model->Admin->exist()){
             $adminData = App::$model->Admin->values();
         }
-        return $this->display('stream/dailystream', array(
+        return $this->display('stream/newstream', array(
             'upListData' => $upListDatasets,
             'adminData' => $adminData
         ));

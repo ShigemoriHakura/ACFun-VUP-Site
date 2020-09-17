@@ -13,23 +13,20 @@
                         <li class="breadcrumb-item">Dashboard</li>
                     </ol>
                     <h3>
-                        <?=_L('Search_Index')?></h3>
+                        <?=_L('Index_Index')?></h3>
                 </div>
             </div>
         </div>
     </div>
     <!-- Container-fluid starts-->
-    <div class="container-fluid search-page">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-xl-12">
                 <div class="card card-with-border overall-rating">
                     <div class="card-header resolve-complain card-no-border">
-                        <form class="search-form" action="<?=$webRoot?>/search" method="get">
-                            <div class="form-group m-0">
-                                <label class="sr-only"><?=_L('Search_Keyword')?></label>
-                                <input class="form-control-plaintext" name="keyword" value="<?=$PRM['keyword']?>" type="search" placeholder="balabala" >
-                            </div>
-                        </form>
+                        <h5 class="d-inline-block"><?=_L('Newstream_Title')?></h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
+                        <p class="f-12 mb-0"><?=_L('Index_Desc')?></p>
+                        <p class="f-12 mb-0"><?=_L('Index_Desc_Scroll')?></p>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive agent-performance-table">
@@ -38,32 +35,60 @@
                                     <tr>
                                         <td>
                                             <div class="d-inline-block align-middle">
-                                                <div class="d-inline-block"><span class="f-12 f-w-600"><?=_L('Search_Uperid')?></span></span></div>
+                                                <div class="d-inline-block"><span class="f-12 f-w-600"><?=_L('Index_User')?></span></span></div>
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="f-w-600"><?=_L('Search_UpNote')?></p>
+                                            <p class="f-w-600"><?=_L('Index_Rank')?></p>
                                         </td>
                                         <td>
-                                            <p class="f-w-600"><?=_L('Search_UpName')?></p>
+                                            <p class="f-w-600"><?=_L('Index_Followers')?></p>
+                                        </td>
+                                        <td>
+                                            <p class="f-w-600"><?=_L('Upstream_FollowersAdded')?></p>
                                         </td>
                                         <td>
                                             <p class="f-w-600"><?=_L('Index_Action')?></p>
                                         </td>
                                     </tr>
-                                    <? if ($PRM['uperResult']->count() > 0){?>
-                                        <? foreach ($PRM['uperResult'] as $v){?>
+                                    <? if ($PRM['upListData']->count() > 0){?>
+                                        <? $rankI = 0?>
+                                        <? foreach ($PRM['upListData'] as $k => $v){?>
                                                 <tr>
                                                     <td>
-                                                        <a target="_blank" href="https://www.acfun.cn/u/<?=$v['uperid']?>">
-                                                            <p class="f-w-600"><?=$v['uperid']?></p>
-                                                        </a>
+                                                        <div class="d-inline-block align-middle"><img class="img-radius img-40 align-top m-r-15 rounded-circle" src="<?=$v['rawData']['headUrl']?>" alt="">
+                                                            <div class="d-inline-block">
+                                                                <a target="_blank" href="https://www.acfun.cn/u/<?=$v['uperid']?>">
+                                                                    <span class="f-12 f-w-600"><?=$v['rawData']['name']?></span>
+                                                                    <span class="d-block">
+                                                                        <?
+                                                                        if(mb_strlen($v['rawData']['signature']) > 10){
+                                                                            echo(mb_substr($v['rawData']['signature'],0,10) . "...");
+                                                                        }else{
+                                                                            echo($v['rawData']['signature']);
+                                                                        }
+                                                                        ?>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <p class="f-w-600"><?=$v['name']?></p>
+                                                        <p class="f-w-600"><?
+                                                            if($k > 0 && $PRM['upListData'][$k - 1]['rawData']['followers'] == $v['rawData']['followers']){
+                                                                echo($rankI);
+                                                            }else{
+                                                                echo($k + 1);
+                                                                $rankI = $k + 1;
+                                                            }
+                                                            ?>
+                                                        </p>
                                                     </td>
                                                     <td>
-                                                        <p class="f-w-600"><?=$v['nowName']?></p>
+                                                        <p class="f-w-600"><?=$v['rawData']['followers']?></p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="f-w-600"><?=$v['followersAdded']?></p>
                                                     </td>
                                                     <td>
                                                         <a href="/u/<?=$v['uperid']?>"><button class="btn btn-primary btn-square digits"><?=_L('Index_Detail')?></button></a>
