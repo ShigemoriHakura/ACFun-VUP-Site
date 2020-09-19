@@ -45,6 +45,7 @@ function getMsecToMescdate($msectime)
                         </div>
                         <div class="card-body">
                             <div class="timeline-small">
+								<br>
                                 <? if ($PRM['jsonDataReturn']->count() > 0){?>
                                     <? foreach ($PRM['jsonDataReturn'] as $k => $v){?>
                                         <div class="media">
