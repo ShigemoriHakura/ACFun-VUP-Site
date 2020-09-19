@@ -82,6 +82,7 @@ return array(
     'Up_404' => '该UP在数据库中不存在，可能还未收录入库。',
     'Up_ToIndex' => '返回首页',
     'Up_Details' => '详细信息',
+    'Up_Feed' => '动态',
     'Up_Note' => '备注',
     'Up_ACRegisterDate' => '注册A站时间',
     'Up_RegisterDate' => '入库时间',

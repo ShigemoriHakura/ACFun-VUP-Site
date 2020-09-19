@@ -80,6 +80,7 @@ return array(
     'Up_404' => 'This UP is not in database, plz contact admin.',
     'Up_ToIndex' => 'Home',
     'Up_Details' => 'Detail',
+    'Up_Feed' => 'Feed',
     'Up_Note' => 'Note',
     'Up_ACRegisterDate' => 'Join ACFun Date',
     'Up_RegisterDate' => 'Register Date',

@@ -97,24 +97,33 @@ class upAction extends baseAction
     public function action_feed($upid)
     {
         if($upid){
-            $adminData = [];
-            if(App::$model->Admin->exist()){
-                $adminData = App::$model->Admin->values();
+            if(!Language::getLanguage()){
+                Language::setLanguage('cn', Constant::month);
             }
-            $jsonDataReturn = [];
-            $url = "https://api-new.app.acfun.cn/rest/app/feed/profile?userId=" . $upid;
-            $data = $this->curl_file_get_contents($url);
-            if( $jsonData = json_decode($data, true) ){
-                if(!is_null($jsonData['feedList'])) {
-                    $jsonDataReturn = $jsonData['feedList'];
+            $lang = $this->get('lang');
+            $lang && Language::setLanguage($lang, Constant::month);
+            if ($upDetail = $this->upDetailDAO->filter(['uperid'=>$upid])->find()) {
+                $adminData = [];
+                if (App::$model->Admin->exist()) {
+                    $adminData = App::$model->Admin->values();
                 }
-            }
+                $jsonDataReturn = [];
+                $url = "https://api-new.app.acfun.cn/rest/app/feed/profile?userId=" . $upid . "&count=100";
+                $data = $this->curl_file_get_contents($url);
+                if ($jsonData = json_decode($data, true)) {
+                    if (!is_null($jsonData['feedList'])) {
+                        $jsonDataReturn = $jsonData['feedList'];
+                    }
+                }
 
-            return $this->display('up/upFeed', array(
-                'adminData'    => $adminData,
-                'jsonDataReturn' => $jsonDataReturn,
-                'uperid'    => $upid
-            ));
+                return $this->display('up/upFeed', array(
+                    'adminData' => $adminData,
+                    'jsonDataReturn' => $jsonDataReturn,
+                    'uperid' => $upid
+                ));
+            }else{
+                return $this->display('up/upDetail_404');
+            }
         }else{
             $this->response->redirect('/');
         }

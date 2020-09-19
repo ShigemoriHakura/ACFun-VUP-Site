@@ -68,6 +68,12 @@
                                 </div>
                             </div>
                             <hr>
+                            <div class="social-media">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><a href="https://message.acfun.cn/im?targetId=<?=$PRM['upDetail']['uperid']?>"><i class="fa fa-comment"></i></a></li>
+                                    <li class="list-inline-item"><a href="<?=$webRoot?>/d/<?=$PRM['upDetail']['uperid']?>"><i class="fa fa-rss"></i></a></li>
+                                </ul>
+                            </div>
                             <div class="follow">
                                 <div class="row">
                                     <div class="col-6 text-md-right border-right">
