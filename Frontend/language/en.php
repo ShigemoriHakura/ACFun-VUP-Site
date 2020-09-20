@@ -15,9 +15,9 @@ return array(
     'Index_Followers'   => 'Followers',
     'Index_Action'   => 'Action',
 
-    'UPstream_Title'  => 'ACFun VUP UP stream list',
-    'UPstream_Desc' => 'Data track rate: 10 min, Will UPdate every day',
-    'UPstream_FollowersAdded' => 'Followers changed',
+    'Upstream_Title'  => 'ACFun VUP UP stream list',
+    'Upstream_Desc' => 'Data track rate: 10 min, Will UPdate every day',
+    'Upstream_FollowersAdded' => 'Followers changed',
 
     'Newstream_Title'  => 'ACFun VUP new UPs',
 
@@ -43,10 +43,10 @@ return array(
     'Sidebar_Admin'   => 'Admin',
     'Sidebar_Search' => 'Search',
     'Sidebar_Newstream' => 'New',
-    'Sidebar_UPstream'   => 'Growing',
+    'Sidebar_Upstream'   => 'Growing',
     'Sidebar_Dailystream' => 'Daily',
     'Sidebar_Customstream' => 'Custom',
-    'Sidebar_UPdate_Log'   => 'UPdate Log',
+    'Sidebar_Update_Log'   => 'UPdate Log',
     'Sidebar_Log_Submit'   => 'Submit Log',
 
     'Search_Index'  => 'Search',

@@ -15,9 +15,9 @@ return array(
     'Index_Followers'   => '关注者',
     'Index_Action'   => '操作',
 
-    'UPstream_Title'  => 'ACFun VUP 急上升日榜单',
-    'UPstream_Desc'   => '数据每十分钟刷新一次，未记录的用户请私信添加。每天都会重新计算。',
-    'UPstream_FollowersAdded' => '关注者变更',
+    'Upstream_Title'  => 'ACFun VUP 急上升日榜单',
+    'Upstream_Desc'   => '数据每十分钟刷新一次，未记录的用户请私信添加。每天都会重新计算。',
+    'Upstream_FollowersAdded' => '关注者变更',
 
     'Newstream_Title'  => 'ACFun VUP 新收录榜单',
 
@@ -43,10 +43,10 @@ return array(
     'Sidebar_Admin'   => '管理',
     'Sidebar_Search' => '搜索',
     'Sidebar_Newstream' => '新收录',
-    'Sidebar_UPstream' => '急上升',
+    'Sidebar_Upstream' => '急上升',
     'Sidebar_Dailystream' => '日排序榜单',
     'Sidebar_Customstream' => '自定义榜单',
-    'Sidebar_UPdate_Log'   => '更新日志',
+    'Sidebar_Update_Log'   => '更新日志',
     'Sidebar_Log_Submit'   => '提交日志',
 
     'Search_Index'  => '搜索',

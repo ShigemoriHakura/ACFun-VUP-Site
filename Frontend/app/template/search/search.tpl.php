@@ -38,14 +38,14 @@
                                     <tr>
                                         <td>
                                             <div class="d-inline-block align-middle">
-                                                <div class="d-inline-block"><span class="f-12 f-w-600"><?=_L('Search_Uperid')?></span></span></div>
+                                                <div class="d-inline-block"><span class="f-12 f-w-600"><?=_L('Search_UPerid')?></span></span></div>
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="f-w-600"><?=_L('Search_UpNote')?></p>
+                                            <p class="f-w-600"><?=_L('Search_UPNote')?></p>
                                         </td>
                                         <td>
-                                            <p class="f-w-600"><?=_L('Search_UpName')?></p>
+                                            <p class="f-w-600"><?=_L('Search_UPName')?></p>
                                         </td>
                                         <td>
                                             <p class="f-w-600"><?=_L('Index_Action')?></p>
