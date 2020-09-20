@@ -102,6 +102,9 @@
                                 <li class="nav-item"><a class="nav-link" id="contents" data-toggle="tab" href="#content-tab" role="tab" aria-selected="false"><i class="icon-image"></i><?=_L('UP_Contents_Title')?></a>
                                     <div class="material-border"></div>
                                 </li>
+                                <li class="nav-item"><a class="nav-link" id="followersAdded" data-toggle="tab" href="#followerAdded-tab" role="tab" aria-selected="false"><i class="icon-pie-chart"></i><?=_L('UP_Followers_Added_Title')?></a>
+                                    <div class="material-border"></div>
+                                </li>
                             </ul>
                             <div class="tab-content" id="top-tabContent">
                                 <div class="tab-pane fade show active" id="all-up-tab" role="tabpanel" aria-labelledby="all-up">
@@ -112,6 +115,9 @@
                                 </div>
                                 <div class="tab-pane fade" id="content-tab" role="tabpanel" aria-labelledby="contents">
                                     <div id="area-spaline-contents"></div>
+                                </div>
+                                <div class="tab-pane fade" id="followerAdded-tab" role="tabpanel" aria-labelledby="followersAdded">
+                                    <div id="area-spaline-followers-Added"></div>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +137,10 @@
                                 <li class="nav-item"><a class="nav-link" id="liveLoveInfo" data-toggle="tab" href="#liveLoveInfo-tab" role="tab" aria-selected="false"><i class="icon-heart"></i><?=_L('UP_LiveLoveInfo_Title')?></a>
                                     <div class="material-border"></div>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" id="liveUserInfo" data-toggle="tab" href="#liveUserInfo-tab" role="tab" aria-selected="false"><i class="icon-map-alt"></i><?=_L('UP_LiveUserInfo_Title')?></a>
+                                <li class="nav-item"><a class="nav-link" id="liveLoveAddedInfo" data-toggle="tab" href="#liveLoveAddedInfo-tab" role="tab" aria-selected="false"><i class="icon-stats-up"></i><?=_L('UP_LiveLoveAddedInfo_Title')?></a>
+                                    <div class="material-border"></div>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" id="liveUserInfo" data-toggle="tab" href="#liveUserInfo-tab" role="tab" aria-selected="false"><i class="icon-user"></i><?=_L('UP_LiveUserInfo_Title')?></a>
                                     <div class="material-border"></div>
                                 </li>
                             </ul>
@@ -144,6 +153,9 @@
                                 </div>
                                 <div class="tab-pane fade" id="liveLoveInfo-tab" role="tabpanel" aria-labelledby="liveLoveInfo">
                                     <div id="area-spaline-liveLoveInfo"></div>
+                                </div>
+                                <div class="tab-pane fade" id="liveLoveAddedInfo-tab" role="tabpanel" aria-labelledby="liveLoveAddedInfo">
+                                    <div id="area-spaline-liveLoveAddedInfo"></div>
                                 </div>
                                 <div class="tab-pane fade" id="liveUserInfo-tab" role="tabpanel" aria-labelledby="liveUserInfo">
                                     <div id="area-spaline-liveUserInfo"></div>
@@ -409,6 +421,76 @@
             }
         }
     };
+    
+    var optionsFollowersAdded = {
+        series: [{
+            name: '<?=_L('UP_Followers_Added_Title')?>',
+            data: <?=$PRM['followersAddedData']->json_encode()?>
+        }],
+        chart: {
+            type: 'area',
+            stacked: false,
+            height: 350,
+            zoom: {
+                type: 'x',
+                enabled: true,
+                autoScaleYaxis: true
+            },
+            toolbar: {
+                autoSelected: 'zoom'
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        markers: {
+            size: 0,
+        },
+        title: {
+            text: '',
+            align: 'left'
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                inverseColors: false,
+                opacityFrom: 0.5,
+                opacityTo: 0,
+                stops: [0, 90, 100]
+            },
+        },
+        yaxis: {
+            labels: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                },
+            },
+            title: {
+                text: '<?=$PRM['upRawData']['name']?> - <?=_L('UP_Followers_Added_Title')?>'
+            },
+        },
+        xaxis: {
+            type: 'datetime',
+            labels: {
+                datetimeUTC: false,
+                datetimeFormatter: {
+                    year: 'yyyy',
+                    month: "MMM 'yy",
+                    day: 'dd MMM',
+                    hour: 'HH:mm',
+                },
+            }
+        },
+        tooltip: {
+            shared: false,
+            y: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                }
+            }
+        }
+    };
 
     var optionsLiveInfoAll = {
         series: [
@@ -636,6 +718,76 @@
             }
         }
     };
+    
+    var optionsLiveLoveAddedInfo = {
+        series: [{
+            name: '<?=_L('UP_LiveLoveAddedInfo_Title')?>',
+            data: <?=$PRM['chartLiveLoveAddedData']->json_encode()?>
+        }],
+        chart: {
+            type: 'area',
+            stacked: false,
+            height: 350,
+            zoom: {
+                type: 'x',
+                enabled: true,
+                autoScaleYaxis: true
+            },
+            toolbar: {
+                autoSelected: 'zoom'
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        markers: {
+            size: 0,
+        },
+        title: {
+            text: '',
+            align: 'left'
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                inverseColors: false,
+                opacityFrom: 0.5,
+                opacityTo: 0,
+                stops: [0, 90, 100]
+            },
+        },
+        yaxis: {
+            labels: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                },
+            },
+            title: {
+                text: '<?=$PRM['upRawData']['name']?> - <?=_L('UP_LiveLoveAddedInfo_Title')?>'
+            },
+        },
+        xaxis: {
+            type: 'datetime',
+            labels: {
+                datetimeUTC: false,
+                datetimeFormatter: {
+                    year: 'yyyy',
+                    month: "MMM 'yy",
+                    day: 'dd MMM',
+                    hour: 'HH:mm',
+                },
+            }
+        },
+        tooltip: {
+            shared: false,
+            y: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                }
+            }
+        }
+    };
 
     var optionsLiveUserInfo = {
         series: [{
@@ -722,6 +874,11 @@
         optionsContents
     );
 
+    var chartFollowersAdded = new ApexCharts(
+        document.querySelector("#area-spaline-followers-Added"),
+        optionsFollowersAdded
+    );    
+
     var chartUpLiveAll = new ApexCharts(
         document.querySelector("#area-spaline-liveInfo-all"),
         optionsLiveInfoAll
@@ -736,6 +893,11 @@
         document.querySelector("#area-spaline-liveLoveInfo"),
         optionsLiveLoveInfo
     );
+    
+    var chartLiveLoveAddedInfo = new ApexCharts(
+        document.querySelector("#area-spaline-liveLoveAddedInfo"),
+        optionsLiveLoveAddedInfo
+    );
 
     var chartLiveUserInfo = new ApexCharts(
         document.querySelector("#area-spaline-liveUserInfo"),
@@ -745,8 +907,10 @@
     chartUpAll.render();
     chartFollowers.render();
     chartContents.render();
+    chartFollowersAdded.render();
     chartUpLiveAll.render();
     chartLiveInfo.render();
     chartLiveLoveInfo.render();
+    chartLiveLoveAddedInfo.render();
     chartLiveUserInfo.render();
 </script>

@@ -51,16 +51,28 @@ class upAction extends baseAction
                     ])->query();
                     $chartData = [];
                     $contentData = [];
-                    foreach ($upRawDatas as $raw){
+                    $followersAddedData = [];
+                    foreach ($upRawDatas as $k => $raw){
                         $chartData[] = array((int)$raw['up_date'] * 1000, $raw['followers']);
                         $contentData[] = array((int)$raw['up_date'] * 1000, $raw['contentCount']);
+                        $followersAdded = $raw['followers'] - $upRawDatas[$k - 1]['followers'];
+                        if($k == 0){
+                            $followersAdded = 0;
+                        }
+                        $followersAddedData[] = array((int)$raw['up_date'] * 1000, $followersAdded);
                     }
                     $chartLiveData = [];
                     $chartLiveLoveData = [];
+                    $chartLiveLoveAddedData = [];
                     $chartLiveUserData = [];
-                    foreach ($upRawLiveDatas as $raw){
+                    foreach ($upRawLiveDatas as $k => $raw){
                         $chartLiveData[] = array((int)$raw['up_date'] * 1000, $raw['isLive']);
                         $chartLiveLoveData[] = array((int)$raw['up_date'] * 1000, $raw['likeCount']);
+                        $likeAdded = $raw['likeCount'] - $upRawLiveDatas[$k - 1]['likeCount'];
+                        if($likeAdded < 0 || $k == 0){
+                            $likeAdded = 0;
+                        }
+                        $chartLiveLoveAddedData[] = array((int)$raw['up_date'] * 1000, $likeAdded);
                         $chartLiveUserData[] = array((int)$raw['up_date'] * 1000, $raw['onlineCount']);
                     }
                     $registerDate = date('Y-m-d H:i:s', $upDetail['add_date']);
@@ -71,6 +83,7 @@ class upAction extends baseAction
                         $adminData = App::$model->Admin->values();
                     }
                     return $this->display('up/upDetail', array(
+                        'upID'         => $upid,
                         'adminData'    => $adminData,
                         'upDetail'     => $upDetail,
                         'upRawData'    => $upRawData,
@@ -79,10 +92,11 @@ class upAction extends baseAction
                         'updatedDate'  => $updatedDate,
                         'chartData'    => $chartData,
                         'contentData'  => $contentData,
-                        'chartLiveData'     => $chartLiveData,
-                        'chartLiveLoveData' => $chartLiveLoveData,
-                        'chartLiveUserData' => $chartLiveUserData,
-                        'upID'         => $upid,
+                        'followersAddedData'     => $followersAddedData,
+                        'chartLiveData'          => $chartLiveData,
+                        'chartLiveLoveData'      => $chartLiveLoveData,
+                        'chartLiveLoveAddedData' => $chartLiveLoveAddedData,
+                        'chartLiveUserData'      => $chartLiveUserData,
                     ));
                 }
                 return $this->display('up/upDetail_NoData');

@@ -88,10 +88,12 @@ return array(
     'Up_Followers' => 'Followers',
     'Up_Following' => 'Following',
     'UP_Followers_Title' => 'Followers',
+    'UP_Followers_Added_Title' => 'Followers Added',
     'Up_Contents' => 'Contents',
     'UP_Contents_Title' => 'Contents',
     'UP_LiveInfo_Title' => 'Live info',
     'UP_LiveLoveInfo_Title' => 'Love info',
+    'UP_LiveLoveAddedInfo_Title' => 'Love Added Info',
     'UP_LiveUserInfo_Title' => 'User info',
     'UP_All_Title' => 'All',
 
