@@ -86,7 +86,7 @@ return array(
     'UP_Note' => '备注',
     'UP_ACRegisterDate' => '注册A站时间',
     'UP_RegisterDate' => '入库时间',
-    'UP_LastUPdatedDate' => '数据更新时间',
+    'UP_LastUpdatedDate' => '数据更新时间',
     'UP_Followers' => '关注者',
     'UP_Following' => '关注中',
     'UP_Followers_Title' => '关注者情况',

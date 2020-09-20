@@ -46,7 +46,7 @@ return array(
     'Sidebar_Upstream'   => 'Growing',
     'Sidebar_Dailystream' => 'Daily',
     'Sidebar_Customstream' => 'Custom',
-    'Sidebar_Update_Log'   => 'UPdate Log',
+    'Sidebar_Update_Log'   => 'Update Log',
     'Sidebar_Log_Submit'   => 'Submit Log',
 
     'Search_Index'  => 'Search',
@@ -84,7 +84,7 @@ return array(
     'UP_Note' => 'Note',
     'UP_ACRegisterDate' => 'Join ACFun Date',
     'UP_RegisterDate' => 'Register Date',
-    'UP_LastUPdatedDate' => 'UPdate Date',
+    'UP_LastUpdatedDate' => 'Update Date',
     'UP_Followers' => 'Followers',
     'UP_Following' => 'Following',
     'UP_Followers_Title' => 'Followers',
