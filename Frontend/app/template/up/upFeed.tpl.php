@@ -59,7 +59,6 @@ function getMsecToMescdate($msectime)
                                             <div class="media-body">
                                                 <? switch($v['resourceType']){
                                                     case 2: //投稿视频
-                                                    case 3: //投稿文章
                                                         ?>
                                                         <h6><a href="https://acfun.cn/u/<?=$v['user']['userId']?>">@<?=$v['user']['userName']?></a>: <span class="pull-right f-14"><?=getMsecToMescdate($v['createTime'])?></span></h6>
                                                         <br>
@@ -68,6 +67,27 @@ function getMsecToMescdate($msectime)
                                                                 <div class="card">
                                                                     <div class="card-body">
                                                                         <h6><a href="<?=$v['shareUrl']?>"><?=html_entity_decode($v['caption'])?></a></h6>
+                                                                        <div class="attachment">
+                                                                            <ul class="list-inline">
+                                                                                <li class="list-inline-item"><img class="img-fluid" style="height:200px" src="<?=$v['coverUrl']?>" alt=""></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?
+                                                        break;
+                                                    case 3: //投稿文章
+                                                        ?>
+                                                        <h6><a href="https://acfun.cn/u/<?=$v['user']['userId']?>">@<?=$v['user']['userName']?></a>: <span class="pull-right f-14"><?=getMsecToMescdate($v['createTime'])?></span></h6>
+                                                        <br>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        <h6><a href="<?=$v['shareUrl']?>"><?=html_entity_decode($v['articleTitle'])?></a></h6>
+                                                                        <p><?=html_entity_decode($v['articleBody'])?></p>
                                                                         <div class="attachment">
                                                                             <ul class="list-inline">
                                                                                 <li class="list-inline-item"><img class="img-fluid" style="height:200px" src="<?=$v['coverUrl']?>" alt=""></li>
