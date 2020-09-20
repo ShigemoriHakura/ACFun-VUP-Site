@@ -68,12 +68,13 @@ func checkUpers(counter int) {
 				followers = any.Get("profile", "followed").ToString()
 				getSuccess = true
 			} else {
-				follower, err := getACUserFollowers(v["uperid"])
+				followLiveInfo, err := getACUserLiveInfoFollowers(v["uperid"])
 				if err != nil {
-					log.Println("[Main]", "用户数据正则获取失败：", err)
+					log.Println("[Main]", "过完粉丝用户数据获取失败：", err)
 					getSuccess = false
 				} else {
-					followers = follower
+					anyLiveInfo := jsoniter.Get(followLiveInfo)
+					followers = anyLiveInfo.Get("user", "fanCountValue").ToString()
 					getSuccess = true
 				}
 			}

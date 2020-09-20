@@ -25,3 +25,4 @@ var client = &http.Client{Timeout: 2 * time.Second}
 //ACFun API数据
 var ACFunLiveAPI = "https://live.acfun.cn/rest/pc-direct/user/userInfo?userId="
 var ACFunUserAPI = "https://www.acfun.cn/u/"
+var ACFunLiveInfoAPI = "https://api-new.app.acfun.cn/rest/app/live/info?authorId="

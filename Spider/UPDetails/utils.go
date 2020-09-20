@@ -72,6 +72,30 @@ func getACUserFollowers(id string) (string, error) {
 	return "0", nil
 }
 
+func getACUserLiveInfoFollowers(id string) ([]byte, error) {
+	var url = ACFunLiveInfoAPI + id
+	req, err := http.NewRequest("GET", url, nil)
+
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("User-Agent", "Chrome/83.0.4103.61")
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	return body, nil
+}
+
 func timeSleep(second int) {
 	time.Sleep(time.Duration(second) * time.Second)
 }
