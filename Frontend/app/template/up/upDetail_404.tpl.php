@@ -15,9 +15,9 @@
                     <h2 class="headline font-danger">404</h2>
                 </div>
                 <div class="col-md-8 offset-md-2">
-                    <p class="sub-content"><?=_L('Up_404') ?></p>
+                    <p class="sub-content"><?=_L('UP_404') ?></p>
                 </div>
-                <div><a class="btn btn-danger-gradien btn-lg" href="/"><?=_L('Up_ToIndex') ?></a></div>
+                <div><a class="btn btn-danger-gradien btn-lg" href="/"><?=_L('UP_ToIndex') ?></a></div>
             </div>
         </div>
         <!-- error-404 end      -->

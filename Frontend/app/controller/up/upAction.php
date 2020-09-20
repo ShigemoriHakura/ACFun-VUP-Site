@@ -3,6 +3,7 @@
 namespace app\controller;
 use App;
 use biny\lib\Language;
+use biny\lib\Mobile_Detect;
 use Constant;
 
 class upAction extends baseAction
@@ -38,16 +39,22 @@ class upAction extends baseAction
             }
             $lang = $this->get('lang');
             $lang && Language::setLanguage($lang, Constant::month);
+
+            $queryDay = 5;
+            $detect = new Mobile_Detect;
+            if ( $detect->isMobile() ) {
+                $queryDay = 1;
+            }
             if ($upDetail = $this->upDetailDAO->filter(['uperid'=>$upid])->find()){
                 if ($this->upRawDataDAO->filter(['uperid'=>$upid])->count() > 2){
                     $upRawData = $this->upRawDataDAO->filter(['uperid'=>$upid])->order(array('up_date'=>'DESC'))->find();
                     $upRawDatas = $this->upRawDataDAO->filter([
                         'uperid'=>$upid,
-                        '>='=>array('up_date'=> time() - 60 * 60 * 24 * 5)
+                        '>='=>array('up_date'=> time() - 60 * 60 * 24 * $queryDay)
                     ])->query();
                     $upRawLiveDatas = $this->upRawLiveDataDAO->filter([
                         'uperid'=>$upid,
-                        '>='=>array('up_date'=> time() - 60 * 60 * 24 * 5)
+                        '>='=>array('up_date'=> time() - 60 * 60 * 24 * $queryDay)
                     ])->query();
                     $chartData = [];
                     $contentData = [];
@@ -55,9 +62,9 @@ class upAction extends baseAction
                     foreach ($upRawDatas as $k => $raw){
                         $chartData[] = array((int)$raw['up_date'] * 1000, $raw['followers']);
                         $contentData[] = array((int)$raw['up_date'] * 1000, $raw['contentCount']);
-                        $followersAdded = $raw['followers'] - $upRawDatas[$k - 1]['followers'];
-                        if($k == 0){
-                            $followersAdded = 0;
+                        $followersAdded = 0;
+                        if($k > 0){
+                            $followersAdded = $raw['followers'] - $upRawDatas[$k - 1]['followers'];
                         }
                         $followersAddedData[] = array((int)$raw['up_date'] * 1000, $followersAdded);
                     }
@@ -68,9 +75,12 @@ class upAction extends baseAction
                     foreach ($upRawLiveDatas as $k => $raw){
                         $chartLiveData[] = array((int)$raw['up_date'] * 1000, $raw['isLive']);
                         $chartLiveLoveData[] = array((int)$raw['up_date'] * 1000, $raw['likeCount']);
-                        $likeAdded = $raw['likeCount'] - $upRawLiveDatas[$k - 1]['likeCount'];
-                        if($likeAdded < 0 || $k == 0){
-                            $likeAdded = 0;
+                        $likeAdded = 0;
+                        if($k > 0){
+                            $likeAdded = $raw['likeCount'] - $upRawLiveDatas[$k - 1]['likeCount'];
+                            if($likeAdded < 0){
+                                $likeAdded = 0;
+                            }
                         }
                         $chartLiveLoveAddedData[] = array((int)$raw['up_date'] * 1000, $likeAdded);
                         $chartLiveUserData[] = array((int)$raw['up_date'] * 1000, $raw['onlineCount']);

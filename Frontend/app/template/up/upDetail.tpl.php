@@ -11,7 +11,7 @@
                         <li class="breadcrumb-item"><i class="f-16 fa fa-home"></i></li>
                         <li class="breadcrumb-item">UP   </li>
                     </ol>
-                    <h3><?=_L('Up_Details')?></h3>
+                    <h3><?=_L('UP_Details')?></h3>
                 </div>
             </div>
         </div>
@@ -35,13 +35,13 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="ttl-info text-left">
-                                                <h6><i class="fa fa-bookmark-o"></i>   <?=_L('Up_Note')?></h6><span><?=$PRM['upDetail']['name']?></span>
+                                                <h6><i class="fa fa-bookmark-o"></i>   <?=_L('UP_Note')?></h6><span><?=$PRM['upDetail']['name']?></span>
 
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="ttl-info text-left">
-                                                <h6><i class="fa fa-cloud"></i>   <?=_L('Up_RegisterDate')?></h6><span><?=$PRM['registerDate']?></span>
+                                                <h6><i class="fa fa-cloud"></i>   <?=_L('UP_RegisterDate')?></h6><span><?=$PRM['registerDate']?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -56,12 +56,12 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="ttl-info text-left">
-                                                <h6><i class="fa fa-calendar"></i>   <?=_L('Up_ACRegisterDate')?></h6><span><?=$PRM['acRegisterDate']?></span>
+                                                <h6><i class="fa fa-calendar"></i>   <?=_L('UP_ACRegisterDate')?></h6><span><?=$PRM['acRegisterDate']?></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="ttl-info text-left">
-                                                <h6><i class="fa fa-location-arrow"></i>   <?=_L('Up_LastUpdatedDate')?></h6><span><?=$PRM['updatedDate']?></span>
+                                                <h6><i class="fa fa-location-arrow"></i>   <?=_L('UP_LastUpdatedDate')?></h6><span><?=$PRM['updatedDate']?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -77,10 +77,10 @@
                             <div class="follow">
                                 <div class="row">
                                     <div class="col-6 text-md-right border-right">
-                                        <div class="follow-num"><?=$PRM['upRawData']['followers']?></div><span><?=_L('Up_Followers')?></span>
+                                        <div class="follow-num"><?=$PRM['upRawData']['followers']?></div><span><?=_L('UP_Followers')?></span>
                                     </div>
                                     <div class="col-6 text-md-left">
-                                        <div class="follow-num"><?=$PRM['upRawData']['following']?></div><span><?=_L('Up_Following')?></span>
+                                        <div class="follow-num"><?=$PRM['upRawData']['following']?></div><span><?=_L('UP_Following')?></span>
                                     </div>
                                 </div>
                             </div>
@@ -196,11 +196,11 @@
     var optionsUpAll = {
         series: [
             {
-                name: '<?=_L('Up_Followers')?>',
+                name: '<?=_L('UP_Followers')?>',
                 //type: 'line',
                 data: <?=$PRM['chartData']->json_encode()?>
             },{
-                name: '<?=_L('Up_Contents')?>',
+                name: '<?=_L('UP_Contents')?>',
                 //type: 'column',
                 data: <?=$PRM['contentData']->json_encode()?>
             }
@@ -246,7 +246,7 @@
                     },
                 },
                 title: {
-                    text: '<?=$PRM['upRawData']['name']?> - <?=_L('Up_Followers')?>'
+                    text: '<?=$PRM['upRawData']['name']?> - <?=_L('UP_Followers')?>'
                 },
             },{
                 opposite: true,
@@ -256,7 +256,7 @@
                     },
                 },
                 title: {
-                    text: '<?=$PRM['upRawData']['name']?> - <?=_L('Up_Contents')?>'
+                    text: '<?=$PRM['upRawData']['name']?> - <?=_L('UP_Contents')?>'
                 },
             }
         ],
@@ -284,7 +284,7 @@
 
     var optionsFollowers = {
         series: [{
-            name: '<?=_L('Up_Followers')?>',
+            name: '<?=_L('UP_Followers')?>',
             data: <?=$PRM['chartData']->json_encode()?>
         }],
         chart: {
@@ -327,7 +327,7 @@
                 },
             },
             title: {
-                text: '<?=$PRM['upRawData']['name']?> - <?=_L('Up_Followers')?>'
+                text: '<?=$PRM['upRawData']['name']?> - <?=_L('UP_Followers')?>'
             },
         },
         xaxis: {
@@ -354,7 +354,7 @@
 
     var optionsContents = {
         series: [{
-            name: '<?=_L('Up_Contents')?>',
+            name: '<?=_L('UP_Contents')?>',
             data: <?=$PRM['contentData']->json_encode()?>
         }],
         chart: {
@@ -397,7 +397,7 @@
                 },
             },
             title: {
-                text: '<?=$PRM['upRawData']['name']?> - <?=_L('Up_Contents')?>'
+                text: '<?=$PRM['upRawData']['name']?> - <?=_L('UP_Contents')?>'
             },
         },
         xaxis: {

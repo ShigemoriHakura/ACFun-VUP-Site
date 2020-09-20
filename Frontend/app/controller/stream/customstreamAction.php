@@ -3,6 +3,7 @@
 namespace app\controller;
 use App;
 use biny\lib\Language;
+use biny\lib\Mobile_Detect;
 use Constant;
 
 class customstreamAction extends baseAction
@@ -22,6 +23,12 @@ class customstreamAction extends baseAction
             $adminData = App::$model->Admin->values();
         }
 
+        $queryDay = 5;
+        $detect = new Mobile_Detect;
+        if ( $detect->isMobile() ) {
+            $queryDay = 1;
+        }
+
         $updata = [];
         $ups = $this->request->post('ups');
         if(is_array($ups) && count($ups) <= 5){
@@ -33,7 +40,7 @@ class customstreamAction extends baseAction
                     );
                     $upRawDatas = $this->upRawDataDAO->filter([
                         'uperid' => $up,
-                        '>=' => array('up_date' => time() - 60 * 60 * 24 * 5)
+                        '>=' => array('up_date' => time() - 60 * 60 * 24 * $queryDay)
                     ])->query();
                     if($upRawDatas){
                         foreach ($upRawDatas as $v){

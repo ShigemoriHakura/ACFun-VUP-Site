@@ -28,7 +28,7 @@ function getMsecToMescdate($msectime)
                         <li class="breadcrumb-item"><i class="f-16 fa fa-home"></i></li>
                         <li class="breadcrumb-item">UP   </li>
                     </ol>
-                    <h3><?=_L('Up_Details')?></h3>
+                    <h3><?=_L('UP_Details')?></h3>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@ function getMsecToMescdate($msectime)
                 <div class="col-xl-12 xl-50 box-col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5><?=_L('Up_Feed')?></h5>
+                            <h5><?=_L('UP_Feed')?></h5>
                         </div>
                         <div class="card-body">
                             <div class="timeline-small">

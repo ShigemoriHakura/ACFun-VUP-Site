@@ -38,16 +38,16 @@
                             <div class="form-row">
                                 <input type="text" name="_csrf" hidden value="<?=$this->getCsrfToken()?>"/>
                                 <div class="col-md-12 mb-12">
-                                    <label for="validationCustom01"><?=_L('Submit_Up_Note')?></label>
-                                    <input name="name" class="form-control" id="validationCustom01" type="text" placeholder="<?=_L('Submit_Up_Note')?>" required="" autocomplete="off">
+                                    <label for="validationCustom01"><?=_L('Submit_UP_Note')?></label>
+                                    <input name="name" class="form-control" id="validationCustom01" type="text" placeholder="<?=_L('Submit_UP_Note')?>" required="" autocomplete="off">
                                     <div class="valid-feedback"><?=_L('Submit_CheckOK')?></div>
                                 </div>
                             </div>
                             <hr>
                             <div class="form-row">
                                 <div class="col-md-12 mb-12">
-                                    <label for="validationCustom05"><?=_L('Submit_Up_ID')?></label>
-                                    <input name="uperid" class="form-control" id="validationCustom05" type="text" placeholder="<?=_L('Submit_Up_ID')?>" required="" autocomplete="off">
+                                    <label for="validationCustom05"><?=_L('Submit_UP_ID')?></label>
+                                    <input name="uperid" class="form-control" id="validationCustom05" type="text" placeholder="<?=_L('Submit_UP_ID')?>" required="" autocomplete="off">
                                     <div class="invalid-feedback"><?=_L('Submit_Uperid_NotInput')?></div>
                                 </div>
                             </div>
