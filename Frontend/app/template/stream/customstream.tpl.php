@@ -93,10 +93,6 @@
                 stops: [0, 90, 100]
             },
         },
-        legend: {
-            position: 'top',
-            horizontalAlign: 'left'
-        },
         xaxis: {
             type: 'datetime'
         },

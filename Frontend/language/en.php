@@ -38,7 +38,7 @@ return array(
     'Sidebar_Login'  => 'Login',
     'Sidebar_Logout'  => 'Log out',
     'Sidebar_List'   => 'List',
-    'Sidebar_Submit' => 'Submit UP',
+    'Sidebar_Submit' => 'Submit',
     'Sidebar_User'   => 'User',
     'Sidebar_Admin'   => 'Admin',
     'Sidebar_Search' => 'Search',

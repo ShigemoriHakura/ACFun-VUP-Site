@@ -282,7 +282,6 @@ class DAO
         $fields = $this->buildFields($fields, isset($params[2]) ? $params[2]->get('additions') : []);
         $groupBy = $this->buildGroupBy(isset($params[2]) ? $params[2]->get('groupby') : [], isset($params[2]) ? $params[2]->get('having') : []);
         $sql = sprintf("SELECT %s FROM %s%s%s%s%s", $fields, $this->getTable(), $where, $groupBy, $orderBy, $limit);
-
         return $this->sql($sql, $key);
     }
 

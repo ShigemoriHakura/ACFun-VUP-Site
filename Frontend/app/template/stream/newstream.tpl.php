@@ -62,8 +62,13 @@
                                                                     <span class="f-12 f-w-600"><?=$v['rawData']['name']?></span>
                                                                     <span class="d-block">
                                                                         <?
-                                                                        if(mb_strlen($v['rawData']['signature']) > 10){
-                                                                            echo(mb_substr($v['rawData']['signature'],0,10) . "...");
+                                                                        $strlen = 100;
+                                                                        $detect = new biny\lib\Mobile_Detect;
+                                                                        if($detect->isMobile()){
+                                                                            $strlen = 10;
+                                                                        }
+                                                                        if(mb_strlen($v['rawData']['signature']) > $strlen){
+                                                                            echo(mb_substr($v['rawData']['signature'], 0, $strlen) . "...");
                                                                         }else{
                                                                             echo($v['rawData']['signature']);
                                                                         }
