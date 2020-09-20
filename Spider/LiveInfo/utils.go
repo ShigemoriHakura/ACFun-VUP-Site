@@ -1,16 +1,16 @@
 package main
 
 import (
-	"os"
-	"log"
-	"time"
-	"net/http"
 	"io/ioutil"
+	"log"
+	"net/http"
+	"os"
+	"time"
+
 	"github.com/akkuman/parseConfig"
 )
 
 func getACUserLiveInfo(id string) []byte {
-	client := &http.Client{Timeout: 2 * time.Second}
 	var url = ACFunLiveInfoAPI + id
 	req, err := http.NewRequest("GET", url, nil)
 
@@ -36,8 +36,8 @@ func getACUserLiveInfo(id string) []byte {
 	return body
 }
 
-func timeSleep(second int){
-    time.Sleep(time.Duration(second) * time.Second)
+func timeSleep(second int) {
+	time.Sleep(time.Duration(second) * time.Second)
 }
 
 func importConfig() {
@@ -51,10 +51,10 @@ func importConfig() {
 	var config = parseConfig.New("config.json")
 	Database_Host = config.Get("Database_Host").(string)
 	Database_Port = config.Get("Database_Port").(string)
-	Database_DB   = config.Get("Database_DB").(string)
+	Database_DB = config.Get("Database_DB").(string)
 	Database_Name = config.Get("Database_Name").(string)
 	Database_Pass = config.Get("Database_Pass").(string)
-	Database_TLS  = config.Get("Database_TLS").(bool)
+	Database_TLS = config.Get("Database_TLS").(bool)
 	RefreshRate = int(config.Get("RefreshRate").(float64))
-	SpiderWait  = int(config.Get("SpiderWait").(float64))
+	SpiderWait = int(config.Get("SpiderWait").(float64))
 }
