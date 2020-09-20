@@ -38,7 +38,7 @@ return array(
     'Sidebar_Login'  => '登录',
     'Sidebar_Logout'  => '登出',
     'Sidebar_List'   => '榜单',
-    'Sidebar_Submit' => '提交',
+    'Sidebar_Submit' => '提交用户',
     'Sidebar_User'   => '路人',
     'Sidebar_Admin'   => '管理',
     'Sidebar_Search' => '搜索',
