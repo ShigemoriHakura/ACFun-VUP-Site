@@ -66,7 +66,7 @@
                                                         <p class="f-w-600"><?=$v['nowName']?></p>
                                                     </td>
                                                     <td>
-                                                        <a href="/u/<?=$v['uperid']?>"><button class="btn btn-primary btn-square digits"><?=_L('Index_Detail')?></button></a>
+                                                        <a target="_blank" href="/u/<?=$v['uperid']?>"><button class="btn btn-primary btn-square digits"><?=_L('Index_Detail')?></button></a>
                                                     </td>
                                                 </tr>
                                         <? }?>
