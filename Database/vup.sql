@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2020-09-16 05:10:50
+-- 生成日期： 2020-09-21 13:57:24
 -- 服务器版本： 5.6.49-log
 -- PHP 版本： 7.4.9
 
@@ -74,6 +74,19 @@ CREATE TABLE `vup_up_data` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `vup_up_data_raw`
+--
+
+CREATE TABLE `vup_up_data_raw` (
+  `uperid` int(11) NOT NULL,
+  `add_date` int(11) NOT NULL,
+  `followers` int(11) NOT NULL,
+  `following` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `vup_up_list`
 --
 
@@ -120,6 +133,18 @@ CREATE TABLE `vup_up_log` (
   `note` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `vup_up_medal`
+--
+
+CREATE TABLE `vup_up_medal` (
+  `uperid` int(11) NOT NULL,
+  `clubName` text NOT NULL,
+  `up_date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- 转储表的索引
 --
@@ -159,6 +184,14 @@ ALTER TABLE `vup_up_list`
 --
 ALTER TABLE `vup_up_live_data`
   ADD KEY `uperid` (`uperid`,`up_date`);
+
+--
+-- 表的索引 `vup_up_medal`
+--
+ALTER TABLE `vup_up_medal`
+  ADD PRIMARY KEY (`uperid`),
+  ADD UNIQUE KEY `uperid_2` (`uperid`),
+  ADD KEY `uperid` (`uperid`);
 
 --
 -- 在导出的表使用AUTO_INCREMENT
