@@ -5,7 +5,8 @@
 <?
 
 function ACFunEscape($str){
-    preg_match_all ("/\[at[^：]+/", $str, $at_array);
+    //处理名字和uid
+    preg_match_all ("/\[at[^[]+/", $str, $at_array);
     foreach($at_array[0] as $arr){
         preg_match_all ("/@[^[]+/", $arr, $uname);
         preg_match_all ("/uid=[0-9]+/", $arr, $uid);
@@ -13,8 +14,19 @@ function ACFunEscape($str){
         $uid   = str_replace("uid=", "", $uid[0][0]);
         $str = str_replace($arr, "<a target='_blank' href='https://www.acfun.cn/u/" . $uid . "'>" . $uname . "</a>" , $str);
     }
+    $str = str_replace("[/at]", "" , $str);
+    //处理图片
+    preg_match_all ("#\[img.*?./img]#", $str, $img_array);
+    foreach($img_array[0] as $img){
+        preg_match_all ("#\[img=.*?.]#", $img, $name);
+        $name = $name[0][0];
+        $uname  = str_replace("]", "", str_replace("[img=", "", $name));
+        $uimg   = str_replace("[/img]", "",str_replace($name, "", $img));
+        $str = str_replace($img, "<a target='_blank' href='" . $uimg . "'>" . $uname . "</a>" , $str);
+    }
     return $str;
 }
+
 
 function getMsecToMescdate($msectime)
 {

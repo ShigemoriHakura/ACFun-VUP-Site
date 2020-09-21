@@ -61,7 +61,7 @@
                                                             <span class="f-12 f-w-600"><?=$v['rawData']['name']?></span>
                                                             <span class="d-block">
                                                                 <? 
-                                                                $strlen = 100;
+                                                                $strlen = 50;
                                                                 $detect = new biny\lib\Mobile_Detect;
                                                                 if($detect->isMobile()){
                                                                     $strlen = 10;
