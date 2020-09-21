@@ -27,6 +27,7 @@
                         <h5 class="d-inline-block"><?=_L('Upstream_Title')?></h5><span class="setting-round pull-right d-inline-block mt-0"><i class="fa fa-spin fa-cog"></i></span>
                         <p class="f-12 mb-0"><?=_L('Index_Desc')?></p>
                         <p class="f-12 mb-0"><?=_L('Index_Desc_Scroll')?></p>
+                        <p class="f-12 mb-0"><?=date('Y-m-d', $PRM['dayTimestamp'])?></p>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive agent-performance-table">

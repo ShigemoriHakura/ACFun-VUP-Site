@@ -52,7 +52,8 @@ class newstreamAction extends baseAction
         }
         return $this->display('stream/newstream', array(
             'upListData' => $upListDatasets,
-            'adminData' => $adminData
+            'adminData' => $adminData,
+            'dayTimestamp' => $todayTimestamp
         ));
     }
 

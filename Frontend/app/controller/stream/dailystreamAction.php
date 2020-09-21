@@ -52,7 +52,8 @@ class dailystreamAction extends baseAction
         }
         return $this->display('stream/dailystream', array(
             'upListData' => $upListDatasets,
-            'adminData' => $adminData
+            'adminData' => $adminData,
+            'dayTimestamp' => $todayTimestamp
         ));
     }
 
@@ -96,7 +97,8 @@ class dailystreamAction extends baseAction
         }
         return $this->display('stream/dailystream', array(
             'upListData' => $upListDatasets,
-            'adminData' => $adminData
+            'adminData' => $adminData,
+            'dayTimestamp' => $todayTimestamp - 1
         ));
     }
 }
