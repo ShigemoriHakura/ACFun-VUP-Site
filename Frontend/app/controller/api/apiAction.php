@@ -41,4 +41,27 @@ class apiAction extends baseAction
         }
         return json_encode($result);
     }
+
+    public function action_up_cron($upid)
+    {
+        $result = array(
+            "result" => 1,
+            "data" => "Hello world"
+        );
+        if($upid){
+            $date = $this->get('day');
+            $todayTimestamp = strtotime(date('Y-m-d')) - 86400;
+            if($date){
+                $todayTimestamp = strtotime(date('Y-m-d', $date));
+            }
+            $cronLatestData = $this->upCronDataDAO->filter([
+                'uperid'=>$upid,
+                '<='=>array('add_date'=> $todayTimestamp)
+            ])->order(array('add_date'=>'DESC'))->limit(1)->query();
+            $result["data"] = $cronLatestData;
+        }else{
+            $result["data"] = "no uperid";
+        }
+        return json_encode($result);
+    }
 }

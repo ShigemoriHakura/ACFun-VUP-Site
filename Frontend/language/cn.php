@@ -51,6 +51,9 @@ return array(
     'Sidebar_Medal' => '粉丝牌',
     'Sidebar_MedalList' => '粉丝牌总览',
     'Sidebar_MedalSearch' => '粉丝牌搜索',
+    'Sidebar_Prev_List'   => '历史榜单',
+    'Sidebar_Prev_Upstream' => '昨日急上升',
+    'Sidebar_Prev_Dailystream' => '昨日排序榜单',
 
     'Search_Index'  => '搜索',
     'Search_Title' => '搜索',

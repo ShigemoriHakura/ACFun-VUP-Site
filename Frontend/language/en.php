@@ -51,6 +51,9 @@ return array(
     'Sidebar_Medal' => 'Medal',
     'Sidebar_MedalList' => 'Medal List',
     'Sidebar_MedalSearch' => 'Medal Search',
+    'Sidebar_Prev_List'   => 'History',
+    'Sidebar_Prev_Upstream' => 'Growing',
+    'Sidebar_Prev_Dailystream' => 'Daily',
 
     'Search_Index'  => 'Search',
     'Search_Title' => 'Search',
