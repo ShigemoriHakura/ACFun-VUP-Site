@@ -22,8 +22,8 @@ return array(
             'ups/prev/<day:\d+>' => 'upstream/prev',
             'daily/prev/<day:\d+>' => 'dailystream/prev',
 
-            'api/d/<upid:\d+>' => 'api/up_detail',
-            'api/c/<upid:\d+>' => 'api/up_cron',
+            'api/detail/<upid:\d+>' => 'api/up_detail',
+            'api/cron/<upid:\d+>' => 'api/up_cron',
         ),
     ),
 
