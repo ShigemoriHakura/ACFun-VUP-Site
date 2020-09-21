@@ -87,6 +87,7 @@ return array(
     'UP_Details' => 'Detail',
     'UP_Feed' => 'Feed',
     'UP_Note' => 'Note',
+    'UP_Medal' => 'Medal',
     'UP_ACRegisterDate' => 'Join ACFun Date',
     'UP_RegisterDate' => 'Register Date',
     'UP_LastUpdatedDate' => 'Update Date',

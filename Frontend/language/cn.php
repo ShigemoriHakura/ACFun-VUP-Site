@@ -88,6 +88,7 @@ return array(
     'UP_Details' => '详细信息',
     'UP_Feed' => '动态',
     'UP_Note' => '备注',
+    'UP_Medal' => '粉丝牌',
     'UP_ACRegisterDate' => '注册A站时间',
     'UP_RegisterDate' => '入库时间',
     'UP_LastUpdatedDate' => '数据更新时间',

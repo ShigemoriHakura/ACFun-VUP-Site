@@ -35,9 +35,12 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="ttl-info text-left">
-                                                <h6><i class="fa fa-bookmark-o"></i>   <?=_L('UP_Note')?></h6><span><?=$PRM['upDetail']['name']?></span>
-
-                                            </div>
+                                                <?if($PRM('upMedalData')){?>
+                                                    <h6><i class="fa fa-bookmark-o"></i>   <?=_L('UP_Medal')?></h6><span><?=$PRM['upMedalData']['clubName']?></span>
+                                                <?}else{?>
+                                                    <h6><i class="fa fa-tag"></i>   <?=_L('UP_Note')?></h6><span><?=$PRM['upDetail']['name']?></span>
+                                                <?}?>
+                                                </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="ttl-info text-left">

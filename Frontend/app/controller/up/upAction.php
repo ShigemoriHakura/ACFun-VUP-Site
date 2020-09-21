@@ -48,6 +48,7 @@ class upAction extends baseAction
             if ($upDetail = $this->upDetailDAO->filter(['uperid'=>$upid])->find()){
                 if ($this->upRawDataDAO->filter(['uperid'=>$upid])->count() > 2){
                     $upRawData = $this->upRawDataDAO->filter(['uperid'=>$upid])->order(array('up_date'=>'DESC'))->find();
+                    $upMedalData = $this->upMedalDAO->filter(['uperid'=>$upid])->find();
                     $upRawDatas = $this->upRawDataDAO->filter([
                         'uperid'=>$upid,
                         '>='=>array('up_date'=> time() - 60 * 60 * 24 * $queryDay)
@@ -102,6 +103,7 @@ class upAction extends baseAction
                         'updatedDate'  => $updatedDate,
                         'chartData'    => $chartData,
                         'contentData'  => $contentData,
+                        'upMedalData'  => $upMedalData,
                         'followersAddedData'     => $followersAddedData,
                         'chartLiveData'          => $chartLiveData,
                         'chartLiveLoveData'      => $chartLiveLoveData,
