@@ -50,7 +50,7 @@ class apiAction extends baseAction
         );
         if($upid){
             $date = $this->get('day');
-            $todayTimestamp = strtotime(date('Y-m-d')) - 86400;
+            $todayTimestamp = strtotime(date('Y-m-d')) - 1;
             if($date){
                 $todayTimestamp = strtotime(date('Y-m-d', $date));
             }
