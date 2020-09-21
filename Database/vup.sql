@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2020-09-21 13:57:24
+-- 生成日期： 2020-09-21 18:34:11
 -- 服务器版本： 5.6.49-log
 -- PHP 版本： 7.4.9
 
@@ -74,14 +74,16 @@ CREATE TABLE `vup_up_data` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `vup_up_data_raw`
+-- 表的结构 `vup_up_data_cron`
 --
 
-CREATE TABLE `vup_up_data_raw` (
+CREATE TABLE `vup_up_data_cron` (
   `uperid` int(11) NOT NULL,
   `add_date` int(11) NOT NULL,
   `followers` int(11) NOT NULL,
-  `following` int(11) NOT NULL
+  `following` int(11) NOT NULL,
+  `followers_change` int(11) NOT NULL,
+  `following_change` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -169,6 +171,13 @@ ALTER TABLE `vup_up_data`
   ADD KEY `uperid` (`uperid`),
   ADD KEY `up_date` (`up_date`),
   ADD KEY `uperid_2` (`uperid`,`up_date`);
+
+--
+-- 表的索引 `vup_up_data_cron`
+--
+ALTER TABLE `vup_up_data_cron`
+  ADD KEY `uperid` (`uperid`),
+  ADD KEY `add_date` (`add_date`);
 
 --
 -- 表的索引 `vup_up_list`
