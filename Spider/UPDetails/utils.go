@@ -117,4 +117,6 @@ func importConfig() {
 	Database_TLS = config.Get("Database_TLS").(bool)
 	RefreshRate = int(config.Get("RefreshRate").(float64))
 	SpiderWait = int(config.Get("SpiderWait").(float64))
+	ACFun_Name = config.Get("ACFun_Name").(string)
+	ACFun_Pass = config.Get("ACFun_Pass").(string)
 }

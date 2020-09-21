@@ -8,6 +8,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/orzogc/acfundanmu"
 	jsoniter "github.com/json-iterator/go"
 )
 
@@ -19,7 +20,21 @@ func main() {
 	databaseLink := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&tls=%v", Database_Name, Database_Pass, Database_Host, Database_Port, Database_DB, Database_TLS)
 	initMysql(databaseLink)
 	log.Println("[Main]", "数据库载入完成，爬虫进程启动")
+	loginToACFun()
 	runMainProcess()
+}
+
+func loginToACFun() {
+	if ACFun_Name != "" && ACFun_Pass != "" {
+		log.Println("[Main]", "尝试登录ACFun账号中")
+		cookies, err := acfundanmu.Login(ACFun_Name, ACFun_Pass)
+		if err != nil {
+			log.Println("[Main]", ACFun_Name, "登录出错：", err)
+		} else {
+			log.Println("[Main]", ACFun_Name, "登录成功")
+			ACCookies = cookies
+		}
+	}
 }
 
 func runMainProcess() {
@@ -79,7 +94,14 @@ func checkUpers(counter int) {
 				}
 			}
 			if getSuccess {
+				uperid, _ := strconv.ParseInt(v["uperid"], 10, 64)
+				_, medalName, err := acfundanmu.GetMedalInfo(uperid, ACCookies)
+				if err != nil {
+					log.Println("[Main]", "粉丝牌数据获取失败：", err)
+				}
+				//log.Println(medalName)
 				acUser["followers"] = followers
+				acUser["medalName"] = medalName
 				acUser["uperid"] = v["uperid"]
 				acUser["rawdata"] = string(jsonData)
 				acUser["spaceImage"] = any.Get("profile", "spaceImage").ToString()
@@ -93,7 +115,11 @@ func checkUpers(counter int) {
 				acUser["lastLoginTime"] = any.Get("profile", "lastLoginTime").ToString()
 				acUser["headUrl"] = any.Get("profile", "headUrl").ToString()
 				updateMap[v["id"]] = acUser
-				log.Printf("[Avatar] %v (%v) 关注: %v, 关注者: %v, 用户名: %v", v["name"], v["uperid"], acUser["following"], followers, acUser["name"])
+				if(medalName != ""){
+					log.Printf("[Avatar] %v (%v) 关注: %v, 关注者: %v, 用户名: %v, 粉丝牌：%v", v["name"], v["uperid"], acUser["following"], followers, acUser["name"], medalName)
+				}else{
+					log.Printf("[Avatar] %v (%v) 关注: %v, 关注者: %v, 用户名: %v", v["name"], v["uperid"], acUser["following"], followers, acUser["name"])
+				}
 			} else {
 				log.Println("[Main]", "用户数据正则失败")
 			}
@@ -113,15 +139,21 @@ func makeMysqlUpdateQueue(updateMap map[string]map[string]string) {
 		var updatedTime = ""
 		var registerTime = ""
 		var nowName = ""
+
+		var medalName = ""
 		for k, v := range updateMap {
 			dataString += fmt.Sprintf("(%v, %v, '%v', %v, %v, '%v', '%v', '%v', %v, '%v'),", v["uperid"], time.Now().Unix(), v["spaceImage"], v["followers"], v["following"], v["name"], v["signature"], v["verifiedText"], v["contentCount"], v["headUrl"])
 			uperids = uperids + k + ","
 			updatedTime += "WHEN " + k + " THEN " + strconv.Itoa(int(time.Now().Unix())) + "\n"
 			registerTime += "WHEN " + k + " THEN " + v["registerTime"] + "\n"
 			nowName += "WHEN " + k + " THEN '" + v["name"] + "'\n"
+			if(v["medalName"] != ""){
+				medalName += fmt.Sprintf("(%v,'%v', %v),", v["uperid"],  v["medalName"], time.Now().Unix())
+			}
 		}
 		dataString = strings.TrimRight(dataString, ",")
 		uperids = strings.TrimRight(uperids, ",")
+		medalName = strings.TrimRight(medalName, ",")
 		//log.Println(dataString)
 		rows, err := Database_Mysql.Exec(dataString)
 		if err != nil {
@@ -146,5 +178,18 @@ func makeMysqlUpdateQueue(updateMap map[string]map[string]string) {
 			log.Println("[MysqlUpdatedTime]", "更新失败：", err)
 		}
 		log.Println("[MysqlUpdatedTime]", "更新成功，影响行数：", int(rowCount))
+		
+		var medalUpdated = "INSERT INTO vup_up_medal (uperid, clubName, up_date) VALUES " + medalName + " ON DUPLICATE KEY UPDATE clubName=VALUES(clubName), up_date=VALUES(up_date);"
+		//log.Println(medalUpdated)
+		rows, err = Database_Mysql.Exec(medalUpdated)
+		if err != nil {
+			log.Println("[MysqlUpdatedMedal]", "更新失败：", err)
+			return
+		}
+		rowCount, err = rows.RowsAffected()
+		if err != nil {
+			log.Println("[MysqlUpdatedMedal]", "更新失败：", err)
+		}
+		log.Println("[MysqlUpdatedMedal]", "更新成功，影响行数：", int(rowCount))
 	}
 }

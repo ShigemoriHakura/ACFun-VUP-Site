@@ -5,6 +5,8 @@
     "Database_Name" : "vup",
     "Database_Pass" : "password",
     "Database_TLS"  : false,
+    "ACFun_Name"    : "用户名",
+    "ACFun_Pass"    : "密码",
     "RefreshRate"   : 300,
     "SpiderWait"    : 50
 }
