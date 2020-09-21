@@ -5,9 +5,9 @@ namespace app\dao;
 /**
  * 用户表
  */
-class upRawLiveDataDAO extends baseDAO
+class upMedalDAO extends baseDAO
 {
-    protected $table = 'vup_up_live_data';
+    protected $table = 'vup_up_medal';
     protected $_pk = 'uperid';
     protected $_pkCache = true;
 }

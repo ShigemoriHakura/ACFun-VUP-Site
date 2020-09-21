@@ -17,6 +17,7 @@ return array(
             'log_submit' => 'submit/log',
             'api/<upid:\d+>' => 'api/up_detail',
             'custom' => 'customstream',
+            'medal/search/<keyword:[\s\S]*>' => 'medal/search',
 //            '<method:\w+>/<id:\d+>.html' => 'demo/<method>',
 //            'rest/<rid:[\d]+>/<method:\w+>/<mid:\d+>' => 'rest/<method>',
         ),
