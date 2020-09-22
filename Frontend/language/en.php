@@ -110,7 +110,8 @@ return array(
     'Log_Index'  => 'Log',
     'Log_Title' => 'Log',
 
-    'Export_Title' => 'Export',
+    'Export_Index' => 'Export',
+    'Export_Title' => 'Export CSV',
     'Export_Month' => 'Month',
     'Export_Type' => 'Type',
 );

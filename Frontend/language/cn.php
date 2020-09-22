@@ -112,7 +112,8 @@ return array(
     'Log_Index'  => '日志',
     'Log_Title' => '日志内容',
 
-    'Export_Title' => '导出',
+    'Export_Index' => '导出',
+    'Export_Title' => '导出CSV',
     'Export_Month' => '月',
     'Export_Type' => '类型',
 );

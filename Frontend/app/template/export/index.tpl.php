@@ -13,7 +13,7 @@
                         <li class="breadcrumb-item">Dashboard</li>
                     </ol>
                     <h3>
-                        <?=_L('Export_Title')?></h3>
+                        <?=_L('Export_Index')?></h3>
                 </div>
             </div>
         </div>
