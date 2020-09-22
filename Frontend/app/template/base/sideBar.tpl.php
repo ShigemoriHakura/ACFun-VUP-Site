@@ -105,6 +105,11 @@
                                     <li><a href="<?=$webRoot?>/medal/search"><?=_L('Sidebar_MedalSearch') ?></a></li>
                                 </ul>
                             </li>
+                            <li class="dropdown"><a class="nav-link menu-title" href="#"><i data-feather="file-text"></i><span><?=_L('Sidebar_Export') ?></span></a>
+                                <ul class="nav-submenu menu-content">
+                                    <li><a href="<?=$webRoot?>/export"><?=_L('Sidebar_Export') ?></a></li>
+                                </ul>
+                            </li>
                             <li class="dropdown"><a class="nav-link menu-title" href="#"><i data-feather="settings"></i><span><?=_L('Sidebar_Admin') ?></span></a>
                                 <ul class="nav-submenu menu-content">
                                     <li><a href="<?=$webRoot?>/update_log"><?=_L('Sidebar_Update_Log') ?></a></li>

@@ -54,6 +54,7 @@ return array(
     'Sidebar_Prev_List'   => 'History',
     'Sidebar_Prev_Upstream' => 'Growing',
     'Sidebar_Prev_Dailystream' => 'Daily',
+    'Sidebar_Export' => 'Export',
 
     'Search_Index'  => 'Search',
     'Search_Title' => 'Search',
@@ -108,4 +109,8 @@ return array(
 
     'Log_Index'  => 'Log',
     'Log_Title' => 'Log',
+
+    'Export_Title' => 'Export',
+    'Export_Month' => 'Month',
+    'Export_Type' => 'Type',
 );

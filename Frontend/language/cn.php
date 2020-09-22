@@ -54,6 +54,7 @@ return array(
     'Sidebar_Prev_List'   => '历史榜单',
     'Sidebar_Prev_Upstream' => '昨日急上升',
     'Sidebar_Prev_Dailystream' => '昨日排序榜单',
+    'Sidebar_Export' => '导出',
 
     'Search_Index'  => '搜索',
     'Search_Title' => '搜索',
@@ -110,4 +111,8 @@ return array(
 
     'Log_Index'  => '日志',
     'Log_Title' => '日志内容',
+
+    'Export_Title' => '导出',
+    'Export_Month' => '月',
+    'Export_Type' => '类型',
 );
