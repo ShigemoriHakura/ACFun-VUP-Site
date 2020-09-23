@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2020-09-21 18:34:11
+-- 生成日期： 2020-09-23 17:54:03
 -- 服务器版本： 5.6.49-log
 -- PHP 版本： 7.4.9
 
@@ -117,7 +117,9 @@ CREATE TABLE `vup_up_live_data` (
   `likeCount` int(11) NOT NULL,
   `title` text NOT NULL,
   `createTime` text NOT NULL,
-  `coverUrl` text NOT NULL
+  `coverUrl` text NOT NULL,
+  `liveId` text,
+  `streamName` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

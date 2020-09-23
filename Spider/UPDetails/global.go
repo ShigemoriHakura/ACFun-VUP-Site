@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-var Version = "0.0.3"
+var Version = "0.0.4"
 var Database_Host string
 var Database_Port string
 var Database_DB string

@@ -66,6 +66,7 @@ func checkUpers(counter int) {
 			if any.Get("liveId").ToString() != "" {
 				acUser["isLive"] = "1"
 				acUser["liveId"] = any.Get("liveId").ToString()
+				acUser["streamName"] = any.Get("streamName").ToString()
 				acUser["onlineCount"] = any.Get("onlineCount").ToString()
 				acUser["likeCount"] = any.Get("likeCount").ToString()
 				acUser["title"] = any.Get("title").ToString()
@@ -73,10 +74,11 @@ func checkUpers(counter int) {
 				acUser["coverUrl"] = any.Get("coverUrls", 0).ToString()
 				updateMap[v["id"]] = acUser
 				//log.Println(acUser["createTime"])
-				log.Printf("[Main] %v (%v) 直播ID: %v, 标题: %v, 在线观众: %v, 爱心数量: %v, 封面: %v", v["name"], v["uperid"], acUser["liveId"], acUser["title"], acUser["onlineCount"], acUser["likeCount"], acUser["coverUrl"])
+				log.Printf("[Main] %v (%v) 直播ID: %v, 串流名: %v, 标题: %v, 在线观众: %v, 爱心数量: %v, 封面: %v", v["name"], v["uperid"], acUser["liveId"], acUser["streamName"], acUser["title"], acUser["onlineCount"], acUser["likeCount"], acUser["coverUrl"])
 			} else {
 				acUser["isLive"] = "0"
 				acUser["liveId"] = ""
+				acUser["streamName"] = ""
 				acUser["onlineCount"] = "0"
 				acUser["likeCount"] = "0"
 				acUser["title"] = ""
@@ -96,9 +98,10 @@ func checkUpers(counter int) {
 
 func makeMysqlUpdateQueue(updateMap map[string]map[string]string) {
 	var dataString = "INSERT INTO vup_up_live_data VALUES"
+	var time = time.Now().Unix()
 	if len(updateMap) > 0 {
 		for _, v := range updateMap {
-			dataString += fmt.Sprintf("(%v, %v, %v, %v, %v, '%v', %v, '%v'),", v["uperid"], time.Now().Unix(), v["isLive"], v["onlineCount"], v["likeCount"], v["title"], v["createTime"], v["coverUrl"])
+			dataString += fmt.Sprintf("(%v, %v, %v, %v, %v, '%v', %v, '%v', '%v', '%v'),", v["uperid"], time, v["isLive"], v["onlineCount"], v["likeCount"], v["title"], v["createTime"], v["coverUrl"], v["liveId"], v["streamName"],)
 		}
 		dataString = strings.TrimRight(dataString, ",")
 		//log.Println(dataString)

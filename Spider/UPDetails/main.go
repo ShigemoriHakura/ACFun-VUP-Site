@@ -134,6 +134,7 @@ func checkUpers(counter int) {
 
 func makeMysqlUpdateQueue(updateMap map[string]map[string]string) {
 	var dataString = "INSERT INTO vup_up_data VALUES"
+	var time = time.Now().Unix()
 	if len(updateMap) > 0 {
 		var uperids = ""
 		var updatedTime = ""
@@ -142,13 +143,13 @@ func makeMysqlUpdateQueue(updateMap map[string]map[string]string) {
 
 		var medalName = ""
 		for k, v := range updateMap {
-			dataString += fmt.Sprintf("(%v, %v, '%v', %v, %v, '%v', '%v', '%v', %v, '%v'),", v["uperid"], time.Now().Unix(), v["spaceImage"], v["followers"], v["following"], v["name"], v["signature"], v["verifiedText"], v["contentCount"], v["headUrl"])
+			dataString += fmt.Sprintf("(%v, %v, '%v', %v, %v, '%v', '%v', '%v', %v, '%v'),", v["uperid"], time, v["spaceImage"], v["followers"], v["following"], v["name"], v["signature"], v["verifiedText"], v["contentCount"], v["headUrl"])
 			uperids = uperids + k + ","
-			updatedTime += "WHEN " + k + " THEN " + strconv.Itoa(int(time.Now().Unix())) + "\n"
+			updatedTime += "WHEN " + k + " THEN " + strconv.Itoa(int(time)) + "\n"
 			registerTime += "WHEN " + k + " THEN " + v["registerTime"] + "\n"
 			nowName += "WHEN " + k + " THEN '" + v["name"] + "'\n"
 			if(v["medalName"] != ""){
-				medalName += fmt.Sprintf("(%v,'%v', %v),", v["uperid"],  v["medalName"], time.Now().Unix())
+				medalName += fmt.Sprintf("(%v,'%v', %v),", v["uperid"],  v["medalName"], time)
 			}
 		}
 		dataString = strings.TrimRight(dataString, ",")
