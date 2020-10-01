@@ -6,6 +6,8 @@ return array(
     'Index_Index' => 'Index',
     'Index_UPs' => 'UPs',
     'Index_UPs_Today' => 'New',
+    'Index_UPs_Medals' => 'Medals',
+    'Index_UPs_Live_Today' => 'Lived Today',
     'Index_Rank'  => 'Rank',
     'Index_Title' => 'ACFun VUP List',
     'Index_Desc' => 'Data track rate: 10 min',

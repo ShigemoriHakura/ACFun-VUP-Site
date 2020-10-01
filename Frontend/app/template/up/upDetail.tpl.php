@@ -200,11 +200,9 @@
         series: [
             {
                 name: '<?=_L('UP_Followers')?>',
-                //type: 'line',
                 data: <?=$PRM['chartData']->json_encode()?>
             },{
                 name: '<?=_L('UP_Contents')?>',
-                //type: 'column',
                 data: <?=$PRM['contentData']->json_encode()?>
             }
         ],
@@ -219,6 +217,9 @@
             },
             toolbar: {
                 autoSelected: 'zoom'
+            },
+            animations: {
+                enabled: false,
             }
         },
         dataLabels: {
@@ -277,6 +278,9 @@
         },
         tooltip: {
             shared: true,
+            x: {
+                format: 'yy/MM/dd HH:mm'
+            },
             y: {
                 formatter: function (val) {
                     return val.toFixed(0);
@@ -301,6 +305,9 @@
             },
             toolbar: {
                 autoSelected: 'zoom'
+            },
+            animations: {
+                enabled: false,
             }
         },
         dataLabels: {
@@ -347,6 +354,9 @@
         },
         tooltip: {
             shared: false,
+            x: {
+                format: 'yy/MM/dd HH:mm'
+            },
             y: {
                 formatter: function (val) {
                     return val.toFixed(0);
@@ -371,6 +381,9 @@
             },
             toolbar: {
                 autoSelected: 'zoom'
+            },
+            animations: {
+                enabled: false,
             }
         },
         dataLabels: {
@@ -417,6 +430,9 @@
         },
         tooltip: {
             shared: false,
+            x: {
+                format: 'yy/MM/dd HH:mm'
+            },
             y: {
                 formatter: function (val) {
                     return val.toFixed(0);
@@ -441,6 +457,9 @@
             },
             toolbar: {
                 autoSelected: 'zoom'
+            },
+            animations: {
+                enabled: false,
             }
         },
         dataLabels: {
@@ -487,6 +506,9 @@
         },
         tooltip: {
             shared: false,
+            x: {
+                format: 'yy/MM/dd HH:mm'
+            },
             y: {
                 formatter: function (val) {
                     return val.toFixed(0);
@@ -516,6 +538,9 @@
             },
             toolbar: {
                 autoSelected: 'zoom'
+            },
+            animations: {
+                enabled: false,
             }
         },
         dataLabels: {
@@ -574,6 +599,9 @@
         },
         tooltip: {
             shared: false,
+            x: {
+                format: 'yy/MM/dd HH:mm'
+            },
             y: {
                 formatter: function (val) {
                     return val.toFixed(0);
@@ -598,6 +626,9 @@
             },
             toolbar: {
                 autoSelected: 'zoom'
+            },
+            animations: {
+                enabled: false,
             }
         },
         dataLabels: {
@@ -644,6 +675,9 @@
         },
         tooltip: {
             shared: false,
+            x: {
+                format: 'yy/MM/dd HH:mm'
+            },
             y: {
                 formatter: function (val) {
                     return val.toFixed(0);
@@ -668,6 +702,9 @@
             },
             toolbar: {
                 autoSelected: 'zoom'
+            },
+            animations: {
+                enabled: false,
             }
         },
         dataLabels: {
@@ -714,6 +751,9 @@
         },
         tooltip: {
             shared: false,
+            x: {
+                format: 'yy/MM/dd HH:mm'
+            },
             y: {
                 formatter: function (val) {
                     return val.toFixed(0);
@@ -738,6 +778,9 @@
             },
             toolbar: {
                 autoSelected: 'zoom'
+            },
+            animations: {
+                enabled: false,
             }
         },
         dataLabels: {
@@ -784,6 +827,9 @@
         },
         tooltip: {
             shared: false,
+            x: {
+                format: 'yy/MM/dd HH:mm'
+            },
             y: {
                 formatter: function (val) {
                     return val.toFixed(0);
@@ -808,6 +854,9 @@
             },
             toolbar: {
                 autoSelected: 'zoom'
+            },
+            animations: {
+                enabled: false,
             }
         },
         dataLabels: {
@@ -854,6 +903,9 @@
         },
         tooltip: {
             shared: false,
+            x: {
+                format: 'yy/MM/dd HH:mm'
+            },
             y: {
                 formatter: function (val) {
                     return val.toFixed(0);

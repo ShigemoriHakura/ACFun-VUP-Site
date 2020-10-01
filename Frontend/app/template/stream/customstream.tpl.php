@@ -96,6 +96,17 @@
         xaxis: {
             type: 'datetime'
         },
+        tooltip: {
+            shared: true,
+            x: {
+                format: 'yy/MM/dd HH:mm'
+            },
+            y: {
+                formatter: function (val) {
+                    return val.toFixed(0);
+                }
+            }
+        }
     };
 
     var chartUpAll = new ApexCharts(

@@ -23,6 +23,13 @@ class indexAction extends baseAction
         $upListTodayCount = $this->upDetailDAO->filter([
             '>='=>array('add_date'=> $todayTimestamp)
         ])->count();
+        
+        $upMedalCount = $this->upMedalDAO->count();
+        
+        $upLiveListTodayCount = count($this->upRawLiveDataDAO->filter([
+            'isLive'=>1,
+            '>='=>array('up_date'=> $todayTimestamp)
+        ])->distinct('uperid'));
 
         $adminData = [];
         if(App::$model->Admin->exist()){
@@ -31,6 +38,8 @@ class indexAction extends baseAction
         return $this->display('main/index', array(
             'upListCount' => $upListCount,
             'upListTodayCount' => $upListTodayCount,
+            'upMedalCount' => $upMedalCount,
+            'upLiveListTodayCount' => $upLiveListTodayCount,
             'adminData' => $adminData
         ));
     }

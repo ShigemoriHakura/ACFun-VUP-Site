@@ -6,6 +6,8 @@ return array(
     'Index_Index'  => '首页',
     'Index_UPs' => '收录VUP',
     'Index_UPs_Today' => '今日新收录',
+    'Index_UPs_Medals' => '收录粉丝牌',
+    'Index_UPs_Live_Today' => '今日直播数',
     'Index_Rank'  => '排名',
     'Index_Title'  => 'ACFun VUP 榜单',
     'Index_Desc'   => '数据每十分钟刷新一次，未记录的用户请私信添加。',

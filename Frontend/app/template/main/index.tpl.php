@@ -35,12 +35,12 @@
                                     <p class="mb-0"><?=_L('Index_UPs_Today')?></p>
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-6" style="border-left:0px">
-                                    <h2 class="f-w-600 font-success">233</h2>
-                                    <p class="mb-0">(ノﾟ∀ﾟ)ノ</p>
+                                    <h2 class="f-w-600 font-success"><?=$PRM['upMedalCount']?></h2>
+                                    <p class="mb-0"><?=_L('Index_UPs_Medals')?></p>
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-6" style="border-left:0px">
-                                    <h2 class="f-w-600 font-info">666</h2>
-                                    <p class="mb-0">(|||ﾟДﾟ)</p>
+                                    <h2 class="f-w-600 font-info"><?=$PRM['upLiveListTodayCount']?></h2>
+                                    <p class="mb-0"><?=_L('Index_UPs_Live_Today')?></p>
                                 </div>
                             </div>
                         </div>

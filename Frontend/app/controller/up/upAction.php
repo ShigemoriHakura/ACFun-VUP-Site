@@ -40,7 +40,7 @@ class upAction extends baseAction
             $lang = $this->get('lang');
             $lang && Language::setLanguage($lang, Constant::month);
 
-            $queryDay = 5;
+            $queryDay = 7;
             $detect = new Mobile_Detect;
             if ( $detect->isMobile() ) {
                 $queryDay = 1;

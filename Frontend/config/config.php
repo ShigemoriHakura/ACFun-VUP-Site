@@ -67,7 +67,7 @@ return array(
     //日志相关配置
     'logger' => array(
         // 是否记录日志文件
-        'files' => true,
+        'files' => false,
         // 自定义日志记录方法
 //        'sendLog' => array('Common', 'sendLog'),
         // 自定义日志错误方法

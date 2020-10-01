@@ -41,6 +41,6 @@ class cronShell extends Shell
             }
         }
         $result = $this->upCronDataDAO->addList($updateSet);
-        return json_encode(array("result" => $result));
+        return json_encode(array("result" => $result, "data" => $updateSet));
     }
 }

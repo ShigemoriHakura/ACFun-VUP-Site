@@ -44,7 +44,7 @@ class exportAction extends baseAction
         $upDetails = [];
         $csvDatas = [];
 
-        $lastDate = strtotime("$month +1 month -1 day");
+        $lastDate = strtotime("$month +1 month");
         $cronLatestData = $this->upCronDataDAO->filter([
             '>='=>array('add_date'=> $timestamp),
             '<='=>array('add_date'=> $lastDate),
