@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2020-09-23 17:54:03
+-- 生成日期： 2020-10-16 04:13:26
 -- 服务器版本： 5.6.49-log
--- PHP 版本： 7.4.9
+-- PHP 版本： 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -125,6 +125,19 @@ CREATE TABLE `vup_up_live_data` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `vup_up_live_data_cron`
+--
+
+CREATE TABLE `vup_up_live_data_cron` (
+  `add_date` int(11) NOT NULL,
+  `uperid` int(11) NOT NULL,
+  `isLive` int(11) NOT NULL,
+  `onlineCount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `vup_up_log`
 --
 
@@ -194,7 +207,15 @@ ALTER TABLE `vup_up_list`
 -- 表的索引 `vup_up_live_data`
 --
 ALTER TABLE `vup_up_live_data`
-  ADD KEY `uperid` (`uperid`,`up_date`);
+  ADD KEY `uperid` (`uperid`,`up_date`),
+  ADD KEY `isLive` (`isLive`);
+
+--
+-- 表的索引 `vup_up_live_data_cron`
+--
+ALTER TABLE `vup_up_live_data_cron`
+  ADD KEY `add_date` (`add_date`),
+  ADD KEY `uperid` (`uperid`);
 
 --
 -- 表的索引 `vup_up_medal`

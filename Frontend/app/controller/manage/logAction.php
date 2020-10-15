@@ -18,7 +18,7 @@ class logAction extends baseAction
         $lang = $this->get('lang');
         $lang && Language::setLanguage($lang, Constant::month);
         $adminData = App::$model->Admin->values();
-        $logDataset = $this->logDAO->query();
+        $logDataset = $this->logDAO->order(array('add_date'=>'DESC'))->query();
         return $this->display('manage/log', array(
             'adminData' => $adminData,
             'logDataset' => $logDataset

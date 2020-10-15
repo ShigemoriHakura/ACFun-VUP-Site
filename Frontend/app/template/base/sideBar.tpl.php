@@ -89,6 +89,7 @@
                                     <li><a href="<?=$webRoot?>/new"><?=_L('Sidebar_Newstream') ?></a></li>
                                     <li><a href="<?=$webRoot?>/ups"><?=_L('Sidebar_Upstream') ?></a></li>
                                     <li><a href="<?=$webRoot?>/daily"><?=_L('Sidebar_Dailystream') ?></a></li>
+                                    <li><a href="<?=$webRoot?>/live"><?=_L('Sidebar_Livestream') ?></a></li>
                                     <li><a href="<?=$webRoot?>/custom"><?=_L('Sidebar_Customstream') ?></a></li>
                                 </ul>
                             </li>
@@ -97,6 +98,7 @@
                                 <ul class="nav-submenu menu-content">
                                     <li><a href="<?=$webRoot?>/ups/prev/1"><?=_L('Sidebar_Prev_Upstream') ?></a></li>
                                     <li><a href="<?=$webRoot?>/daily/prev/1"><?=_L('Sidebar_Prev_Dailystream') ?></a></li>
+                                    <li><a href="<?=$webRoot?>/live/prev/1"><?=_L('Sidebar_Prev_Livestream') ?></a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a class="nav-link menu-title" href="#"><i data-feather="tag"></i><span><?=_L('Sidebar_Medal') ?></span></a>

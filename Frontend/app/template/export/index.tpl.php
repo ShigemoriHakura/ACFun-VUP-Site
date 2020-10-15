@@ -38,6 +38,16 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label"><?=_L('Export_Value')?></label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control digits" name="valueType">
+                                                <option value="followers"><?=_L('Export_Followers')?></option>
+                                                <option value="followersChange"><?=_L('Export_Followers_Change')?></option>
+                                                <option value="onlineCount"><?=_L('Export_Online_Count')?></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label class="col-sm-3 col-form-label"><?=_L('Export_Type')?></label>
                                         <div class="col-sm-9">
                                             <select class="form-control digits" name="type">

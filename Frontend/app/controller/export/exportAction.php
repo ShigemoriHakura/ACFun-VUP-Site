@@ -33,7 +33,8 @@ class exportAction extends baseAction
     public function action_output(){
         $month = $this->request->post('month');
         $type = $this->request->post('type');
-        if(!$type || !$month){
+        $valueType = $this->request->post('valueType');
+        if(!$type || !$month || !$valueType){
             $this->response->redirect('/export');
         }
         $timestamp = strtotime($month);
@@ -43,54 +44,121 @@ class exportAction extends baseAction
 
         $upDetails = [];
         $csvDatas = [];
-
         $lastDate = strtotime("$month +1 month");
-        $cronLatestData = $this->upCronDataDAO->filter([
-            '>='=>array('add_date'=> $timestamp),
-            '<='=>array('add_date'=> $lastDate),
-        ])->order(array('add_date'=>'ASC'))->query();
-        foreach ($cronLatestData as $k => $upData) {
-            if($upDetails[$upData['uperid']]){
-                $upd = $upDetails[$upData['uperid']];
-                $csvArray = array(
-                    "name" => $upd['nowName'],
-                    "type" => "粉丝增量",
-                    "type1" => "粉丝总数",
-                    "value" => $upData["followers_change"],
-                    "value1" => $upData["followers"],
-                    "date" => date('Y/m/d', $upData['add_date'])
-                );
-                $csvDatas[] = $csvArray;
-            }else{
-                $rawLatestData = $this->upDetailDAO->filter([
-                    'uperid'=>$upData['uperid']
-                ])->find();
-                if($rawLatestData) {
-                    $upDetails[$upData['uperid']] = $rawLatestData;
-                    $csvArray = array(
-                        "name" => $rawLatestData['nowName'],
-                        "type" => "粉丝增量",
-                        "type1" => "粉丝总数",
-                        "value" => $upData["followers_change"],
-                        "value1" => $upData["followers"],
-                        "date" => date('Y/m/d', $upData['add_date'])
-                    );
-                    $csvDatas[] = $csvArray;
+        
+        switch($valueType){
+            case "followers":
+                $cronLatestData = $this->upCronDataDAO->filter([
+                    '>='=>array('add_date'=> $timestamp),
+                    '<='=>array('add_date'=> $lastDate),
+                ])->order(array('add_date'=>'ASC'))->query();
+                foreach ($cronLatestData as $k => $upData) {
+                    if($upDetails[$upData['uperid']]){
+                        $upd = $upDetails[$upData['uperid']];
+                        $csvArray = array(
+                            "name" => $upd['nowName'],
+                            "type" => "粉丝总数",
+                            "value" => $upData["followers"],
+                            "date" => date('Y/m/d', $upData['add_date'])
+                        );
+                        $csvDatas[] = $csvArray;
+                    }else{
+                        $rawLatestData = $this->upDetailDAO->filter([
+                            'uperid'=>$upData['uperid']
+                        ])->find();
+                        if($rawLatestData) {
+                            $upDetails[$upData['uperid']] = $rawLatestData;
+                            $csvArray = array(
+                                "name" => $rawLatestData['nowName'],
+                                "type" => "粉丝总数",
+                                "value" => $upData["followers"],
+                                "date" => date('Y/m/d', $upData['add_date'])
+                            );
+                            $csvDatas[] = $csvArray;
+                        }
+                    }
+        
                 }
-            }
-
+                break;
+            case "followersChange":
+                $cronLatestData = $this->upCronDataDAO->filter([
+                    '>='=>array('add_date'=> $timestamp),
+                    '<='=>array('add_date'=> $lastDate),
+                ])->order(array('add_date'=>'ASC'))->query();
+                foreach ($cronLatestData as $k => $upData) {
+                    if($upDetails[$upData['uperid']]){
+                        $upd = $upDetails[$upData['uperid']];
+                        $csvArray = array(
+                            "name" => $upd['nowName'],
+                            "type" => "粉丝增量",
+                            "value" => $upData["followers_change"],
+                            "value1" => $upData["followers"],
+                            "date" => date('Y/m/d', $upData['add_date'])
+                        );
+                        $csvDatas[] = $csvArray;
+                    }else{
+                        $rawLatestData = $this->upDetailDAO->filter([
+                            'uperid'=>$upData['uperid']
+                        ])->find();
+                        if($rawLatestData) {
+                            $upDetails[$upData['uperid']] = $rawLatestData;
+                            $csvArray = array(
+                                "name" => $rawLatestData['nowName'],
+                                "type" => "粉丝增量",
+                                "value" => $upData["followers_change"],
+                                "value1" => $upData["followers"],
+                                "date" => date('Y/m/d', $upData['add_date'])
+                            );
+                            $csvDatas[] = $csvArray;
+                        }
+                    }
+        
+                }
+                break;
+            case "onlineCount":
+                $cronLatestData = $this->upLiveDataCronDAO->filter([
+                    '>='=>array('add_date'=> $timestamp),
+                    '<='=>array('add_date'=> $lastDate),
+                ])->order(array('add_date'=>'ASC'))->query();
+                foreach ($cronLatestData as $k => $upData) {
+                    if($upDetails[$upData['uperid']]){
+                        $upd = $upDetails[$upData['uperid']];
+                        $csvArray = array(
+                            "name" => $upd['nowName'],
+                            "type" => "观众峰值",
+                            "value" => $upData["onlineCount"],
+                            "date" => date('Y/m/d', $upData['add_date'])
+                        );
+                        $csvDatas[] = $csvArray;
+                    }else{
+                        $rawLatestData = $this->upDetailDAO->filter([
+                            'uperid'=>$upData['uperid']
+                        ])->find();
+                        if($rawLatestData) {
+                            $upDetails[$upData['uperid']] = $rawLatestData;
+                            $csvArray = array(
+                                "name" => $rawLatestData['nowName'],
+                                "type" => "观众峰值",
+                                "value" => $upData["onlineCount"],
+                                "date" => date('Y/m/d', $upData['add_date'])
+                            );
+                            $csvDatas[] = $csvArray;
+                        }
+                    }
+        
+                }
+                break;
+            
         }
-
+        
         switch ($type){
             case "d3":
                 $filename = "D3.csv";
-                $fileData = "name,type,type1,value,value1,date\n";
+                $fileData = "name,type,value,date\n";
                 foreach ($csvDatas as $value) {
                     $temp = $value['name'] . ',' .
                         $value['type'] . ',' .
-                        $value['type1'] . ',' .
                         $value['value'] . ',' .
-                        $value['value1'] . ',' .
                         $value['date'];
                     $fileData .= $temp . "\n";
                 }
