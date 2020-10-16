@@ -2,7 +2,7 @@
 /*
  * @Date: 2020-10-16 22:24:52
  * @LastEditors: kanoyami
- * @LastEditTime: 2020-10-16 22:56:09
+ * @LastEditTime: 2020-10-17 00:15:50
  */
 
 namespace app\service;
@@ -18,7 +18,7 @@ class daliyTopService extends Service
         $todayTimestamp = strtotime(date('Y-m-d'));
         $upListDataset = $this->upDetailDAO->filter([
             '<' => array('add_date' => $todayTimestamp)
-        ])->limit(10)->query();
+        ])->query();
 
         $upListDatasets = [];
         $upListDatasetColumn = [];
@@ -29,11 +29,13 @@ class daliyTopService extends Service
                 'uperid' => $upData['uperid'],
                 '>=' => array('up_date' => $todayTimestamp)
             ])->order(array('up_date' => 'DESC'))->limit(1)->query();
+
             $rawOldestData = $this->upRawDataDAO->filter([
                 'uperid' => $upData['uperid'],
                 '>=' => array('up_date' => $todayTimestamp)
             ])->order(array('up_date' => 'ASC'))->limit(1)->query();
             if ($rawLatestData && $rawOldestData) {
+                if ($i >= 10) break;
                 $followersAdded = $rawLatestData[0]['followers'] - $rawOldestData[0]['followers'];
                 $upListDatasetColumn[$i] = $rawLatestData[0]['followers']; //排序标准
                 $upData['rawData'] = $rawLatestData[0];
