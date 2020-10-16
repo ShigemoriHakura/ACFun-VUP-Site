@@ -2,7 +2,7 @@
 /*
  * @Date: 2020-10-16 22:24:52
  * @LastEditors: kanoyami
- * @LastEditTime: 2020-10-16 23:49:00
+ * @LastEditTime: 2020-10-17 01:05:59
  */
 
 namespace app\service;
@@ -14,7 +14,8 @@ class statisticsService extends Service
 {
     public function fansTopTen()
     {
-        return $this->upRawDataDAO->order(array('followers' => 'DESC'))->limit(10)->query(array('uperid', 'name', "followers"), 'uperid');
+        $rowData = $this->upRawDataDAO->order(array('followers' => 'DESC'))->query(array('uperid', 'name', "followers"), 'uperid');
+        return array_slice($rowData,0,10);
     }
     public function getUpDetailsByUpName($upname)
     {

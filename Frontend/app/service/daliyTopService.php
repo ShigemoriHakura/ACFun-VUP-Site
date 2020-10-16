@@ -2,7 +2,7 @@
 /*
  * @Date: 2020-10-16 22:24:52
  * @LastEditors: kanoyami
- * @LastEditTime: 2020-10-17 00:15:50
+ * @LastEditTime: 2020-10-17 00:50:55
  */
 
 namespace app\service;
@@ -46,6 +46,6 @@ class daliyTopService extends Service
         }
         array_multisort($upListDatasetColumn, SORT_DESC, $upListDatasets);
 
-        return $upListDatasetColumn;
+        return array_slice($upListDatasetColumn, 0, 10);
     }
 }
