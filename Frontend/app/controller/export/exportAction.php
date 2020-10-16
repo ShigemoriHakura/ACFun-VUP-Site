@@ -12,20 +12,8 @@ class exportAction extends baseAction
      */
     public function action_index()
     {
-        if(!Language::getLanguage()){
-            Language::setLanguage('cn', Constant::month);
-        }
-        $lang = $this->get('lang');
-        $lang && Language::setLanguage($lang, Constant::month);
-
-        $adminData = [];
-        if(App::$model->Admin->exist()){
-            $adminData = App::$model->Admin->values();
-        }
-
         $month = date('Y-m');
         return $this->display('export/index', array(
-            'adminData' => $adminData,
             'month' => $month
         ));
     }

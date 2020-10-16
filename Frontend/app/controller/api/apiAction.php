@@ -12,21 +12,13 @@ class apiAction extends baseAction
      */
     public function action_index()
     {
-        $result = array(
-            "result" => 1,
-            "data" => "Hello world"
-        );
-        return json_encode($result);
+        return $this->displayJson(1, "Hello world");
     }
 
     public function action_up_detail($upid)
     {
-        $result = array(
-            "result" => 1,
-            "data" => "Hello world"
-        );
         if($upid){
-            $date = $this->get('day');
+            $date = $this->request->get('day');
             $todayTimestamp = strtotime(date('Y-m-d')) + 86400;
             if($date){
                 $todayTimestamp = strtotime(date('Y-m-d', $date)) + 86400;
@@ -35,21 +27,16 @@ class apiAction extends baseAction
                 'uperid'=>$upid,
                 '<='=>array('up_date'=> $todayTimestamp)
             ])->order(array('up_date'=>'DESC'))->limit(1)->query();
-            $result["data"] = $rawLatestData;
+            return $this->displayJson(1, $rawLatestData);
         }else{
-            $result["data"] = "no uperid";
+            return $this->displayJson(0, "no uperid");
         }
-        return json_encode($result);
     }
 
     public function action_up_cron($upid)
     {
-        $result = array(
-            "result" => 1,
-            "data" => "Hello world"
-        );
         if($upid){
-            $date = $this->get('day');
+            $date = $this->request->get('day');
             $todayTimestamp = strtotime(date('Y-m-d')) - 1;
             if($date){
                 $todayTimestamp = strtotime(date('Y-m-d', $date));
@@ -58,10 +45,21 @@ class apiAction extends baseAction
                 'uperid'=>$upid,
                 '<='=>array('add_date'=> $todayTimestamp)
             ])->order(array('add_date'=>'DESC'))->limit(1)->query();
-            $result["data"] = $cronLatestData;
+            return $this->displayJson(1, $cronLatestData);
         }else{
-            $result["data"] = "no uperid";
+            return $this->displayJson(0, "no uperid");
         }
-        return json_encode($result);
+    }
+
+    public function action_up_search($keyword){
+        return $this->displayJson(1, $this->statisticsService->getUpDetailsByKeyword($keyword));
+    }
+
+    public function action_stream_upStream(){
+        return $this->displayJson(1, $this->streamService->getUpStreamToday());
+    }
+
+    public function action_stream_dailyStream(){
+        return $this->displayJson(1, $this->streamService->getDailyStreamToday());
     }
 }

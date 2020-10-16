@@ -12,16 +12,16 @@ class loginAction extends baseAction
      */
     public function action_index()
     {
-        if(!Language::getLanguage()){
-            Language::setLanguage('cn', Constant::month);
-        }
-        $lang = $this->get('lang');
-        $lang && Language::setLanguage($lang, Constant::month);
         if (App::$model->Admin->exist()){
             $this->response->redirect('/');
         }
-        $username = $this->param('username');
-        $password = $this->param('password');
+        $form = $this->getForm('login');
+        if (!$form->check()){
+            $error = $form->getError();
+            $this->response->error($error);
+        }
+        $username = $form->username;
+        $password = $form->password;
         if (!$username | !$password){
             return $this->display('manage/login');
         }

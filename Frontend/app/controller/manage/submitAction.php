@@ -12,23 +12,16 @@ class submitAction extends baseAction
      */
     public function action_index()
     {
-        if(!Language::getLanguage()){
-            Language::setLanguage('cn', Constant::month);
-        }
-        $lang = $this->get('lang');
-        $lang && Language::setLanguage($lang, Constant::month);
-        if (!App::$model->Admin->exist()){
-            $this->response->redirect('/');
-        }
-        $adminData = App::$model->Admin->values();
-        $uperid = $this->param('uperid');
-        $name   = $this->param('name');
-        if (!$uperid | !$name){
-            return $this->display('manage/submit', array(
-                'adminData' => $adminData,
-                'status' => true
-            ));
-        }else{
+        $status = false;
+        if(App::$model->Admin->exist()){
+            $form = $this->getForm('systemUP');
+            if (!$form->check()){
+                return $this->display('manage/submit', array(
+                    'status' => false
+                ));
+            }
+            $uperid = $form->uperid;
+            $name = $form->name;
             $sets = array(
                 'uperid'    => $uperid,
                 'name'      => $name,
@@ -36,46 +29,35 @@ class submitAction extends baseAction
                 'last_date' => 0,
                 'enabled'   => 1
             );
-            // false 时返回true/false
             $status = $this->upDetailDAO->add($sets, false);
-            return $this->display('manage/submit', array(
-                'adminData' => $adminData,
-                'status' => $status
-            ));
         }
+        return $this->display('manage/submit', array(
+            'status' => $status
+        ));
     }
 
     public function action_log()
     {
-        if(!Language::getLanguage()){
-            Language::setLanguage('cn', Constant::month);
-        }
-        $lang = $this->get('lang');
-        $lang && Language::setLanguage($lang, Constant::month);
-        if (!App::$model->Admin->exist()){
-            $this->response->redirect('/');
-        }
-        $adminData = App::$model->Admin->values();
-        $content = $this->param('content');
-        $level   = $this->param('level');
-        if (!$content | !$level | !(is_numeric($level))){
-            return $this->display('manage/submit_log', array(
-                'adminData' => $adminData,
-                'status' => true
-            ));
-        }else{
+        $status = false;
+        if(App::$model->Admin->exist()) {
+            $form = $this->getForm('systemLog');
+            if (!$form->check()) {
+                return $this->display('manage/submit_log', array(
+                    'status' => true
+                ));
+            }
+            $content = $form->content;
+            $level = $form->level;
             $sets = array(
-                'level'     => $level,
-                'content'   => $content,
-                'add_date'  => time(),
+                'level' => $level,
+                'content' => $content,
+                'add_date' => time(),
             );
-            // false 时返回true/false
             $status = $this->logDAO->add($sets, false);
-            return $this->display('manage/submit_log', array(
-                'adminData' => $adminData,
-                'status' => $status
-            ));
         }
+        return $this->display('manage/submit_log', array(
+            'status' => $status
+        ));
     }
 
 }

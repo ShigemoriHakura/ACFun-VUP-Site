@@ -11,7 +11,6 @@ class logoutAction extends baseAction
      */
     public function action_index()
     {
-        //App::$base->session->userId = 0;
         if (App::$model->Admin->exist()){
             App::$model->Admin->loginOut();
         }
