@@ -2,7 +2,7 @@
 /*
  * @Date: 2020-10-16 20:17:52
  * @LastEditors: kanoyami
- * @LastEditTime: 2020-10-16 23:45:15
+ * @LastEditTime: 2020-10-17 00:03:45
  */
 
 namespace app\controller;
@@ -85,9 +85,8 @@ class apiAction extends baseAction
         $this->response->json(jsonFormat(1, $this->statisticsService->fansTopTen()));
     }
 
-    public function action_up_detial_by_name($upname)
+    public function action_up_detail_by_name($upname)
     {
-         echo($upname);
         $this->response->json(jsonFormat(1, $this->statisticsService->getUpDetailsByUpName($upname)));
     }
 }
