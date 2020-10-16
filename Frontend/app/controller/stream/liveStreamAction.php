@@ -34,7 +34,7 @@ class liveStreamAction extends baseAction
             }
         }
         array_multisort($upListDatasetColumn, SORT_DESC, $upListDatasets);
-        return $this->display('stream/livestream', array(
+        return $this->display('stream/liveStream', array(
             'upListData' => $upListDatasets,
             'dayTimestamp' => $todayTimestamp
         ));

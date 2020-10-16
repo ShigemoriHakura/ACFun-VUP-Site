@@ -14,18 +14,22 @@ return array(
             'search/<keyword:[\s\S]*>' => 'search/search',
             'update_log' => 'log/update',
             'log_submit' => 'submit/log',
-            'daily' => 'dailystream',
-            'live' => 'livestream',
-            'custom' => 'customstream',
+            'daily' => 'dailyStream',
+            'custom' => 'customStream',
+            'live' => 'liveStream',
             'medal/search/<keyword:[\s\S]*>' => 'medal/search',
-            'ups' => 'upstream',
-            'new' => 'newstream',
-            'ups/prev/<day:\d+>' => 'upstream/prev',
-            'daily/prev/<day:\d+>' => 'dailystream/prev',
-            'live/prev/<day:\d+>' => 'livestream/prev',
+            'ups' => 'upStream',
+            'new' => 'newStream',
+            'ups/prev/<day:\d+>' => 'upStream/prev',
+            'daily/prev/<day:\d+>' => 'dailyStream/prev',
+            'live/prev/<day:\d+>' => 'liveStream/prev',
 
-            'api/detail/<upid:\d+>' => 'api/up_detail',
-            'api/cron/<upid:\d+>' => 'api/up_cron',
+            'api/cron/<upid:\d+>' => 'api/up_cron', //每日任务的up信息
+            'api/detail/<upid:\d+>' => 'api/up_detail', //根据day来的最新信息
+            'api/keyword/<keyword:[\s\S]*>' => 'api/up_search', //搜索up在数据库中信息
+            'api/upStream/' => 'api/stream_upStream', //返回对应日急上升
+            'api/upStream/prev/<day:\d+>' => 'api/stream_upStream/prev', //返回对应日急上升
+            'api/dailyStream/<day:\d+>' => 'api/stream_dailyStream', //返回对应日总榜单
         ),
     ),
 

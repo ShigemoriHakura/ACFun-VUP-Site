@@ -12,7 +12,7 @@ class upStreamAction extends baseAction
      */
     public function action_index()
     {
-        return $this->display('stream/upstream', array(
+        return $this->display('stream/upStream', array(
             'upListData' => $this->streamService->getUpStreamToday(),
             'dayTimestamp' => strtotime(date('Y-m-d'))
         ));
