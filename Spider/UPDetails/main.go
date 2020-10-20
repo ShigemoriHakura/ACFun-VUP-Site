@@ -85,7 +85,7 @@ func checkUpers(counter int) {
 			} else {
 				followLiveInfo, err := getACUserLiveInfoFollowers(v["uperid"])
 				if err != nil {
-					log.Println("[Main]", "过完粉丝用户数据获取失败：", err)
+					log.Println("[Main]", "过万粉丝用户数据获取失败：", err)
 					getSuccess = false
 				} else {
 					anyLiveInfo := jsoniter.Get(followLiveInfo)
