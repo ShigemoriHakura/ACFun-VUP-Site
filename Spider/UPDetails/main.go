@@ -79,18 +79,21 @@ func checkUpers(counter int) {
 			acUser := make(map[string]string)
 			getSuccess := false
 			var followers string
-			if !strings.Contains(any.Get("profile", "followed").ToString(), "万") {
-				followers = any.Get("profile", "followed").ToString()
-				getSuccess = true
-			} else {
-				followLiveInfo, err := getACUserLiveInfoFollowers(v["uperid"])
-				if err != nil {
-					log.Println("[Main]", "过万粉丝用户数据获取失败：", err)
-					getSuccess = false
-				} else {
-					anyLiveInfo := jsoniter.Get(followLiveInfo)
-					followers = anyLiveInfo.Get("user", "fanCountValue").ToString()
+			var result = any.Get("result").ToString()
+			if(result == "0"){
+				if !strings.Contains(any.Get("profile", "followed").ToString(), "万") {
+					followers = any.Get("profile", "followed").ToString()
 					getSuccess = true
+				} else {
+					followLiveInfo, err := getACUserLiveInfoFollowers(v["uperid"])
+					if err != nil {
+						log.Println("[Main]", "过万粉丝用户数据获取失败：", err)
+						getSuccess = false
+					} else {
+						anyLiveInfo := jsoniter.Get(followLiveInfo)
+						followers = anyLiveInfo.Get("user", "fanCountValue").ToString()
+						getSuccess = true
+					}
 				}
 			}
 			if getSuccess {
