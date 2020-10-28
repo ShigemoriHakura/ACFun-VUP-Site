@@ -75,6 +75,7 @@
                                 <ul class="list-inline">
                                     <li class="list-inline-item"><a href="https://message.acfun.cn/im?targetId=<?=$PRM['upDetail']['uperid']?>"><i class="fa fa-comment"></i></a></li>
                                     <li class="list-inline-item"><a href="<?=$webRoot?>/d/<?=$PRM['upDetail']['uperid']?>"><i class="fa fa-rss"></i></a></li>
+                                    <li class="list-inline-item"><a href="<?=$webRoot?>/u/<?=$PRM['upDetail']['uperid']?>?day=30"><i class="fa fa-bar-chart-o"></i></a></li>
                                 </ul>
                             </div>
                             <div class="follow">
