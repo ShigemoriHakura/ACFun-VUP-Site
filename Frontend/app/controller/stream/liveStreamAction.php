@@ -21,16 +21,30 @@ class liveStreamAction extends baseAction
         $upListDatasetColumn = [];
         $i = 0;
 
+
+        $upLiveListToday = $this->upRawLiveDataDAO->filter([
+            'isLive'=>1,
+            '>='=>array('up_date'=> $todayTimestamp)
+        ])->distinct('uperid');
+        
+        $newArray = array();
+        foreach ($upLiveListToday as $k => $lived){
+            $newArray[$lived["uperid"]] = $lived["uperid"];
+        }
+        
         foreach ($upListDataset as $k => $upData){
-            $rawLatestData = $this->upRawLiveDataDAO->filter([
-                'uperid'=>$upData['uperid'],
-                '>='=>array('up_date'=> $todayTimestamp)
-            ])->order(array('onlineCount'=>'DESC'))->limit(1)->find();
-            if($rawLatestData){
-                $upListDatasetColumn[$i] = $rawLatestData['onlineCount']; //排序标准
-                $upData['onlineCount'] = $rawLatestData['onlineCount'];
-                $upListDatasets[$i] = $upData;
-                $i ++;
+            if($newArray[$upData['uperid']] == $upData['uperid']){
+                $rawLatestData = $this->upRawLiveDataDAO->filter([
+                    'uperid'=> $upData['uperid'],
+                    'isLive'=> 1,
+                    '>='=>array('up_date'=> $todayTimestamp)
+                ])->max('onlineCount');
+                if($rawLatestData){
+                    $upListDatasetColumn[$i] = $rawLatestData; //排序标准
+                    $upData['onlineCount'] = $rawLatestData;
+                    $upListDatasets[$i] = $upData;
+                    $i ++;
+                }
             }
         }
         array_multisort($upListDatasetColumn, SORT_DESC, $upListDatasets);

@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <div class="form-check">
                                     <div class="checkbox p-0">
                                         <input class="form-check-input" id="invalidCheck" type="checkbox" required="">
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="invalid-feedback"><?=_L('Submit_NotCheckedOK')?></div>
                                 </div>
-                            </div>
+                            </div>-->
                             <button class="btn btn-primary" type="submit"><?=_L('Submit_Submitbtn')?></button>
                         </form>
                     </div>

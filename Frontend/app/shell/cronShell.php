@@ -54,19 +54,39 @@ class cronShell extends Shell
             '<'=>array('add_date'=> $todayTimestamp)
         ])->query();
 
+
+        $upLiveListToday = $this->upRawLiveDataDAO->filter([
+            'isLive'=>1,
+            '>='=>array('up_date'=> $todayTimestamp)
+        ])->distinct('uperid');
+        
+        $newArray = array();
+        foreach ($upLiveListToday as $k => $lived){
+            $newArray[$lived["uperid"]] = $lived["uperid"];
+        }
+        
         $updateSet = [];
         foreach ($upListDataset as $k => $upData){
-            $rawLatestData = $this->upRawLiveDataDAO->filter([
-                'uperid'=>$upData['uperid'],
-                '<='=>array('up_date'=> $todayTimestamp),
-                '>='=>array('up_date'=> $ydayTimestamp)
-            ])->order(array('onlineCount'=>'DESC'))->limit(1)->find();
-            if($rawLatestData){
+            if($newArray[$upData['uperid']] == $upData['uperid']){
+                $rawLatestData = $this->upRawLiveDataDAO->filter([
+                    'uperid'=> $upData['uperid'],
+                    'isLive'=> 1,
+                    '>='=>array('up_date'=> $todayTimestamp)
+                ])->max('onlineCount');
+                if($rawLatestData){
+                    $updateSet[] = array(
+                    "uperid"    => $upData['uperid'],
+                    "add_date"  => $todayTimestamp - 1,
+                    "onlineCount" => $rawLatestData,
+                    "isLive" => 1,
+                );
+                }
+            }else{
                 $updateSet[] = array(
                     "uperid"    => $upData['uperid'],
                     "add_date"  => $todayTimestamp - 1,
-                    "onlineCount" => $rawLatestData['onlineCount'],
-                    "isLive" => $rawLatestData['isLive'],
+                    "onlineCount" => 0,
+                    "isLive" => 0,
                 );
             }
         }
