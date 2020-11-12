@@ -24,6 +24,9 @@ return array(
     'Newstream_Title'  => 'ACFun VUP new UPs',
 
     'Dailystream_Title'  => 'ACFun VUP daily rank',
+    
+    'Livestream_Title'  => 'ACFun VUP live rank',
+    'Livestream_Online_Count' => 'Online count',
 
     'Customstream_Title'  => 'ACFun VUP custom rank',
     'Customstream_Desc'  => 'UP to 5',
@@ -47,6 +50,7 @@ return array(
     'Sidebar_Newstream' => 'New',
     'Sidebar_Upstream'   => 'Growing',
     'Sidebar_Dailystream' => 'Daily',
+    'Sidebar_Livestream' => 'Live',
     'Sidebar_Customstream' => 'Custom',
     'Sidebar_Update_Log'   => 'Update Log',
     'Sidebar_Log_Submit'   => 'Submit Log',
@@ -56,6 +60,7 @@ return array(
     'Sidebar_Prev_List'   => 'History',
     'Sidebar_Prev_Upstream' => 'Growing',
     'Sidebar_Prev_Dailystream' => 'Daily',
+    'Sidebar_Prev_Livestream' => 'Live',
     'Sidebar_Export' => 'Export',
 
     'Search_Index'  => 'Search',
@@ -116,4 +121,15 @@ return array(
     'Export_Title' => 'Export CSV',
     'Export_Month' => 'Month',
     'Export_Type' => 'Type',
+    'Export_Value' => 'Value',
+    'Export_Followers' => 'Followers',
+    'Export_Followers_Change' => 'Followers change',
+    'Export_Online_Count' => 'Online count',
+    
+    'Gift_Detail' => "Gift Detail",
+    'Gift_Sender' => "Sender",
+    'Gift_Content' => "Content",
+    'Gift_Num' => "Num",
+    'Gift_Price' => "AC Coin",
+    'Gift_Time' => "Time",
 );

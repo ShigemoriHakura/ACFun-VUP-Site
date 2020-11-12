@@ -24,6 +24,9 @@ return array(
     'Newstream_Title'  => 'ACFun VUP 新收录榜单',
 
     'Dailystream_Title'  => 'ACFun VUP 日排行榜单',
+    
+    'Livestream_Title'  => 'ACFun VUP 日直播榜单',
+    'Livestream_Online_Count' => '观众峰值',
 
     'Customstream_Title'  => 'ACFun VUP 自定义排行榜单',
     'Customstream_Desc'  => '最多可选5个',
@@ -47,6 +50,7 @@ return array(
     'Sidebar_Newstream' => '新收录',
     'Sidebar_Upstream' => '急上升',
     'Sidebar_Dailystream' => '日排序榜单',
+    'Sidebar_Livestream' => '直播榜单',
     'Sidebar_Customstream' => '自定义榜单',
     'Sidebar_Update_Log'   => '更新日志',
     'Sidebar_Log_Submit'   => '提交日志',
@@ -56,6 +60,7 @@ return array(
     'Sidebar_Prev_List'   => '历史榜单',
     'Sidebar_Prev_Upstream' => '昨日急上升',
     'Sidebar_Prev_Dailystream' => '昨日排序榜单',
+    'Sidebar_Prev_Livestream' => '昨日直播榜单',
     'Sidebar_Export' => '导出',
 
     'Search_Index'  => '搜索',
@@ -118,4 +123,15 @@ return array(
     'Export_Title' => '导出CSV',
     'Export_Month' => '月',
     'Export_Type' => '类型',
+    'Export_Value' => '导出数据',
+    'Export_Followers' => '关注者总数',
+    'Export_Followers_Change' => '关注者变化',
+    'Export_Online_Count' => '观众峰值',
+
+    'Gift_Detail' => "直播礼物详情",
+    'Gift_Sender' => "赠送人",
+    'Gift_Content' => "礼物内容",
+    'Gift_Num' => "数量",
+    'Gift_Price' => "AC币",
+    'Gift_Time' => "赠送时间",
 );

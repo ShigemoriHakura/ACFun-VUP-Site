@@ -34,12 +34,6 @@ class upAction extends baseAction
     public function action_detail($upid, $day)
     {
         if($upid){
-            if(!Language::getLanguage()){
-                Language::setLanguage('cn', Constant::month);
-            }
-            $lang = $this->get('lang');
-            $lang && Language::setLanguage($lang, Constant::month);
-            
             $queryDay = 7;
             if($day){
                 $queryDay = $day;
@@ -100,13 +94,8 @@ class upAction extends baseAction
                     $registerDate = date('Y-m-d H:i:s', $upDetail['add_date']);
                     $acRegisterDate = $this->getMsecToMescdate($upDetail['registerTime']);
                     $updatedDate = date('Y-m-d H:i:s', $upRawData['up_date']);
-                    $adminData = [];
-                    if(App::$model->Admin->exist()){
-                        $adminData = App::$model->Admin->values();
-                    }
                     return $this->display('up/upDetail', array(
                         'upID'         => $upid,
-                        'adminData'    => $adminData,
                         'upDetail'     => $upDetail,
                         'upRawData'    => $upRawData,
                         'registerDate' => $registerDate,
@@ -134,16 +123,7 @@ class upAction extends baseAction
     public function action_feed($upid)
     {
         if($upid){
-            if(!Language::getLanguage()){
-                Language::setLanguage('cn', Constant::month);
-            }
-            $lang = $this->get('lang');
-            $lang && Language::setLanguage($lang, Constant::month);
             if ($upDetail = $this->upDetailDAO->filter(['uperid'=>$upid])->find()) {
-                $adminData = [];
-                if (App::$model->Admin->exist()) {
-                    $adminData = App::$model->Admin->values();
-                }
                 $jsonDataReturn = [];
                 $url = "https://api-new.app.acfun.cn/rest/app/feed/profile?userId=" . $upid . "&count=100";
                 $data = $this->curl_file_get_contents($url);
@@ -154,7 +134,6 @@ class upAction extends baseAction
                 }
 
                 return $this->display('up/upFeed', array(
-                    'adminData' => $adminData,
                     'jsonDataReturn' => $jsonDataReturn,
                     'uperid' => $upid
                 ));

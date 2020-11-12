@@ -48,7 +48,7 @@ class cronShell extends Shell
     {
         //在00：00后运行，时间戳会是0点的-1秒，也就是昨日的23：59：59的数据
         $todayTimestamp = strtotime(date('Y-m-d'));
-        //$todayTimestamp = strtotime("2020-10-16");
+        //$todayTimestamp = strtotime("2020-11-12");
         $ydayTimestamp = $todayTimestamp - 86400;
         $upListDataset = $this->upDetailDAO->filter([
             '<'=>array('add_date'=> $todayTimestamp)
@@ -57,7 +57,8 @@ class cronShell extends Shell
 
         $upLiveListToday = $this->upRawLiveDataDAO->filter([
             'isLive'=>1,
-            '>='=>array('up_date'=> $todayTimestamp)
+            '>='=>array('up_date'=> $ydayTimestamp),
+            '<'=>array('up_date'=> $todayTimestamp)
         ])->distinct('uperid');
         
         $newArray = array();
@@ -71,7 +72,8 @@ class cronShell extends Shell
                 $rawLatestData = $this->upRawLiveDataDAO->filter([
                     'uperid'=> $upData['uperid'],
                     'isLive'=> 1,
-                    '>='=>array('up_date'=> $todayTimestamp)
+                    '>='=>array('up_date'=> $ydayTimestamp),
+                    '<'=>array('up_date'=> $todayTimestamp)
                 ])->max('onlineCount');
                 if($rawLatestData){
                     $updateSet[] = array(

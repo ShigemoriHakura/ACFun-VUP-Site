@@ -11,6 +11,7 @@ return array(
             'up/<upid:\d+>' => 'up/detail',
             'u/<upid:\d+>' => 'up/detail',
             'd/<upid:\d+>' => 'up/feed',
+            'g/<upid:\d+>' => 'gift/detail',
             'search/<keyword:[\s\S]*>' => 'search/search',
             'update_log' => 'log/update',
             'log_submit' => 'submit/log',

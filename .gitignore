@@ -8,3 +8,5 @@ Spider/LiveInfo/acLiveSpider
 Spider/LiveInfo/config.json
 Spider/UPDetails/config.json
 Spider/UPDetails/acSpider
+Spider/Gift/config.json
+Spider/Gift/giftSpider

@@ -1,0 +1,11 @@
+{
+    "Database_Host" : "127.0.0.1",
+    "Database_Port" : "3306",
+    "Database_DB"   : "vup",
+    "Database_Name" : "vup",
+    "Database_Pass" : "password",
+    "Database_TLS"  : false,
+    "RefreshRate"   : 300,
+    "SpiderRate"    : 60,
+    "SpiderWait"    : 50
+}
