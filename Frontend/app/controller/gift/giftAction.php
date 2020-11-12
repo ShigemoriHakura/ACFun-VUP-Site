@@ -12,7 +12,7 @@ class giftAction extends baseAction
   {
     if($upid){
       if ($upDetail = $this->upDetailDAO->filter(['uperid'=>$upid])->find()) {
-          $giftDetail = $this->upGiftDataDAO->filter(['roomId'=>$upid])->query();
+          $giftDetail = $this->upGiftDataDAO->filter(['roomId'=>$upid])->order(array('add_date'=>'ASC'))->query();
           return $this->display('gift/giftDetail', array(
               'giftDetail' => $giftDetail,
               'upDetail' => $upDetail,
