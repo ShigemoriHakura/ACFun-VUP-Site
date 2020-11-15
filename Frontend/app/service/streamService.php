@@ -11,6 +11,7 @@ class streamService extends Service
     {
         $todayTimestamp = strtotime(date('Y-m-d'));
         $upListDataset = $this->upDetailDAO->filter([
+            'enabled' => 1,
             '<'=>array('add_date'=> $todayTimestamp)
         ])->query();
         $upListDatasets = [];
@@ -42,6 +43,7 @@ class streamService extends Service
     {
         $todayTimestamp = strtotime(date('Y-m-d'));
         $upListDataset = $this->upDetailDAO->filter([
+            'enabled' => 1,
             '<'=>array('add_date'=> $todayTimestamp)
         ])->query();
 
@@ -69,6 +71,27 @@ class streamService extends Service
         }
         array_multisort($upListDatasetColumn, SORT_DESC, $upListDatasets);
         return $upListDatasets;
+    }
+
+    public function getDdStreamToday()
+    {
+        $todayTimestamp = strtotime(date('Y-m-d'));
+        $giftDetail = $this->upGiftDataDAO->filter([
+            '>='=>array('add_date'=> $todayTimestamp)
+        ])->query();
+
+        $giftDetailSum = array();
+        foreach($giftDetail as $value){
+            if(isset($giftDetailSum[$value["senderId"]])){
+                $giftDetailSum[$value["senderId"]]["price"] += $value["price"];
+            }else{
+                $giftDetailSum[$value["senderId"]] =  $value;
+            }
+        }
+        $giftDetailSumCS = array_column($giftDetailSum, 'price');
+        array_multisort($giftDetailSumCS, SORT_DESC, $giftDetailSum);
+
+        return $giftDetailSum;
     }
 
 }

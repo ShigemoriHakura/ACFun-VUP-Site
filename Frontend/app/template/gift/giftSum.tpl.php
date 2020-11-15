@@ -29,14 +29,11 @@
                       <div class="table-responsive agent-performance-table">
                           <table class="table table-bordernone">
                               <tbody>
-                                <tr>
+                                  <tr>
                                       <td>
                                         <div class="d-inline-block align-middle">
                                           <p class="f-w-600"><?=_L('Gift_Sender')?></p>
                                         </div>
-                                      </td>
-                                      <td>
-                                          <p class="f-w-600"><?=_L('Gift_Content')?></p>
                                       </td>
                                       <td>
                                           <p class="f-w-600"><?=_L('Gift_Num')?></p>
@@ -47,8 +44,8 @@
                                       <td>
                                           <p class="f-w-600"><?=_L('Gift_Time')?></p>
                                       </td>
-                                  </tr>
-                                  <tr>
+                                    </tr>
+                                    <tr>
                                         <td>
                                             总共礼物
                                         </td>
@@ -62,25 +59,22 @@
                                             <?=$PRM['totalPrice']/100?>
                                         </td>
                                     </tr>
-                                  <? foreach ($PRM['giftDetail'] as $k => $v){?>
-                                    <tr>
-                                        <td>
-                                            <a target="_blank" href="https://www.acfun.cn/u/<?=$v['senderId']?>"><button class="btn btn-primary btn-square digits"><?=$v['senderName']?></button></a>
-                                        </td>
-                                        <td>
-                                            <p class="f-w-600"><?=$v['content']?></p>
-                                        </td>
-                                        <td>
-                                            <p class="f-w-600"><?=$v['num']?></p>
-                                        </td>
-                                        <td>
-                                            <p class="f-w-600"><?=$v['price']/100?></p>
-                                        </td>
-                                        <td>
-                                          <p class="f-12 mb-0"><?=date('Y-m-d H:i:s', $v['add_date'])?></p>
-                                        </td>
-                                    </tr>
-                                  <? }?>
+                                    <? foreach ($PRM['giftDetail'] as $k => $v){?>
+                                        <tr>
+                                            <td>
+                                                <a target="_blank" href="https://www.acfun.cn/u/<?=$v['senderId']?>"><button class="btn btn-primary btn-square digits"><?=$v['senderName']?></button></a>
+                                            </td>
+                                            <td>
+                                                <p class="f-w-600"><?=$v['num']?></p>
+                                            </td>
+                                            <td>
+                                                <p class="f-w-600"><?=$v['price']/100?></p>
+                                            </td>
+                                            <td>
+                                            <p class="f-12 mb-0"><?=date('Y-m-d H:i:s', $v['add_date'])?></p>
+                                            </td>
+                                        </tr>
+                                    <? }?>
                             </tbody>
                         </table>
                     </div>

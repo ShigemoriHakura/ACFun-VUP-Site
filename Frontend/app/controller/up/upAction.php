@@ -145,6 +145,58 @@ class upAction extends baseAction
         }
     }
 
+    public function action_live($upid, $day){
+        if($upid){
+            $queryDay = 7;
+            if($day){
+                $queryDay = $day;
+            }
+            if ($upDetail = $this->upDetailDAO->filter(['uperid'=>$upid])->find()){
+                if ($this->upRawDataDAO->filter(['uperid'=>$upid])->count() > 2){
+                    $upRawLiveDatas = $this->upRawLiveDataDAO->filter([
+                        'uperid'=>$upid,
+                        'isLive'=>1,
+                        '>='=>array('up_date'=> time() - 60 * 60 * 24 * $queryDay)
+                    ])->order(array('up_date'=>'ASC'))->query();
+                    $chartLiveData = [];
+                    $chartLoggedData = [];
+                    $lastLiveID = "";
+                    $lastLiveRow = "";
+                    foreach ($upRawLiveDatas as $k => $raw){
+                        if($lastLiveID != $raw['liveId']){
+                            if(!isset($chartLoggedData[$raw['liveId']])){
+                                $chartLiveData[$lastLiveID]["title"] = $lastLiveRow['title'];
+                                $chartLiveData[$lastLiveID]["end"] = $lastLiveRow['up_date'];
+                                $chartLiveData[$raw['liveId']]["start"] = $raw['up_date'];
+                            }
+                        }
+                        $lastLiveRow = $raw;
+                        $lastLiveID = $raw['liveId'];
+                    }
+                    $chartLiveData[$lastLiveID]["title"] = $lastLiveRow['title'];
+                    $chartLiveData[$lastLiveID]["end"] = $lastLiveRow['up_date'];
+
+                    $chartLiveDataDone = [];
+                    foreach ($chartLiveData as $k => $raw){
+                        if(isset($raw["start"]) && isset($raw["end"])){
+                            $chartLiveDataDone[$k] = $raw;
+                        }
+                    }
+                    
+                    return $this->display('up/upLive', array(
+                        'upId' => $upid,
+                        'chartLiveData'          => $chartLiveDataDone,
+                    ));
+                }
+                return $this->display('up/upDetail_NoData');
+            } else {
+                return $this->display('up/upDetail_404');
+            }
+        }else{
+            $this->response->redirect('/');
+        }
+    }
+
     public function curl_file_get_contents($durl){
         // header传送格式
         $headers = array(

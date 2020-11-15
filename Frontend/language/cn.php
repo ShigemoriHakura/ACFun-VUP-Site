@@ -32,6 +32,8 @@ return array(
     'Customstream_Desc'  => '最多可选5个',
     'Customstream_Submitbtn'  => '提交',
 
+    'Ddstream_Title'  => 'ACFun DD 投喂榜',
+
     'Login_Desc1' => '需要提交数据？',
     'Login_Desc2' => '请联系管理员',
     'Login_Title' => '登录管理员账号',
@@ -134,4 +136,13 @@ return array(
     'Gift_Num' => "数量",
     'Gift_Price' => "AC币",
     'Gift_Time' => "赠送时间",
+
+    'Live_LiveId' => "直播ID",
+    'Live_Detail' => "直播场次详情",
+    'Live_Title' => "直播标题",
+    'Live_Start' => "开始时间",
+    'Live_End' => "结束时间",
+
+    'Summary_Gift' => "礼物数量",
+    'Summary_Price' => "AC币",
 );

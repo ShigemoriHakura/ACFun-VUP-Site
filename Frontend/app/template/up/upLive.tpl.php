@@ -11,7 +11,7 @@
                         <li class="breadcrumb-item"><i class="f-16 fa fa-home"></i></li>
                         <li class="breadcrumb-item">UP   </li>
                     </ol>
-                    <h3><?=_L('Gift_Detail')?></h3>
+                    <h3><?=_L('Live_Detail')?></h3>
                 </div>
             </div>
         </div>
@@ -23,61 +23,48 @@
             <div class="col-xl-12 xl-50 box-col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5><?=_L('Gift_Detail')?></h5>
+                        <h5><?=_L('Live_Detail')?></h5>
                     </div>
                     <div class="card-body">
                       <div class="table-responsive agent-performance-table">
                           <table class="table table-bordernone">
                               <tbody>
-                                <tr>
+                                  <tr>
                                       <td>
                                         <div class="d-inline-block align-middle">
-                                          <p class="f-w-600"><?=_L('Gift_Sender')?></p>
+                                          <p class="f-w-600"><?=_L('Live_LiveId')?></p>
                                         </div>
                                       </td>
                                       <td>
-                                          <p class="f-w-600"><?=_L('Gift_Content')?></p>
+                                          <p class="f-w-600"><?=_L('Live_Title')?></p>
                                       </td>
                                       <td>
-                                          <p class="f-w-600"><?=_L('Gift_Num')?></p>
+                                          <p class="f-w-600"><?=_L('Live_Start')?></p>
                                       </td>
                                       <td>
-                                          <p class="f-w-600"><?=_L('Gift_Price')?></p>
+                                          <p class="f-w-600"><?=_L('Live_End')?></p>
                                       </td>
                                       <td>
-                                          <p class="f-w-600"><?=_L('Gift_Time')?></p>
+                                          <p class="f-w-600"><?=_L('Index_Action')?></p>
                                       </td>
                                   </tr>
-                                  <tr>
-                                        <td>
-                                            总共礼物
-                                        </td>
-                                        <td>
-                                            <?=$PRM['totalNum']?>
-                                        </td>
-                                        <td>
-                                            总共AC币
-                                        </td>
-                                        <td>
-                                            <?=$PRM['totalPrice']/100?>
-                                        </td>
-                                    </tr>
-                                  <? foreach ($PRM['giftDetail'] as $k => $v){?>
+                                  <? foreach ($PRM['chartLiveData'] as $k => $v){?>
                                     <tr>
                                         <td>
-                                            <a target="_blank" href="https://www.acfun.cn/u/<?=$v['senderId']?>"><button class="btn btn-primary btn-square digits"><?=$v['senderName']?></button></a>
+                                            <p class="f-w-600"><?=$k?></p>
                                         </td>
                                         <td>
-                                            <p class="f-w-600"><?=$v['content']?></p>
+                                          <p class="f-12 mb-0"><?=$v['title']?></p>
                                         </td>
                                         <td>
-                                            <p class="f-w-600"><?=$v['num']?></p>
+                                          <p class="f-12 mb-0"><?=date('Y-m-d H:i:s', $v['start'])?></p>
                                         </td>
                                         <td>
-                                            <p class="f-w-600"><?=$v['price']/100?></p>
+                                          <p class="f-12 mb-0"><?=date('Y-m-d H:i:s', $v['end'])?></p>
                                         </td>
                                         <td>
-                                          <p class="f-12 mb-0"><?=date('Y-m-d H:i:s', $v['add_date'])?></p>
+                                            <a target="_blank" href="/g/<?=$PRM['upId']?>?start=<?=$v['start']?>&end=<?=$v['end']?>"><button class="btn btn-primary btn-square digits">查看详情</button></a>
+                                            <a target="_blank" href="/s/<?=$PRM['upId']?>?start=<?=$v['start']?>&end=<?=$v['end']?>"><button class="btn btn-primary btn-square digits">查看总览</button></a>
                                         </td>
                                     </tr>
                                   <? }?>

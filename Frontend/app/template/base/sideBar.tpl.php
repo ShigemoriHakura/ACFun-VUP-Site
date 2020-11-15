@@ -34,12 +34,6 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="media">
-                                    <div class="media-body"><a href="?lang=en"><span class="f-w-600">English</span></a>
-                                    </div>
-                                </div>
-                            </li>
                         </ul>
                     </li>
                     <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
